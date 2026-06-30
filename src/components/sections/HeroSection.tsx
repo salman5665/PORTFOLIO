@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import type { MouseEvent } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
 import Lottie from 'lottie-react';
 import type { Profile, Skill, Project, Certificate } from '@/lib/supabase/types'
 
