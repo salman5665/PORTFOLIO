@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import type { MouseEvent } from 'react';
-import { motion, useMotionValue, useSpring, useInView } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import Lottie from 'lottie-react';
 import type { Profile, Skill, Project, Certificate } from '@/lib/supabase/types'
 
@@ -105,59 +105,30 @@ function DecorativeLine() {
 }
 
 
-function LottieSkeleton() {
+function HeroAnimation({ animationData }: { animationData: object | null }) {
   return (
     <div className="hs-spline-wrapper">
       <div className="hs-scene-shell">
         <div className="hs-panel-bar">
-          <span />
-          <span />
-          <span />
+          <span /><span /><span />
         </div>
-        <div className="hs-lottie-inner hs-lottie-skeleton">
-          <div className="hs-skeleton-inner">
-            <div className="hs-skeleton-circle" />
-            <div className="hs-skeleton-lines">
-              <div className="hs-skeleton-line" style={{ width: '72%' }} />
-              <div className="hs-skeleton-line" style={{ width: '54%' }} />
-              <div className="hs-skeleton-line" style={{ width: '64%' }} />
-            </div>
-            <div className="hs-skeleton-bar" />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LottieScene({ animationData }: { animationData: object }) {
-  const wrapRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(wrapRef, { once: true, margin: '-60px' });
-
-  return (
-    <motion.div
-      ref={wrapRef}
-      className="hs-spline-wrapper"
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-    >
-      <div className="hs-scene-shell">
-        <div className="hs-panel-bar">
-          <span />
-          <span />
-          <span />
-        </div>
-
         <div className="hs-lottie-inner">
-          <Lottie
-            animationData={animationData}
-            loop
-            autoplay
-            className="hs-lottie-player"
-          />
+          {animationData && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              style={{ width: '100%', height: '100%' }}
+            >
+              <Lottie
+                animationData={animationData}
+                loop
+                autoplay
+                className="hs-lottie-player"
+              />
+            </motion.div>
+          )}
         </div>
-
         <div className="hs-scene-card hs-scene-card-a">
           <span>API</span>
           <strong>Stable</strong>
@@ -167,12 +138,7 @@ function LottieScene({ animationData }: { animationData: object }) {
           <strong>Polished</strong>
         </div>
       </div>
-
-      <div className="hs-spline-fade-l" />
-      <div className="hs-spline-fade-r" />
-      <div className="hs-spline-fade-t" />
-      <div className="hs-spline-fade-b" />
-    </motion.div>
+    </div>
   );
 }
 
@@ -185,10 +151,8 @@ interface HeroSectionProps {
 
 export default function HeroSection({ profile, projects = [], skills = [], certificates = [] }: HeroSectionProps) {
   const [lottieData, setLottieData] = useState<object | null>(null);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     // 'force-cache' reuses the preloaded response from <link rel="preload">
     // so no extra network round-trip happens — the data is already in memory
     fetch('/hero-animation.json', { cache: 'force-cache' })
@@ -692,18 +656,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
 
             <div className="hs-right">
-              {!mounted ? (
-                // Static shell during SSR + initial hydration — no shimmer, no mismatch
-                <div className="hs-spline-wrapper">
-                  <div className="hs-scene-shell">
-                    <div className="hs-panel-bar"><span /><span /><span /></div>
-                  </div>
-                </div>
-              ) : lottieData ? (
-                <LottieScene animationData={lottieData} />
-              ) : (
-                <LottieSkeleton />
-              )}
+              <HeroAnimation animationData={lottieData} />
             </div>
           </div>
 
