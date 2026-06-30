@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion} from 'framer-motion'
 import { Mail, Send, Copy, Check, MapPin, Clock } from 'lucide-react'
-import { FaGithub, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { toast } from 'sonner'
 import type { Profile } from '@/lib/supabase/types'
 
@@ -39,6 +39,12 @@ export default function ContactSection({ profile }: Props) {
     profile?.github_url && { label: 'GitHub', href: profile.github_url, icon: FaGithub, display: '@' + (profile.github_url.replace('https://github.com/', '')) },
     profile?.linkedin_url && { label: 'LinkedIn', href: profile.linkedin_url, icon: FaLinkedinIn, display: profile.linkedin_url.split('/in/')[1] || 'LinkedIn' },
     { label: 'Email', href: `mailto:${email}`, icon: Mail, display: email },
+    (profile?.instagram_url || 'https://instagram.com/vinitsonii') && {
+      label: 'Instagram',
+      href: profile?.instagram_url || 'https://instagram.com/vinitsonii',
+      icon: FaInstagram,
+      display: '@' + (profile?.instagram_url || 'https://instagram.com/vinitsonii').replace('https://instagram.com/', '').replace(/\/$/, '')
+    }
   ].filter(Boolean) as { label: string; href: string; icon: React.ComponentType<{ size?: number }>; display: string }[]
 
   const handleSubmit = async (e: React.FormEvent) => {
