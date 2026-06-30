@@ -162,7 +162,9 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
   const [lottieData, setLottieData] = useState<object | null>(null);
 
   useEffect(() => {
-    fetch('/hero-animation.json')
+    // 'force-cache' reuses the preloaded response from <link rel="preload">
+    // so no extra network round-trip happens — the data is already in memory
+    fetch('/hero-animation.json', { cache: 'force-cache' })
       .then((r) => r.json())
       .then(setLottieData)
       .catch(() => {}); // silent fail — animation simply won't show

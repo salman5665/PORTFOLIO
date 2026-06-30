@@ -221,6 +221,13 @@ export default function RootLayout({
       }}
     >
       <head>
+        {/* Preload Lottie animation so it starts downloading immediately */}
+        <link
+          rel="preload"
+          href="/hero-animation.json"
+          as="fetch"
+          crossOrigin="anonymous"
+        />
         <meta
           name="mobile-web-app-capable"
           content="yes"
