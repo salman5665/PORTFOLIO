@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { motion} from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Mail, Send, Copy, Check, MapPin, Clock } from 'lucide-react'
 import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { toast } from 'sonner'
@@ -43,7 +43,12 @@ export default function ContactSection({ profile }: Props) {
       label: 'Instagram',
       href: profile?.instagram_url || 'https://instagram.com/vinitsonii',
       icon: FaInstagram,
-      display: '@' + (profile?.instagram_url || 'https://instagram.com/vinitsonii').replace('https://instagram.com/', '').replace(/\/$/, '')
+      display:
+        '@' +
+        (profile?.instagram_url || 'vinitsonii')
+          .replace(/^(https?:\/\/)?(www\.)?instagram\.com\//, '')
+          .replace(/^@/, '')
+          .replace(/\/$/, '')
     }
   ].filter(Boolean) as { label: string; href: string; icon: React.ComponentType<{ size?: number }>; display: string }[]
 
