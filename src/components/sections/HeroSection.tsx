@@ -185,8 +185,10 @@ interface HeroSectionProps {
 
 export default function HeroSection({ profile, projects = [], skills = [], certificates = [] }: HeroSectionProps) {
   const [lottieData, setLottieData] = useState<object | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // 'force-cache' reuses the preloaded response from <link rel="preload">
     // so no extra network round-trip happens — the data is already in memory
     fetch('/hero-animation.json', { cache: 'force-cache' })
@@ -690,7 +692,18 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
 
             <div className="hs-right">
-              {lottieData ? <LottieScene animationData={lottieData} /> : <LottieSkeleton />}
+              {!mounted ? (
+                // Static shell during SSR + initial hydration — no shimmer, no mismatch
+                <div className="hs-spline-wrapper">
+                  <div className="hs-scene-shell">
+                    <div className="hs-panel-bar"><span /><span /><span /></div>
+                  </div>
+                </div>
+              ) : lottieData ? (
+                <LottieScene animationData={lottieData} />
+              ) : (
+                <LottieSkeleton />
+              )}
             </div>
           </div>
 
