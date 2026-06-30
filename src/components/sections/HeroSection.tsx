@@ -106,28 +106,29 @@ function DecorativeLine() {
 
 
 function HeroAnimation({ animationData }: { animationData: object | null }) {
+  if (!animationData) {
+    // Invisible placeholder keeps layout stable — nothing visible while loading
+    return <div className="hs-spline-wrapper" aria-hidden="true" />;
+  }
+
   return (
-    <div className="hs-spline-wrapper">
+    <motion.div
+      className="hs-spline-wrapper"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+    >
       <div className="hs-scene-shell">
         <div className="hs-panel-bar">
           <span /><span /><span />
         </div>
         <div className="hs-lottie-inner">
-          {animationData && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              style={{ width: '100%', height: '100%' }}
-            >
-              <Lottie
-                animationData={animationData}
-                loop
-                autoplay
-                className="hs-lottie-player"
-              />
-            </motion.div>
-          )}
+          <Lottie
+            animationData={animationData}
+            loop
+            autoplay
+            className="hs-lottie-player"
+          />
         </div>
         <div className="hs-scene-card hs-scene-card-a">
           <span>API</span>
@@ -138,9 +139,10 @@ function HeroAnimation({ animationData }: { animationData: object | null }) {
           <strong>Polished</strong>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
+
 
 interface HeroSectionProps {
   profile?: Profile | null;
