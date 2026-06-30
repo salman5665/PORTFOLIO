@@ -1,0 +1,17 @@
+{
+  "name": "Vinit Soni Portfolio",
+  "short_name": "Vinit.dev",
+  "description": "Premium portfolio of Vinit Soni — Full-Stack Developer & MCA Student",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020817",
+  "theme_color": "#00f5ff",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "developer", "technology"],
+  "screenshots": [],
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "lang": "en"
+}
