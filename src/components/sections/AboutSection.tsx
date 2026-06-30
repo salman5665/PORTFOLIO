@@ -282,36 +282,36 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
   const skillCount = skills.length
   const certCount = certificates.length
   const yearsCoding = Math.max(1, new Date().getFullYear() - 2022)
-  
+
   const stats: StatDef[] = [
-  {
-    icon: Rocket,
-    label: 'Projects Built',
-    value: projectCount || 1,
-    suffix: projectCount > 0 ? '+' : ''
-  },
+    {
+      icon: Rocket,
+      label: 'Projects Built',
+      value: projectCount || 1,
+      suffix: projectCount > 0 ? '+' : ''
+    },
 
-  {
-    icon: Code2,
-    label: 'Technologies',
-    value: skillCount || 1,
-    suffix: skillCount > 0 ? '+' : ''
-  },
+    {
+      icon: Code2,
+      label: 'Technologies',
+      value: skillCount || 1,
+      suffix: skillCount > 0 ? '+' : ''
+    },
 
-  {
-    icon: Layers3,
-    label: 'Years of Coding',
-    value: yearsCoding,
-    suffix: '+'
-  },
+    {
+      icon: Layers3,
+      label: 'Years of Coding',
+      value: yearsCoding,
+      suffix: '+'
+    },
 
-  {
-    icon: Award,
-    label: 'Certificates',
-    value: certCount || 0,
-    suffix: certCount > 0 ? '+' : ''
-  },
-]
+    {
+      icon: Award,
+      label: 'Certificates',
+      value: certCount || 0,
+      suffix: certCount > 0 ? '+' : ''
+    },
+  ]
 
   const facts = [
     { label: 'Location', value: location },
@@ -386,7 +386,7 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
             </div>
           </motion.div>
 
-        
+
           <motion.div className="col-lg-6"
             initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ delay: 0.3, duration: 0.7 }}>
             <h3 className="mb-4" style={{ fontWeight: 700, color: 'var(--color-text)', fontSize: '1.05rem' }}>

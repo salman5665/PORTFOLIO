@@ -105,6 +105,31 @@ function DecorativeLine() {
 }
 
 
+function LottieSkeleton() {
+  return (
+    <div className="hs-spline-wrapper">
+      <div className="hs-scene-shell">
+        <div className="hs-panel-bar">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="hs-lottie-inner hs-lottie-skeleton">
+          <div className="hs-skeleton-inner">
+            <div className="hs-skeleton-circle" />
+            <div className="hs-skeleton-lines">
+              <div className="hs-skeleton-line" style={{ width: '72%' }} />
+              <div className="hs-skeleton-line" style={{ width: '54%' }} />
+              <div className="hs-skeleton-line" style={{ width: '64%' }} />
+            </div>
+            <div className="hs-skeleton-bar" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function LottieScene({ animationData }: { animationData: object }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const inView = useInView(wrapRef, { once: true, margin: '-60px' });
@@ -113,9 +138,9 @@ function LottieScene({ animationData }: { animationData: object }) {
     <motion.div
       ref={wrapRef}
       className="hs-spline-wrapper"
-      initial={{ opacity: 0, scale: 0.92 }}
+      initial={{ opacity: 0, scale: 0.96 }}
       animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ delay: 0.3, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="hs-scene-shell">
         <div className="hs-panel-bar">
@@ -167,7 +192,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
     fetch('/hero-animation.json', { cache: 'force-cache' })
       .then((r) => r.json())
       .then(setLottieData)
-      .catch(() => {}); // silent fail — animation simply won't show
+      .catch(() => { }); // silent fail — animation simply won't show
   }, []);
 
   const techStack = skills.slice(0, 8);
@@ -464,6 +489,56 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           background: transparent !important;
         }
 
+        /* Skeleton shimmer */
+        @keyframes shimmer {
+          0%   { background-position: -600px 0; }
+          100% { background-position:  600px 0; }
+        }
+        .hs-lottie-skeleton {
+          align-items: center;
+          padding-top: 0;
+        }
+        .hs-skeleton-inner {
+          display: flex; flex-direction: column;
+          align-items: center; justify-content: center;
+          gap: 24px; width: 100%;
+          padding: 60px 32px;
+        }
+        .hs-skeleton-circle {
+          width: 180px; height: 180px; border-radius: 50%;
+          background: linear-gradient(90deg,
+            rgba(125,211,252,0.06) 25%,
+            rgba(125,211,252,0.14) 50%,
+            rgba(125,211,252,0.06) 75%
+          );
+          background-size: 600px 100%;
+          animation: shimmer 1.6s infinite linear;
+        }
+        .hs-skeleton-lines {
+          display: flex; flex-direction: column;
+          align-items: center; gap: 12px; width: 100%;
+        }
+        .hs-skeleton-line {
+          height: 12px; border-radius: 999px;
+          background: linear-gradient(90deg,
+            rgba(125,211,252,0.06) 25%,
+            rgba(125,211,252,0.14) 50%,
+            rgba(125,211,252,0.06) 75%
+          );
+          background-size: 600px 100%;
+          animation: shimmer 1.6s infinite linear;
+        }
+        .hs-skeleton-bar {
+          width: 60%; height: 38px; border-radius: 12px;
+          background: linear-gradient(90deg,
+            rgba(125,211,252,0.06) 25%,
+            rgba(125,211,252,0.14) 50%,
+            rgba(125,211,252,0.06) 75%
+          );
+          background-size: 600px 100%;
+          animation: shimmer 1.6s infinite linear;
+        }
+
         .hs-scene-card {
           position: absolute;
           z-index: 3;
@@ -562,7 +637,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
         <div className="hs-container">
           <div className="hs-top-row">
-          
+
             <div className="hs-left">
               <motion.div
                 className="hs-badge"
@@ -607,9 +682,9 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
             </div>
 
-            
+
             <div className="hs-right">
-              {lottieData && <LottieScene animationData={lottieData} />}
+              {lottieData ? <LottieScene animationData={lottieData} /> : <LottieSkeleton />}
             </div>
           </div>
 
