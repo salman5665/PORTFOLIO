@@ -207,6 +207,12 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
     animate: { opacity: 1, y: 0 },
     transition: { delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
   });
+  // LCP-safe: animate only transform, never hide opacity so browser can measure paint immediately
+  const revealLCP = (delay: number) => ({
+    initial: { y: 18 },
+    animate: { y: 0 },
+    transition: { delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+  });
 
   return (
     <>
@@ -654,8 +660,8 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 24 }}
+                animate={{ y: 0 }}
                 transition={{ delay: 0.1, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
                 <h1 className="hs-name" aria-label={`Hi, I'm ${displayName}`}>
@@ -673,7 +679,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
                 {tagline}
               </motion.p>
 
-              <motion.p className="hs-desc" {...reveal(0.35)}>
+              <motion.p className="hs-desc" {...revealLCP(0.35)}>
                 {lead}
               </motion.p>
 
