@@ -250,3 +250,10 @@ export interface ActivityLog {
   metadata: Json
   created_at: string
 }
+
+export interface JourneyItem {
+  id: string
+  year: string
+  title: string
+  desc: string
+}

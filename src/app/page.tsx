@@ -16,7 +16,7 @@ import ContactSection from '@/components/sections/ContactSection'
 import JsonLd from '@/components/seo/JsonLd'
 import ScrollAnimations from '@/components/ui/ScrollAnimations'
 import { createServerClient } from '@/lib/supabase/server'
-import type { Profile, Skill, Project, Experience, Education, Certificate, Testimonial, BlogPost } from '@/lib/supabase/types'
+import type { Profile, Skill, Project, Experience, Education, Certificate, Testimonial, BlogPost, JourneyItem } from '@/lib/supabase/types'
 
 
 export const revalidate = 0 // Force dynamic rendering so new data always shows
@@ -33,6 +33,7 @@ async function fetchAllData() {
     { data: testimonials },
     { data: blogPosts },
     { data: codingProfilesSetting },
+    { data: journeySetting },
   ] = await Promise.all([
     db.from('profiles').select('*').order('updated_at', { ascending: false }).limit(1).single(),
     db.from('skills').select('*').order('sort_order'),
@@ -43,6 +44,7 @@ async function fetchAllData() {
     db.from('testimonials').select('*').order('sort_order'),
     db.from('blog_posts').select('*').eq('status', 'published').order('published_at', { ascending: false }).limit(6),
     db.from('settings').select('value').eq('key', 'coding_profiles').maybeSingle(),
+    db.from('settings').select('value').eq('key', 'journey').maybeSingle(),
   ])
 
   return {
@@ -55,6 +57,7 @@ async function fetchAllData() {
     testimonials: (testimonials || []) as Testimonial[],
     blogPosts: (blogPosts || []) as BlogPost[],
     codingProfiles: (codingProfilesSetting?.value || null) as CodingProfilesConfig | null,
+    journey: (journeySetting?.value || null) as JourneyItem[] | null,
   }
 }
 
@@ -68,7 +71,7 @@ export default async function HomePage() {
       <Navbar profile={data.profile} />
       <main className="portfolio-main">
         <HeroSection profile={data.profile} projects={data.projects} skills={data.skills} certificates={data.certificates} />
-        <AboutSection profile={data.profile} projects={data.projects} skills={data.skills} certificates={data.certificates} />
+        <AboutSection profile={data.profile} projects={data.projects} skills={data.skills} certificates={data.certificates} journey={data.journey || undefined} />
         <SkillsSection skills={data.skills} />
         <CodingProfilesSection config={data.codingProfiles} />
         <ProjectsSection projects={data.projects} />
@@ -83,3 +86,4 @@ export default async function HomePage() {
     </>
   )
 }
+

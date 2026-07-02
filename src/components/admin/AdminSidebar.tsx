@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, FolderOpen, Code2, Briefcase, GraduationCap,
   Award, MessageSquare, FileText, Quote, Settings, Image,
-  LogOut, ChevronRight, X, User, Activity
+  LogOut, ChevronRight, X, User, Activity, Milestone
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase/client'
 import { useSidebar } from '@/lib/contexts/SidebarContext'
@@ -31,6 +31,7 @@ const NAV = [
       { icon: Code2, label: 'Skills', href: '/admin/skills' },
       { icon: Briefcase, label: 'Experience', href: '/admin/experience' },
       { icon: GraduationCap, label: 'Education', href: '/admin/education' },
+      { icon: Milestone, label: 'Journey', href: '/admin/journey' },
       { icon: Award, label: 'Certificates', href: '/admin/certificates' },
       { icon: Quote, label: 'Testimonials', href: '/admin/testimonials' },
       { icon: FileText, label: 'Blog', href: '/admin/blog' },
@@ -310,7 +311,7 @@ export default function AdminSidebar() {
               style={{ top: 14, right: 14, width: 36, height: 36, borderRadius: '50%', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.15)', color: 'var(--admin-border)', cursor: 'pointer', zIndex: 10 }}>
               <X size={16} />
             </button>
-            <SidebarInner collapsed={false} setCollapsed={() => {}} onNavClick={() => setMobileOpen(false)} />
+            <SidebarInner collapsed={false} setCollapsed={() => { }} onNavClick={() => setMobileOpen(false)} />
           </motion.aside>
         )}
       </AnimatePresence>

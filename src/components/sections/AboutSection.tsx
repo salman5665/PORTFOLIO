@@ -16,14 +16,14 @@ import type { LucideIcon } from 'lucide-react'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import GithubContributionGraph from './GithubContributionGraph'
 import LeetcodeWidget from './LeetcodeWidget'
-import type { Profile, Project, Skill, Certificate } from '@/lib/supabase/types'
+import type { Profile, Project, Skill, Certificate, JourneyItem } from '@/lib/supabase/types'
 
-const journey = [
-  { year: '2022', title: 'Started Coding Journey', desc: 'Began my BCA journey and discovered a passion for programming and web development.' },
-  { year: '2023', title: 'Beginner Development', desc: 'Mastered HTML, CSS, JavaScript, PHP. Built first real web projects.' },
-  { year: '2024', title: 'Full-Stack Developer', desc: 'Learned ASP.NET Core, Flutter, DSA, and many more... during BCA.' },
-  { year: '2025', title: 'MCA & Advanced Tech', desc: 'Started MCA. Deep-dived into Next.js, TypeScript, cloud services, and AI.' },
-  { year: '2026+', title: 'Building at Scale', desc: 'Building production-grade applications, exploring AI integrations and DevOps.' },
+const DEFAULT_JOURNEY: JourneyItem[] = [
+  { id: '1', year: '2022', title: 'Started Coding Journey', desc: 'Began my BCA journey and discovered a passion for programming and web development.' },
+  { id: '2', year: '2023', title: 'Beginner Development', desc: 'Mastered HTML, CSS, JavaScript, PHP. Built first real web projects.' },
+  { id: '3', year: '2024', title: 'Full-Stack Developer', desc: 'Learned ASP.NET Core, Flutter, DSA, and many more... during BCA.' },
+  { id: '4', year: '2025', title: 'MCA & Advanced Tech', desc: 'Started MCA. Deep-dived into Next.js, TypeScript, cloud services, and AI.' },
+  { id: '5', year: '2026+', title: 'Building at Scale', desc: 'Building production-grade applications, exploring AI integrations and DevOps.' },
 ]
 
 interface StatDef {
@@ -267,9 +267,11 @@ interface Props {
   projects?: Project[]
   skills?: Skill[]
   certificates?: Certificate[]
+  journey?: JourneyItem[]
 }
 
-export default function AboutSection({ profile, projects = [], skills = [], certificates = [] }: Props) {
+export default function AboutSection({ profile, projects = [], skills = [], certificates = [], journey = [] }: Props) {
+  const finalJourney = journey.length > 0 ? journey : DEFAULT_JOURNEY
   const name = profile?.name || 'Vinit Soni'
 
   const bio = profile?.bio || "Hey! I'm a Full-Stack Developer and MCA student with a relentless passion for building products that live at the intersection of great engineering and beautiful design. I specialize in the modern JavaScript ecosystem - React, Next.js, Node.js - and love building end-to-end applications from database architecture to polished frontends."
@@ -393,8 +395,8 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', marginRight: 8 }}>{'// '}</span>My Journey
             </h3>
             <div className="vs-timeline">
-              {journey.map((item, i) => (
-                <motion.div key={item.year} className="vs-timeline-item"
+              {finalJourney.map((item, i) => (
+                <motion.div key={item.id || `${item.year}-${i}`} className="vs-timeline-item"
                   initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ delay: 0.4 + i * 0.1, duration: 0.5 }}>
                   <div className="vs-timeline-dot" />
                   <div className="card shadow-vs ms-2">

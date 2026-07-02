@@ -59,8 +59,8 @@ export default function AdminSettingsPage() {
         }
       />
 
-      <div className="admin-page-content" style={{ maxWidth: 900 }}>
-        <div className="d-flex flex-column gap-4">
+      <div className="admin-page-content admin-settings-content">
+        <div className="admin-settings-grid">
 
           {/* ── Profile Information ── */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
@@ -177,7 +177,7 @@ export default function AdminSettingsPage() {
               <div style={HEADER_STYLE}><Activity size={16} color="#67e8f9" /> System Info</div>
               <div className="row g-3">
                 {[
-                  { label: 'Framework', value: 'Next.js 15 (App Router)' },
+                  { label: 'Framework', value: 'Next.js 16 (App Router)' },
                   { label: 'Database',  value: 'Supabase (PostgreSQL)' },
                   { label: 'Styling',   value: 'Bootstrap 5' },
                   { label: 'Deployment',value: 'Vercel' },
