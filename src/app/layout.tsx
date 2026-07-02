@@ -97,6 +97,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL(siteUrl),
+    applicationName: profile?.name || 'Vinit Soni',
 
     title: {
       default: title,
@@ -141,7 +142,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
 
-      siteName: `${profile?.name || 'Vinit Soni'} Portfolio`,
+      siteName: profile?.name || 'Vinit Soni',
 
       images: [
         {

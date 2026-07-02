@@ -10,7 +10,7 @@ export default function JsonLd({ profile }: Props) {
     profile?.twitter_url,
   ].filter(Boolean)
 
-  const jsonLd = {
+  const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: profile?.name || 'Vinit Soni',
@@ -23,10 +23,33 @@ export default function JsonLd({ profile }: Props) {
     knowsAbout: ['Web Development', 'React', 'Next.js', 'Node.js', 'TypeScript', 'Supabase'],
   }
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: profile?.name || 'Vinit Soni',
+    alternateName: [
+      `${profile?.name || 'Vinit Soni'} Portfolio`,
+      'Vinit Soni Full-Stack Developer'
+    ],
+    url: siteUrl,
+    publisher: {
+      '@type': 'Person',
+      name: profile?.name || 'Vinit Soni'
+    }
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+    </>
   )
 }
+
