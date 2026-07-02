@@ -178,8 +178,6 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
 
-    manifest: '/manifest.json',
-
     icons: {
       icon: [
         {
