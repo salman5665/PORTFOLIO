@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import dynamic from 'next/dynamic'
-
-const AskVinit = dynamic(() => import('@/components/AskVinit'), { ssr: false })
+import AskVinitWrapper from '@/components/AskVinitWrapper'
 import { Toaster } from 'sonner'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -262,7 +260,7 @@ export default function RootLayout({
         className="antialiased"
       >
         <VisitorTracker />
-        <AskVinit />
+        <AskVinitWrapper />
 
         <LenisProvider>
           <PageTransition>
