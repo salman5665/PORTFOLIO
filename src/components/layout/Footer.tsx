@@ -20,7 +20,7 @@ export default function Footer({ profile }: Props) {
 
   const name = profile?.name || 'Vinit Soni'
   const firstName = name.split(' ')[0]
-  const tagline = profile?.tagline || 'Full-Stack Developer & MCA Student building premium web experiences.'
+  const tagline = profile?.tagline || 'Vinit Soni - Full-Stack Developer & MCA Student building premium web experiences.'
   const email = profile?.email || ''
 
   const socialLinks = [
@@ -458,7 +458,7 @@ export default function Footer({ profile }: Props) {
               className="d-flex align-items-center justify-content-center gap-2 mb-0"
               style={{ color: 'var(--color-text-sub)', fontSize: '0.9rem' }}
             >
-              © {new Date().getFullYear()} {name}. Built with Next.js.
+              © {new Date().getFullYear()} {name} - Full-Stack Developer. Built with Next.js.
             </p>
 
             <button

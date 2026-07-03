@@ -13,8 +13,8 @@ values (
   'India',
   'https://github.com/vinitsonii',
   'https://linkedin.com/in/vinitsonii',
-  'Vinit Soni | Full-Stack Developer',
-  'Premium portfolio of Vinit Soni — Full-Stack Developer, MCA Student. Expert in React, Next.js, Node.js, and modern web technologies.',
+  'Vinit Soni Full-Stack Developer',
+  'Vinit Soni Full-Stack Developer: Building scalable web and mobile applications with clean code and exceptional user experiences.',
   '#00f5ff'
 ) on conflict do nothing;
 

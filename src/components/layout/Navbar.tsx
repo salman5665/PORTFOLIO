@@ -1,10 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Code2, Download, Mail, User, Zap, Layers, Briefcase, GraduationCap, Award, FileText } from 'lucide-react'
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa'
 import type { Profile } from '@/lib/supabase/types'
 import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock'
 
@@ -25,6 +26,7 @@ export default function Navbar({ profile }: Props) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('')
+  const pathname = usePathname()
 
   const firstName = (profile?.name || 'Vinit').split(' ')[0]
   const resumeUrl = '/resume'
@@ -43,7 +45,7 @@ export default function Navbar({ profile }: Props) {
     )
     document.querySelectorAll('section[id]').forEach((s) => observer.observe(s))
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   const handleNav = (href: string) => {
   const isMobileMenuOpen = mobileOpen
@@ -78,6 +80,7 @@ export default function Navbar({ profile }: Props) {
   const mobileSocials = [
     profile?.github_url && { icon: FaGithub, href: profile.github_url, label: 'GitHub' },
     profile?.linkedin_url && { icon: FaLinkedinIn, href: profile.linkedin_url, label: 'LinkedIn' },
+    profile?.instagram_url && { icon: FaInstagram, href: profile.instagram_url, label: 'Instagram' },
     profile?.email && { icon: Mail, href: `mailto:${profile.email}`, label: 'Email' },
   ].filter(Boolean) as { icon: React.ComponentType<{ size?: number }>; href: string; label: string }[]
 
@@ -183,6 +186,36 @@ export default function Navbar({ profile }: Props) {
           .portfolio-brand-name {
             font-size: 0.98rem;
           }
+        }
+
+        .nav-mobile-social-btn {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.05);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 1.25rem;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          text-decoration: none;
+        }
+
+        .nav-mobile-social-btn:hover {
+          background: rgba(34, 211, 238, 0.1);
+          color: #67e8f9;
+          border-color: rgba(34, 211, 238, 0.34);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 16px rgba(34, 211, 238, 0.16);
+        }
+
+        .nav-mobile-social-btn.instagram:hover {
+          background: rgba(225, 48, 108, 0.12);
+          color: #e1306c;
+          border-color: rgba(225, 48, 108, 0.35);
+          box-shadow: 0 8px 16px rgba(225, 48, 108, 0.15);
         }
       `}</style>
 
@@ -339,13 +372,7 @@ export default function Navbar({ profile }: Props) {
                 {mobileSocials.map(({ icon: Icon, href, label }) => (
                   <a key={label} href={href} target={href.startsWith('mailto') ? '_self' : '_blank'}
                     rel="noopener noreferrer" aria-label={label}
-                    style={{ 
-                      width: 48, height: 48, borderRadius: '50%',
-                      background: 'rgba(255,255,255,0.05)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#fff', fontSize: '1.25rem',
-                      border: '1px solid rgba(255,255,255,0.1)'
-                    }}>
+                    className={`nav-mobile-social-btn ${label.toLowerCase()}`}>
                     <Icon size={20} />
                   </a>
                 ))}

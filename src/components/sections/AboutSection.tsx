@@ -129,6 +129,7 @@ function AvatarWithPopup({
               justifyContent: 'center',
               cursor: 'zoom-out',
               padding: '24px',
+              borderRadius: '16px',
             }}
           >
             {/* Close button */}
@@ -173,8 +174,7 @@ function AvatarWithPopup({
                 height: 'clamp(200px, 48vw, 270px)',
                 borderRadius: '50%',
                 overflow: 'hidden',
-                border: '3px solid rgba(255,255,255,0.18)',
-                boxShadow: '0 8px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06)',
+                boxShadow: '0 8px 48px rgba(0,0,0,0.55)',
                 cursor: 'default',
                 flexShrink: 0,
               }}
@@ -274,7 +274,7 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
   const finalJourney = journey.length > 0 ? journey : DEFAULT_JOURNEY
   const name = profile?.name || 'Vinit Soni'
 
-  const bio = profile?.bio || "Hey! I'm a Full-Stack Developer and MCA student with a relentless passion for building products that live at the intersection of great engineering and beautiful design. I specialize in the modern JavaScript ecosystem - React, Next.js, Node.js - and love building end-to-end applications from database architecture to polished frontends."
+  const bio = profile?.bio || "I am Vinit Soni, a Full-Stack Developer and MCA student. I love building web apps that combine strong engineering with clean design. I specialize in the modern JavaScript ecosystem including React, Next.js, and Node.js. My work covers everything from database design to polished frontends."
   const location = profile?.location || 'India'
   const github = profile?.github_url || 'https://github.com'
   const linkedin = profile?.linkedin_url || 'https://linkedin.com'
@@ -337,22 +337,24 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
             initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ delay: 0.2, duration: 0.7 }}>
             <div className="card shadow-vs mb-4">
               <div className="card-body p-4 p-md-5">
-                <div className="d-flex align-items-center gap-3 mb-4 pb-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  {/* Avatar — renders circle + popup in one component */}
-                  <AvatarWithPopup
-                    avatarUrl={profile?.avatar_url}
-                    name={name}
-                    tagline={profile?.tagline}
-                    isAvailable={isAvailable}
-                  />
-                  <div>
-                    <div style={{ fontWeight: 800, color: 'var(--color-text)', fontSize: '1.05rem' }}>{name}</div>
-                    <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <MapPin size={12} /> {location}
+                <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2 gap-md-3 mb-3 mb-md-4 pb-3 pb-md-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
+                  <div className="d-flex align-items-center gap-3">
+                    {/* Avatar — renders circle + popup in one component */}
+                    <AvatarWithPopup
+                      avatarUrl={profile?.avatar_url}
+                      name={name}
+                      tagline={profile?.tagline}
+                      isAvailable={isAvailable}
+                    />
+                    <div>
+                      <div style={{ fontWeight: 800, color: 'var(--color-text)', fontSize: '1.05rem' }}>{name}</div>
+                      <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <MapPin size={12} /> {location}
+                      </div>
                     </div>
                   </div>
                   {isAvailable && (
-                    <div className="ms-auto d-flex align-items-center gap-1 px-3 py-1 rounded-pill"
+                    <div className="d-flex align-items-center gap-1 px-3 py-1 rounded-pill"
                       style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#15803d', fontSize: '0.7rem', fontWeight: 700, whiteSpace: 'nowrap' }}>
                       <motion.span animate={{ opacity: [1, 0.4, 1] }} transition={{ repeat: Infinity, duration: 1.5 }}
                         style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />

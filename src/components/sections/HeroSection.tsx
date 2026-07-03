@@ -166,7 +166,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
   const techStack = skills.slice(0, 8);
   const displayName = profile?.name?.trim() || 'Vinit Soni';
   const tagline = profile?.tagline?.trim() || 'Full-Stack Developer';
-  const lead = profile?.bio?.trim() || 'I build fast, reliable web and mobile products with clean architecture, thoughtful interfaces, and production-minded engineering.';
+  const lead = profile?.bio?.trim() || 'I build fast, reliable web and mobile apps. I focus on clean architecture, beautiful interfaces, and solid engineering.';
   const availabilityLabel = profile?.is_available_for_work === false ? 'Open to collaborations' : 'Available for work';
   const featuredStack = techStack.slice(0, 4).map((skill) => skill.name).join(' / ') || 'Next.js / TypeScript / Supabase';
   const yearsCoding = Math.max(1, new Date().getFullYear() - 2022);
