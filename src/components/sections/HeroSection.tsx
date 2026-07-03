@@ -36,7 +36,7 @@ function StatItem({ to, suffix, label }: { to: number; suffix: string; label: st
   return (
     <div ref={ref} className="hs-stat">
       <div className="hs-stat-value">
-        <span className="hs-stat-num">{count}</span>
+        <span className="hs-stat-num" suppressHydrationWarning>{count}</span>
         <span className="hs-stat-suffix">{suffix}</span>
       </div>
       <span className="hs-stat-label">{label}</span>
