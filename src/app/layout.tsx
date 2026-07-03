@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import AskVinit from '@/components/AskVinit'
+import dynamic from 'next/dynamic'
+
+const AskVinit = dynamic(() => import('@/components/AskVinit'), { ssr: false })
 import { Toaster } from 'sonner'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next'
