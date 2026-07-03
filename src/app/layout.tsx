@@ -4,6 +4,7 @@ import './globals.css'
 import AskVinit from '@/components/AskVinit'
 import { Toaster } from 'sonner'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import PageTransition from '@/components/PageTransition'
 import VisitorTracker from '@/components/analytics/VisitorTracker'
@@ -286,6 +287,7 @@ export default function RootLayout({
             gaId={process.env.NEXT_PUBLIC_GA_ID}
           />
         )}
+        <SpeedInsights />
       </body>
     </html>
   )
