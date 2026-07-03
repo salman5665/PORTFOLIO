@@ -7,7 +7,7 @@ import type { Education } from '@/lib/supabase/types'
 
 function formatDate(d: string | null): string {
   if (!d) return ''
-  return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
 }
 
 interface Props { educations: Education[] }

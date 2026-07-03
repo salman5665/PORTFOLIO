@@ -410,7 +410,7 @@ export default function CertificatesSection({ certificates }: Props) {
                     <span className="cert-meta-chip">{cert.issuer}</span>
                     {cert.issue_date && (
                       <span className="cert-meta-chip" style={{ fontFamily: 'var(--font-mono)' }}>
-                        {new Date(cert.issue_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                        {new Date(cert.issue_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
                       </span>
                     )}
                   </div>

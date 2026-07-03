@@ -348,7 +348,7 @@ export default async function BlogIndexPage() {
                     {post.published_at && (
                       <span>
                         <CalendarDays size={11} />
-                        {new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        {new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
                       </span>
                     )}
                     {post.read_time_minutes > 0 && (
