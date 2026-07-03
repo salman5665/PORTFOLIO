@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Code2, ChevronUp, User, Cpu, Layers, Briefcase, GraduationCap, MapPin, FileText, BookOpen, ExternalLink } from 'lucide-react'
 import { FaGithub, FaLinkedinIn, FaTwitter, FaInstagram } from 'react-icons/fa'
@@ -16,6 +17,7 @@ const NAV_LINKS = [
 interface Props { profile?: Profile | null }
 
 export default function Footer({ profile }: Props) {
+  const currentYear = new Date().getUTCFullYear()
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   const name = profile?.name || 'Vinit Soni'
@@ -457,9 +459,8 @@ export default function Footer({ profile }: Props) {
             <p
               className="d-flex align-items-center justify-content-center gap-2 mb-0"
               style={{ color: 'var(--color-text-sub)', fontSize: '0.9rem' }}
-              suppressHydrationWarning
             >
-              © {new Date().getFullYear()} {name} - Full-Stack Developer. Built with Next.js.
+              © {currentYear} {name} - Full-Stack Developer. Built with Next.js.
             </p>
 
             <button

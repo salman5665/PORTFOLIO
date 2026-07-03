@@ -9,12 +9,17 @@ import type { Profile, Skill, Project, Certificate } from '@/lib/supabase/types'
 
 function useCountUp(to: number, durationMs = 2000) {
   const [count, setCount] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-40px' });
   const started = useRef(false);
 
   useEffect(() => {
-    if (!inView || started.current) return;
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || !inView || started.current) return;
     started.current = true;
     const start = performance.now();
     let id = 0;
@@ -26,7 +31,7 @@ function useCountUp(to: number, durationMs = 2000) {
     };
     id = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(id);
-  }, [inView, to, durationMs]);
+  }, [isMounted, inView, to, durationMs]);
 
   return { count, ref };
 }
@@ -36,7 +41,7 @@ function StatItem({ to, suffix, label }: { to: number; suffix: string; label: st
   return (
     <div ref={ref} className="hs-stat">
       <div className="hs-stat-value">
-        <span className="hs-stat-num" suppressHydrationWarning>{count}</span>
+        <span className="hs-stat-num">{count}</span>
         <span className="hs-stat-suffix">{suffix}</span>
       </div>
       <span className="hs-stat-label">{label}</span>

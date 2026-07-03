@@ -14,6 +14,15 @@ import type { Certificate } from '@/lib/supabase/types'
 
 interface Props { certificates: Certificate[] }
 
+function formatDate(d: string | null): string {
+  if (!d) return ''
+  const date = new Date(d)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const month = months[date.getUTCMonth()]
+  const year = date.getUTCFullYear()
+  return `${month} ${year}`
+}
+
 export default function CertificatesSection({ certificates }: Props) {
   const railRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
@@ -410,7 +419,7 @@ export default function CertificatesSection({ certificates }: Props) {
                     <span className="cert-meta-chip">{cert.issuer}</span>
                     {cert.issue_date && (
                       <span className="cert-meta-chip" style={{ fontFamily: 'var(--font-mono)' }}>
-                        {new Date(cert.issue_date).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
+                        {formatDate(cert.issue_date)}
                       </span>
                     )}
                   </div>

@@ -16,6 +16,15 @@ import type { BlogPost } from '@/lib/supabase/types'
 
 interface Props { posts: BlogPost[] }
 
+function formatDate(d: string | null): string {
+  if (!d) return ''
+  const date = new Date(d)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const month = months[date.getUTCMonth()]
+  const day = date.getUTCDate()
+  return `${month} ${day}`
+}
+
 export default function BlogSection({ posts }: Props) {
   const railRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
@@ -395,7 +404,7 @@ export default function BlogSection({ posts }: Props) {
                     {post.published_at && (
                       <span>
                         <CalendarDays size={11} />
-                        {new Date(post.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}
+                        {formatDate(post.published_at)}
                       </span>
                     )}
                     {post.read_time_minutes > 0 && (

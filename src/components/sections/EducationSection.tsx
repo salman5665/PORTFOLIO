@@ -7,7 +7,11 @@ import type { Education } from '@/lib/supabase/types'
 
 function formatDate(d: string | null): string {
   if (!d) return ''
-  return new Date(d).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+  const date = new Date(d)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const month = months[date.getUTCMonth()]
+  const year = date.getUTCFullYear()
+  return `${month} ${year}`
 }
 
 interface Props { educations: Education[] }
