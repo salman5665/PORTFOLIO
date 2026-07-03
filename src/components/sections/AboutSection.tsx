@@ -36,6 +36,11 @@ interface StatDef {
 function StatCard({ stat, i }: { stat: StatDef; i: number }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-50px' })
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <motion.div className="col-6 col-lg-3" ref={ref}
@@ -47,7 +52,7 @@ function StatCard({ stat, i }: { stat: StatDef; i: number }) {
             <stat.icon size={22} color="var(--color-text)" />
           </div>
           <div style={{ fontSize: '2.25rem', fontWeight: 900, color: 'var(--color-text)', lineHeight: 1, letterSpacing: '-0.03em' }}>
-            {inView ? <CountUp end={stat.value} duration={2.5} /> : stat.value}{stat.suffix}
+            {isMounted && inView ? <CountUp end={stat.value} duration={2.5} /> : stat.value}{stat.suffix}
           </div>
           <div style={{ fontSize: '0.85rem', color: 'var(--color-text-sub)', fontWeight: 500 }}>{stat.label}</div>
         </div>
