@@ -457,6 +457,7 @@ export default function Footer({ profile }: Props) {
             <p
               className="d-flex align-items-center justify-content-center gap-2 mb-0"
               style={{ color: 'var(--color-text-sub)', fontSize: '0.9rem' }}
+              suppressHydrationWarning
             >
               © {new Date().getFullYear()} {name} - Full-Stack Developer. Built with Next.js.
             </p>
