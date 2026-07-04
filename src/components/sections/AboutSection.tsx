@@ -105,6 +105,8 @@ function AvatarWithPopup({
           <img
             src={avatarUrl}
             alt={name}
+            loading="eager"
+            fetchPriority="high"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
           />
         ) : (

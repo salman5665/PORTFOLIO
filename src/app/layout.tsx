@@ -15,7 +15,7 @@ import { createServerClient } from '@/lib/supabase/server'
 const outfit = Outfit({
   subsets: ['latin'],
   variable: '--font-outfit',
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -227,6 +227,8 @@ export default function RootLayout({
           href="/hero-animation.json"
           as="fetch"
           crossOrigin="anonymous"
+          // @ts-ignore — fetchpriority is a valid HTML attribute
+          fetchpriority="high"
         />
         <meta
           name="mobile-web-app-capable"

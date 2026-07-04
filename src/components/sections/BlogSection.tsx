@@ -391,7 +391,7 @@ export default function BlogSection({ posts }: Props) {
               >
                 <div className="blog-card-media">
                   {post.cover_image_url ? (
-                    <img src={post.cover_image_url} alt={post.title} />
+                    <img src={post.cover_image_url} alt={post.title} loading="lazy" />
                   ) : (
                     <div className="blog-card-fallback">
                       <BookOpen size={54} />

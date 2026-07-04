@@ -396,7 +396,7 @@ export default function CertificatesSection({ certificates }: Props) {
               >
                 <div className="cert-media">
                   {cert.image_url ? (
-                    <img src={cert.image_url} alt={cert.title} />
+                    <img src={cert.image_url} alt={cert.title} loading="lazy" />
                   ) : (
                     <div className="cert-fallback">
                       <Award size={54} />
