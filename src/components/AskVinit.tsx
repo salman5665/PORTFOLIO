@@ -4,9 +4,6 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Send, Sparkles, Copy, Check, Trash2 } from 'lucide-react'
 
-// ─────────────────────────────────────────────
-// Types
-// ─────────────────────────────────────────────
 interface Message {
   role: 'user' | 'assistant'
   content: string
