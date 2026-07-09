@@ -12,9 +12,6 @@ interface Message {
   content: string
 }
 
-// ─────────────────────────────────────────────
-// Constants
-// ─────────────────────────────────────────────
 const MAX_USER_MESSAGES = 10
 const MAX_USER_MESSAGE_CHARS = 300
 const STORAGE_KEY = 'ask-vinit-chat'
