@@ -8,6 +8,7 @@ import { toast } from 'sonner'
 import Link from 'next/link'
 import AdminTopBar from '@/components/admin/AdminTopBar'
 import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock'
+import ImageUploader from '@/components/admin/image/ImageUploader'
 
 interface BlogPost {
   id: string
@@ -481,15 +482,14 @@ export default function AdminBlogPage() {
 
                     {/* Cover Image */}
                     <div>
-                      <label className="form-label" style={fieldLabel}>Cover Image URL</label>
-                      <input className="form-control" placeholder="https://..." value={form.cover_image_url}
-                        onChange={e => setForm(f => ({ ...f, cover_image_url: e.target.value }))}
-                        style={fieldBase} />
+                      <ImageUploader
+                        value={form.cover_image_url}
+                        onChange={url => setForm(f => ({ ...f, cover_image_url: url }))}
+                        bucket="blog"
+                        label="Cover Image"
+                        aspectRatio="16/9"
+                      />
                     </div>
-                    {form.cover_image_url && (
-                      <img src={form.cover_image_url} alt="Preview" className="rounded-3 w-100"
-                        style={{ height: 130, objectFit: 'cover', border: '1px solid var(--admin-border)' }} />
-                    )}
                   </div>
                 </div>
               </div>

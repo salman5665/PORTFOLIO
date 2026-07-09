@@ -1,0 +1,25 @@
+-- ============================================================
+-- Migration 002: Create 'seo' Storage bucket for SEO assets
+-- STATUS: Already applied directly via Supabase MCP on 2026-07-09
+-- ============================================================
+-- This file is kept for reference only. The following changes were
+-- applied directly to the project gyxmopzajamqwcynwiyx:
+--
+--   1. Created bucket 'seo' (public=true, file_size_limit=5MB)
+--      Allowed types: jpeg, png, webp, svg, ico
+--
+--   2. Updated RLS policies "Public Read Access" and "Public Write Access"
+--      on storage.objects to include bucket_id = 'seo'
+--
+-- Final bucket state:
+--   avatars      public=true  (no size limit)
+--   projects     public=true  (no size limit)
+--   certificates public=true  (no size limit)
+--   resumes      public=true  (no size limit)
+--   blog         public=true  (no size limit)
+--   seo          public=true  (5MB limit)   ← NEWLY CREATED
+--
+-- RLS Policies on storage.objects:
+--   "Public Read Access"  - SELECT - all 6 buckets
+--   "Public Write Access" - ALL    - all 6 buckets
+-- ============================================================

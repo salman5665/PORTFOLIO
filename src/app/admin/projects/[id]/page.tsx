@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { ArrowLeft, Save, Plus, X, Image as ImageIcon } from 'lucide-react'
+import { ArrowLeft, Save, Plus, X } from 'lucide-react'
+import ImageUploader from '@/components/admin/image/ImageUploader'
 import Link from 'next/link'
 import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
@@ -215,9 +216,13 @@ export default function AdminProjectFormPage() {
                         className="form-control" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)', color: 'var(--admin-text)', borderRadius: 8, padding: '0.6rem 1rem' }} />
                     </div>
                     <div className="mb-0">
-                      <label className="form-label" style={{ fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--admin-text-sub)' }}>Thumbnail URL</label>
-                      <input type="url" value={form.thumbnail_url} onChange={e => setForm(f => ({ ...f, thumbnail_url: e.target.value }))} placeholder="https://..."
-                        className="form-control" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)', color: 'var(--admin-text)', borderRadius: 8, padding: '0.6rem 1rem' }} />
+                      <ImageUploader
+                        value={form.thumbnail_url}
+                        onChange={url => setForm(f => ({ ...f, thumbnail_url: url }))}
+                        bucket="projects"
+                        label="Thumbnail Image"
+                        aspectRatio="16/9"
+                      />
                     </div>
                   </div>
                 </div>
@@ -268,22 +273,7 @@ export default function AdminProjectFormPage() {
                   </div>
                 </div>
 
-                {/* Thumbnail Preview */}
-                <div className="card shadow-sm border-0" style={{ background: 'var(--admin-surface)', borderRadius: 14, border: '1px solid var(--admin-border)' }}>
-                  <div className="card-header bg-transparent" style={{ borderBottom: '1px solid var(--admin-border)', padding: '1.25rem 1.5rem' }}>
-                    <h5 className="mb-0" style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--admin-text)' }}>Preview</h5>
-                  </div>
-                  <div className="card-body p-3">
-                    {form.thumbnail_url ? (
-                      <img src={form.thumbnail_url} alt="Preview" className="w-100 rounded" style={{ height: 180, objectFit: 'cover', border: '1px solid var(--admin-border)' }} />
-                    ) : (
-                      <div className="w-100 rounded d-flex flex-column align-items-center justify-content-center gap-2" style={{ height: 180, background: 'var(--admin-main-bg)', border: '1px dashed var(--admin-border)' }}>
-                        <ImageIcon size={32} style={{ color: 'var(--admin-text-sub)', opacity: 0.5 }} />
-                        <span style={{ fontSize: '0.8rem', color: 'var(--admin-text-sub)' }}>No image provided</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                {/* Thumbnail preview now handled by ImageUploader above */}
 
               </div>
             </div>

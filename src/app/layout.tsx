@@ -227,8 +227,8 @@ export default function RootLayout({
           href="/hero-animation.json"
           as="fetch"
           crossOrigin="anonymous"
-          // @ts-ignore — fetchpriority is a valid HTML attribute
-          fetchpriority="high"
+          // @ts-ignore — fetchPriority is a valid React JSX attribute
+          fetchPriority="high"
         />
         <meta
           name="mobile-web-app-capable"

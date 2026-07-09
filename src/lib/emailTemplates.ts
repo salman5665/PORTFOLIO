@@ -155,71 +155,196 @@ export function buildContactEmail(options: {
   return { html, text }
 }
 
+const sectionBlock = (title: string, rows: Array<{ label: string; value: string }>) => `
+  <div style="border:1px solid #e4e7ec;border-radius:14px;margin:0 0 16px;background:#ffffff;overflow:hidden;">
+    <div style="padding:13px 16px;background:#f8fafc;border-bottom:1px solid #e4e7ec;font-size:13px;font-weight:800;color:#101828;">${escapeHtml(title)}</div>
+    <div style="padding:4px 16px 8px;">
+      ${infoRows(rows)}
+    </div>
+  </div>
+`
+
 export function buildVisitorEmail(options: {
-  city: string
-  country: string
-  org: string
-  isp: string
-  deviceType: string
-  screen: string
-  language: string
-  timezone: string
-  referrer: string
-  page: string
   visitorId: string
   occurredAt: string
   analyticsUrl: string
+  visitorUrl: string
   logoUrl: string
+  event: {
+    page: string | null
+    ip_address: string | null
+    user_agent: string | null
+    metadata: Record<string, any>
+  }
 }) {
+  const meta = options.event.metadata || {}
+  const ip = meta.ipIntelligence || {}
+  const browser = meta.browserIntelligence || {}
+  const device = meta.deviceIntelligence || {}
+  const hardware = meta.hardwareIntelligence || {}
+  const network = meta.networkQuality || {}
+  const preferences = meta.userPreferences || {}
+  const session = meta.sessionAnalytics || {}
+  const navigation = meta.navigationAnalytics || {}
+  const engagement = meta.engagementAnalytics || {}
+  const referrer = navigation.referrer || {}
+  const unknown = 'Unknown'
+  const value = (input: any) => {
+    if (Array.isArray(input)) return input.length ? input.join(', ') : unknown
+    if (typeof input === 'boolean') return input ? 'Yes' : 'No'
+    if (input === null || input === undefined || input === '') return unknown
+    return String(input)
+  }
+
   const html = baseShell(`
     ${titleBlock({
-      eyebrow: 'Portfolio Visitor Alert',
-      title: 'A new visitor just landed on your portfolio',
-      subtitle: 'The snapshot below highlights where they came from and how they arrived.',
+      eyebrow: 'Portfolio Analytics',
+      title: 'New visitor detected',
+      subtitle: 'A live visitor intelligence snapshot generated from server-side IP lookup and browser-exposed analytics signals.',
       logoUrl: options.logoUrl,
     })}
     ${cardShell(`
       <table role="presentation" style="width:100%;border-collapse:collapse;margin-bottom:8px;">
         <tr>
-          ${metricPill('Location', `${options.city}, ${options.country}`)}
-          ${metricPill('Device', options.deviceType)}
+          ${metricPill('Location', `${value(ip.city)}, ${value(ip.country)}`)}
+          ${metricPill('Device', value(browser.deviceType))}
+        </tr>
+        <tr>
+          ${metricPill('Source', value(referrer.source))}
+          ${metricPill('Landing Page', value(options.event.page))}
         </tr>
       </table>
 
-      ${infoRows([
-        { label: 'Location', value: `${options.city}, ${options.country}` },
-        { label: 'Network', value: options.org || options.isp || 'Unknown Network' },
-        { label: 'Device', value: `${options.deviceType} (${options.screen || 'Unknown'})` },
-        { label: 'Language', value: options.language || 'Unknown' },
-        { label: 'Timezone', value: options.timezone || 'Unknown' },
-        { label: 'Source', value: options.referrer || 'Direct / Unknown' },
-        { label: 'Landing Page', value: options.page || '/' },
-        { label: 'Visitor ID', value: options.visitorId.substring(0, 8) },
-        { label: 'Arrived', value: options.occurredAt },
+      ${sectionBlock('Visitor Summary', [
+        { label: 'Visitor ID', value: options.visitorId },
+        { label: 'Status', value: session.returningVisitor ? 'Returning' : 'New' },
+        { label: 'Visit No.', value: value(session.visitNumber) },
+        { label: 'Session ID', value: value(session.currentSessionId) },
+        { label: 'First Seen', value: value(session.firstSeen) },
+        { label: 'Last Seen', value: value(session.lastSeen) },
+        { label: 'Arrival', value: options.occurredAt },
+      ])}
+
+      ${sectionBlock('Location', [
+        { label: 'Country', value: value(ip.country) },
+        { label: 'Region', value: value(ip.region) },
+        { label: 'State', value: value(ip.state) },
+        { label: 'City', value: value(ip.city) },
+        { label: 'Postal Code', value: value(ip.postalCode) },
+        { label: 'Timezone', value: value(ip.timezone || browser.timezone) },
+        { label: 'Latitude', value: value(ip.latitude) },
+        { label: 'Longitude', value: value(ip.longitude) },
+        { label: 'Currency', value: value(ip.currency) },
+      ])}
+
+      ${sectionBlock('Network', [
+        { label: 'IP Address', value: value(options.event.ip_address) },
+        { label: 'IP Version', value: value(ip.ipVersion) },
+        { label: 'ISP', value: value(ip.isp) },
+        { label: 'ASN', value: value(ip.asn) },
+        { label: 'Organization', value: value(ip.organization) },
+        { label: 'Hosting', value: value(ip.hostingProvider) },
+        { label: 'Connection', value: value(ip.connectionType) },
+        { label: 'VPN', value: value(ip.vpn) },
+        { label: 'Proxy', value: value(ip.proxy) },
+        { label: 'Tor', value: value(ip.tor) },
+      ])}
+
+      ${sectionBlock('Device', [
+        { label: 'Type', value: value(browser.deviceType) },
+        { label: 'OS', value: value(browser.operatingSystem) },
+        { label: 'OS Version', value: value(browser.osVersion) },
+        { label: 'Browser', value: value(browser.browserName) },
+        { label: 'Browser Version', value: value(browser.browserVersion) },
+        { label: 'Engine', value: value(browser.browserEngine) },
+        { label: 'Platform', value: value(browser.platform) },
+        { label: 'Touch', value: value(browser.touchSupport) },
+      ])}
+
+      ${sectionBlock('Display', [
+        { label: 'Screen', value: value(meta.screen) },
+        { label: 'Viewport', value: `${value(device.viewportWidth)}x${value(device.viewportHeight)}` },
+        { label: 'Pixel Ratio', value: value(device.devicePixelRatio) },
+        { label: 'Color Depth', value: value(device.colorDepth) },
+        { label: 'Orientation', value: value(device.orientationMode || device.orientation) },
+      ])}
+
+      ${sectionBlock('Hardware', [
+        { label: 'CPU Cores', value: value(hardware.cpuCores) },
+        { label: 'RAM', value: hardware.deviceMemory ? `${value(hardware.deviceMemory)} GB` : unknown },
+        { label: 'GPU Vendor', value: value(hardware.gpuVendor) },
+        { label: 'GPU Renderer', value: value(hardware.gpuRenderer) },
+      ])}
+
+      ${sectionBlock('Network Quality', [
+        { label: 'Effective Type', value: value(network.effectiveConnectionType) },
+        { label: 'RTT', value: network.rtt ? `${value(network.rtt)} ms` : unknown },
+        { label: 'Downlink', value: network.downlinkSpeed ? `${value(network.downlinkSpeed)} Mbps` : unknown },
+        { label: 'Save Data', value: value(network.saveDataPreference) },
+        { label: 'Online', value: value(network.online) },
+      ])}
+
+      ${sectionBlock('User Preferences', [
+        { label: 'Dark Mode', value: value(preferences.darkMode) },
+        { label: 'Reduced Motion', value: value(preferences.reducedMotion) },
+        { label: 'Reduced Data', value: value(preferences.reducedData) },
+        { label: 'Languages', value: value(browser.preferredLanguages || meta.language) },
+        { label: 'Timezone', value: value(meta.timezone) },
+      ])}
+
+      ${sectionBlock('Session', [
+        { label: 'Landing Page', value: value(navigation.landingPage || options.event.page) },
+        { label: 'Referrer', value: value(referrer.fullReferrer || meta.referrer || 'Direct') },
+        { label: 'Referrer Domain', value: value(referrer.referrerDomain) },
+        { label: 'UTM Source', value: value(referrer.utm?.source) },
+        { label: 'Current Page', value: value(options.event.page) },
+        { label: 'Visit No.', value: value(session.visitNumber) },
+      ])}
+
+      ${sectionBlock('Live Activity', [
+        { label: 'Page Views', value: value(navigation.numberOfPages) },
+        { label: 'Path', value: value(navigation.visitedPages) },
+        { label: 'Scroll', value: value(engagement.maximumScroll ? `${engagement.maximumScroll}%` : null) },
+        { label: 'Button Clicked', value: value(engagement.clickCategory) },
+        { label: 'Projects Viewed', value: unknown },
+        { label: 'Blogs Viewed', value: unknown },
+        { label: 'Resume Downloaded', value: unknown },
+        { label: 'Contact Submitted', value: unknown },
+      ])}
+
+      ${sectionBlock('History', [
+        { label: 'First Seen', value: value(session.firstSeen) },
+        { label: 'Last Seen', value: value(session.lastSeen) },
+        { label: 'Previous Session', value: value(session.previousSessionId) },
+        { label: 'Total Visits', value: value(session.totalVisits) },
+        { label: 'Total Sessions', value: value(session.totalSessions) },
       ])}
 
       <div>
-        ${actionButton(options.analyticsUrl, 'Open Analytics')}
+        ${actionButton(options.visitorUrl, 'Open Visitor Profile')}
+        <span style="display:inline-block;width:10px;"></span>
+        ${actionButton(options.analyticsUrl, 'Open Analytics Dashboard', 'secondary')}
       </div>
     `)}
     ${footerBlock(`
-      <div>This alert was triggered only for a new visitor, so it stays useful instead of noisy.</div>
+      <div>Generated automatically by Portfolio Analytics.</div>
+      <div style="margin-top:4px;">Only browser-exposed, privacy-safe signals are collected. Unsupported values are shown as Unknown.</div>
     `)}
   `)
 
   const text = [
-    'New portfolio visitor alert',
+    'New visitor detected',
     '',
-    `Location: ${options.city}, ${options.country}`,
-    `Network: ${options.org || options.isp || 'Unknown Network'}`,
-    `Device: ${options.deviceType} (${options.screen || 'Unknown'})`,
-    `Language: ${options.language || 'Unknown'}`,
-    `Timezone: ${options.timezone || 'Unknown'}`,
-    `Source: ${options.referrer || 'Direct / Unknown'}`,
-    `Landing Page: ${options.page || '/'}`,
-    `Visitor ID: ${options.visitorId.substring(0, 8)}`,
+    `Visitor ID: ${options.visitorId}`,
+    `Status: ${session.returningVisitor ? 'Returning' : 'New'}`,
+    `Location: ${value(ip.city)}, ${value(ip.country)}`,
+    `Network: ${value(ip.organization || ip.isp)}`,
+    `Device: ${value(browser.deviceType)} / ${value(browser.operatingSystem)} / ${value(browser.browserName)}`,
+    `Source: ${value(referrer.source)}`,
+    `Landing Page: ${value(options.event.page)}`,
     `Arrived: ${options.occurredAt}`,
     '',
+    `Open visitor profile: ${options.visitorUrl}`,
     `Open analytics: ${options.analyticsUrl}`,
   ].join('\n')
 

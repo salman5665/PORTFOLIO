@@ -6,6 +6,8 @@ import { Image as ImageIcon, Copy, Trash2, UploadCloud, RefreshCw } from 'lucide
 import { supabase } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
+import { adminDb } from '@/lib/adminDb'
+import { getImageUsage, computeFileHash, getImageDimensions } from '@/lib/hooks/useImageUpload'
 
 interface MediaFile {
   name: string
@@ -20,7 +22,7 @@ export default function AdminMediaPage() {
   const [uploading, setUploading] = useState(false)
   const [bucket, setBucket] = useState('projects') // Default bucket
 
-  const buckets = ['projects', 'blog', 'avatars', 'certificates', 'resumes']
+  const buckets = ['projects', 'blog', 'avatars', 'certificates', 'resumes', 'seo']
 
   const fetchFiles = async () => {
     setLoading(true)
@@ -56,66 +58,117 @@ export default function AdminMediaPage() {
   }, [bucket])
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  const fileList = e.target.files
+    const fileList = e.target.files
 
-  if (!fileList || fileList.length === 0) return
+    if (!fileList || fileList.length === 0) return
 
-  setUploading(true)
+    setUploading(true)
+    const file = fileList[0]
 
-  const file = fileList[0]
+    try {
+      // 1. Compute hash for duplicate check
+      const hash = await computeFileHash(file)
+      const { data: duplicates } = await adminDb.from<any>('media_assets').select({ where: { hash } })
+      if (duplicates && duplicates.length > 0) {
+        if (!confirm(`Warning: An identical image already exists in bucket "${duplicates[0].bucket}" as "${duplicates[0].filename}".\n\nUpload anyway?`)) {
+          setUploading(false)
+          e.target.value = ''
+          return
+        }
+      }
 
-  // Sanitize filename
-  const safeName = file.name
-    .replace(/\s+/g, '_')
-    .replace(/[^a-zA-Z0-9._-]/g, '')
+      // Sanitize filename
+      const safeName = file.name
+        .replace(/\s+/g, '_')
+        .replace(/[^a-zA-Z0-9._-]/g, '')
 
-  // Split filename and extension
-  const nameParts = safeName.split('.')
-  const ext = nameParts.pop()
-  const baseName = nameParts.join('.')
+      // Split filename and extension
+      const nameParts = safeName.split('.')
+      const ext = nameParts.pop()
+      const baseName = nameParts.join('.')
 
-  // Create compact timestamp
-  const date = new Date()
+      // Create compact timestamp
+      const date = new Date()
+      const shortDate = `${String(date.getDate()).padStart(2, '0')}${String(
+        date.getMonth() + 1
+      ).padStart(2, '0')}${String(date.getFullYear()).slice(-2)}_${String(
+        date.getHours()
+      ).padStart(2, '0')}${String(date.getMinutes()).padStart(2, '0')}`
 
-  const shortDate = `${String(date.getDate()).padStart(2, '0')}${String(
-  date.getMonth() + 1
-).padStart(2, '0')}${String(date.getFullYear()).slice(-2)}_${String(
-  date.getHours()
-).padStart(2, '0')}${String(date.getMinutes()).padStart(2, '0')}`
+      // Final filename
+      const fileName = `${baseName}_${shortDate}.${ext}`
+      const dimensions = await getImageDimensions(file)
 
-  // Final filename
-  const fileName = `${baseName}_${shortDate}.${ext}`
+      // Upload file
+      const { error } = await supabase.storage
+        .from(bucket)
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false,
+        })
 
-  // Upload file
-  const { error } = await supabase.storage
-    .from(bucket)
-    .upload(fileName, file, {
-      cacheControl: '3600',
-      upsert: false,
-    })
+      if (error) {
+        toast.error('Upload failed: ' + error.message)
+      } else {
+        const { data: { publicUrl } } = supabase.storage.from(bucket).getPublicUrl(fileName)
+        
+        // Save metadata automatically
+        const assetPayload = {
+          filename: fileName,
+          bucket,
+          url: publicUrl,
+          file_size: file.size,
+          mime_type: file.type,
+          width: dimensions.width || null,
+          height: dimensions.height || null,
+          hash,
+          uploaded_at: new Date().toISOString()
+        }
+        await adminDb.from('media_assets').upsert(assetPayload)
 
-  if (error) {
-    toast.error('Upload failed: ' + error.message)
-  } else {
-    toast.success('File uploaded successfully')
-    fetchFiles()
+        toast.success('File uploaded successfully')
+        fetchFiles()
+      }
+    } catch (err: any) {
+      toast.error('Upload failed: ' + (err.message || err))
+    } finally {
+      setUploading(false)
+      e.target.value = ''
+    }
   }
 
-  setUploading(false)
-
-  // Reset input
-  e.target.value = ''
-}
-
   const deleteFile = async (name: string) => {
-    if (!confirm(`Delete ${name}? This cannot be undone.`)) return
+    try {
+      const { data: { publicUrl } } = supabase.storage.from(bucket).getPublicUrl(name)
+      
+      // Check usage first
+      const usages = await getImageUsage(publicUrl)
+      if (usages.length > 0) {
+        const usageList = usages.map(u => `• ${u.table}: ${u.name}`).join('\n')
+        if (!confirm(`Warning: This image is currently used in ${usages.length} place(s):\n${usageList}\n\nDelete anyway?`)) {
+          return
+        }
+      } else {
+        if (!confirm(`Delete ${name}? This cannot be undone.`)) return
+      }
 
-    const { error } = await supabase.storage.from(bucket).remove([name])
-    if (error) {
-      toast.error('Failed to delete: ' + error.message)
-    } else {
+      // Remove from Storage
+      const { error } = await supabase.storage.from(bucket).remove([name])
+      if (error) {
+        toast.error('Failed to delete from storage: ' + error.message)
+        return
+      }
+
+      // Delete from media_assets metadata database
+      const { data: assets } = await adminDb.from<any>('media_assets').select({ where: { url: publicUrl } })
+      if (assets && assets.length > 0) {
+        await adminDb.from<any>('media_assets').delete(assets[0].id)
+      }
+
       toast.success('File deleted')
       setFiles(prev => prev.filter(f => f.name !== name))
+    } catch (err: any) {
+      toast.error('Deletion failed: ' + (err.message || err))
     }
   }
 

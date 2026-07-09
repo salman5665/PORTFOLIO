@@ -7,6 +7,7 @@ import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
 import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock'
+import ImageUploader from '@/components/admin/image/ImageUploader'
 
 interface Testimonial { id: string; name: string; role: string; company: string; content: string; rating: number; avatar_url: string | null; is_featured: boolean; sort_order: number }
 const emptyForm = { name: '', role: '', company: '', content: '', rating: 5, avatar_url: '', is_featured: false }
@@ -139,7 +140,15 @@ export default function AdminTestimonialsPage() {
                       <label className="form-check-label" htmlFor="testimonial-featured" style={{ color: 'var(--admin-text-sub)', fontSize: '0.875rem' }}>Featured</label>
                     </div>
                   </div>
-                  <div className="col-12"><label className="form-label">Avatar URL</label><input type="url" className="form-control" placeholder="https://..." value={form.avatar_url} onChange={e => setForm(f => ({ ...f, avatar_url: e.target.value }))} /></div>
+                  <div className="col-12">
+                    <ImageUploader
+                      value={form.avatar_url}
+                      onChange={url => setForm(f => ({ ...f, avatar_url: url }))}
+                      bucket="avatars"
+                      label="Avatar Photo"
+                      aspectRatio="1/1"
+                    />
+                  </div>
                 </div>
                 <div className="d-flex gap-3 pt-3" style={{ borderTop: '1px solid var(--admin-border)' }}>
                   <button onClick={() => setShowForm(false)} className="btn btn-outline-dark flex-fill">Cancel</button>

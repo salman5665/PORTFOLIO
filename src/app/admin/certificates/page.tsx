@@ -7,6 +7,7 @@ import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
 import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock'
+import ImageUploader from '@/components/admin/image/ImageUploader'
 
 interface Cert { id: string; title: string; issuer: string; issue_date: string; credential_id: string | null; credential_url: string | null; image_url: string | null }
 const emptyForm = { title: '', issuer: '', issue_date: '', credential_id: '', credential_url: '', image_url: '' }
@@ -118,8 +119,15 @@ export default function AdminCertificatesPage() {
                 <div className="mb-3"><label className="form-label">Issue Date *</label><input type="date" className="form-control" value={form.issue_date} onChange={e => setForm(f => ({ ...f, issue_date: e.target.value }))} /></div>
                 <div className="mb-3"><label className="form-label">Credential ID</label><input className="form-control" placeholder="e.g. AWS-123456" value={form.credential_id} onChange={e => setForm(f => ({ ...f, credential_id: e.target.value }))} /></div>
                 <div className="mb-3"><label className="form-label">Credential URL</label><input type="url" className="form-control" placeholder="https://..." value={form.credential_url} onChange={e => setForm(f => ({ ...f, credential_url: e.target.value }))} /></div>
-                <div className="mb-4"><label className="form-label">Image URL</label><input type="url" className="form-control" placeholder="https://..." value={form.image_url} onChange={e => setForm(f => ({ ...f, image_url: e.target.value }))} /></div>
-                {form.image_url && <img src={form.image_url} alt="" className="rounded-3 w-100 mb-4" style={{ height: 120, objectFit: 'cover' }} />}
+                <div className="mb-4">
+                  <ImageUploader
+                    value={form.image_url}
+                    onChange={url => setForm(f => ({ ...f, image_url: url }))}
+                    bucket="certificates"
+                    label="Certificate Image"
+                    aspectRatio="16/9"
+                  />
+                </div>
                 <div className="d-flex gap-3 pt-3" style={{ borderTop: '1px solid var(--admin-border)' }}>
                   <button onClick={() => setShowForm(false)} className="btn btn-outline-dark flex-fill">Cancel</button>
                   <button onClick={save} className="btn flex-fill" style={{ background: 'var(--admin-text)', color: 'var(--admin-surface)' }} id="cert-save">Save</button>

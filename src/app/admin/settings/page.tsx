@@ -6,6 +6,7 @@ import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
 import type { Profile } from '@/lib/supabase/types'
+import ImageUploader from '@/components/admin/image/ImageUploader'
 
 const SECTION_STYLE = { borderRadius: 14, border: '1px solid var(--admin-border)' }
 const HEADER_STYLE = { fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.875rem', paddingBottom: '0.75rem', borderBottom: '1px solid var(--admin-border)', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: 8 }
@@ -77,38 +78,13 @@ export default function AdminSettingsPage() {
 
                 {/* ── Profile Photo ── */}
                 <div className="col-12">
-                  <label className="form-label" htmlFor="settings-avatar-url">Profile Photo URL</label>
-                  <div className="d-flex gap-3 align-items-center">
-                    {/* Live preview circle */}
-                    <div style={{
-                      width: 52, height: 52, borderRadius: '50%', flexShrink: 0,
-                      border: '2px solid var(--admin-border)',
-                      background: 'var(--admin-surface)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      overflow: 'hidden', fontWeight: 800, fontSize: '1.25rem',
-                      color: 'var(--admin-text-sub)',
-                    }}>
-                      {profile.avatar_url ? (
-                        <img
-                          src={profile.avatar_url}
-                          alt="Avatar preview"
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                          onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
-                        />
-                      ) : (profile.name || 'V').charAt(0)}
-                    </div>
-                    <input
-                      id="settings-avatar-url"
-                      type="url"
-                      className="form-control"
-                      value={profile.avatar_url || ''}
-                      onChange={e => set('avatar_url', e.target.value)}
-                      placeholder="https://... paste your profile photo URL"
-                    />
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--admin-text-sub)', marginTop: 6, fontFamily: 'var(--font-mono)' }}>
-                    Paste any public image URL · Appears in the About section on your portfolio
-                  </div>
+                  <ImageUploader
+                    value={profile.avatar_url || ''}
+                    onChange={url => set('avatar_url', url)}
+                    bucket="avatars"
+                    label="Profile Photo"
+                    aspectRatio="1/1"
+                  />
                 </div>
               </div>
 
@@ -132,21 +108,49 @@ export default function AdminSettingsPage() {
               <div style={HEADER_STYLE}><LinkIcon size={16} color="#67e8f9" /> Social Links</div>
               <div className="row g-3">
                 {([
-                  { key: 'github_url',      label: 'GitHub URL',           ph: 'https://github.com/...' },
-                  { key: 'linkedin_url',    label: 'LinkedIn URL',         ph: 'https://linkedin.com/in/...' },
-                  { key: 'twitter_url',     label: 'Twitter / X URL',      ph: 'https://twitter.com/...' },
-                  { key: 'leetcode_url',    label: 'LeetCode URL',         ph: 'https://leetcode.com/...' },
-                  { key: 'codeforces_url',  label: 'Codeforces URL',       ph: 'https://codeforces.com/...' },
-                  { key: 'instagram_url',   label: 'Instagram URL',        ph: 'https://instagram.com/...' },
-                  { key: 'resume_url',      label: 'Resume URL',           ph: 'https://...' },
-                  { key: 'favicon_url',     label: 'Favicon URL',          ph: 'https://...' },
-                  { key: 'apple_icon_url',  label: 'Apple Touch Icon URL', ph: 'https://...' },
+                  { key: 'github_url',      label: 'GitHub URL',      ph: 'https://github.com/...' },
+                  { key: 'linkedin_url',    label: 'LinkedIn URL',    ph: 'https://linkedin.com/in/...' },
+                  { key: 'twitter_url',     label: 'Twitter / X URL', ph: 'https://twitter.com/...' },
+                  { key: 'leetcode_url',    label: 'LeetCode URL',    ph: 'https://leetcode.com/...' },
+                  { key: 'codeforces_url',  label: 'Codeforces URL',  ph: 'https://codeforces.com/...' },
+                  { key: 'instagram_url',   label: 'Instagram URL',   ph: 'https://instagram.com/...' },
+                  { key: 'resume_url',      label: 'Resume URL',      ph: 'https://...' },
                 ] as const).map(({ key, label, ph }) => (
                   <div className="col-sm-6" key={key}>
                     <label className="form-label" htmlFor={`settings-${key}`}>{label}</label>
                     <input id={`settings-${key}`} type="url" className="form-control" value={(profile[key as keyof Profile] as string) || ''} onChange={e => set(key as keyof Profile, e.target.value)} placeholder={ph} />
                   </div>
                 ))}
+              </div>
+
+              {/* Icon & brand asset uploaders */}
+              <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--admin-border)' }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--admin-text-sub)', marginBottom: '1rem', fontFamily: 'var(--font-mono)' }}>
+                  Icons & Brand Assets
+                </div>
+                <div className="row g-4">
+                  <div className="col-sm-6">
+                    <ImageUploader
+                      value={profile.favicon_url || ''}
+                      onChange={url => set('favicon_url', url)}
+                      bucket="seo"
+                      label="Favicon (32×32px)"
+                      aspectRatio="1/1"
+                      maxSizeMb={0.5}
+                      accept="image/png,image/x-icon,image/vnd.microsoft.icon,image/svg+xml"
+                    />
+                  </div>
+                  <div className="col-sm-6">
+                    <ImageUploader
+                      value={profile.apple_icon_url || ''}
+                      onChange={url => set('apple_icon_url', url)}
+                      bucket="seo"
+                      label="Apple Touch Icon (180×180px)"
+                      aspectRatio="1/1"
+                      maxSizeMb={1}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -165,8 +169,13 @@ export default function AdminSettingsPage() {
               </div>
               <div className="text-end mb-3" style={{ fontSize: '0.75rem', color: 'var(--admin-text-sub)' }}>{(profile.meta_description || '').length}/160</div>
               <div>
-                <label className="form-label" htmlFor="settings-og-image">OG Image URL</label>
-                <input id="settings-og-image" type="url" className="form-control" value={(profile as any).og_image_url || ''} onChange={e => set('og_image_url' as keyof Profile, e.target.value)} placeholder="https://... (1200x630px recommended)" />
+                <ImageUploader
+                  value={(profile as any).og_image_url || ''}
+                  onChange={url => set('og_image_url' as keyof Profile, url)}
+                  bucket="seo"
+                  label="OG Image (1200 × 630px recommended)"
+                  aspectRatio="1200/630"
+                />
               </div>
             </div>
           </div>
