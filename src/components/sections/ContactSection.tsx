@@ -66,10 +66,10 @@ export default function ContactSection({ profile }: Props) {
   return (
     <section id="contact" className="section section-alt">
       <div className="container" style={{ maxWidth: 1000 }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.6 }} className="text-center mb-5">
-          <div className="section-tag d-flex align-items-center justify-content-center gap-2 mb-3"><Mail size={13} /> Get In Touch</div>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.15 }} transition={{ duration: 0.6 }} className="mb-5">
+          <div className="section-tag gap-2 mb-3"><Mail size={13} /> Get In Touch</div>
           <h2 className="section-title">Let&apos;s Build Something Great</h2>
-          <p className="section-subtitle mx-auto">
+          <p className="section-subtitle">
             {isAvailable
               ? "I'm currently open to freelance work and full-time opportunities. Have a project in mind?"
               : "Have a project or question? Send me a message and I'll get back to you!"}

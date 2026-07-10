@@ -141,6 +141,17 @@ body {
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease) !important;
 }
 
+p:not(.text-center p):not(.text-center),
+.section-subtitle:not(.text-center .section-subtitle) {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.text-center p,
+.text-center .section-subtitle {
+  text-align: center;
+}
+
 a[href],
 button:not(:disabled),
 [role="button"],
@@ -419,7 +430,7 @@ textarea:disabled {
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--color-text-sub) !important;
-  max-width: 56ch;
+  max-width: none;
   line-height: 1.7;
   margin-bottom: 3rem;
 }
