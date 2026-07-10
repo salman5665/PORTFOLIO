@@ -236,6 +236,7 @@ export default function Footer({ profile }: Props) {
             margin: 0 auto 1.2rem;
             font-size: 0.94rem;
             line-height: 1.75;
+            text-align: center;
           }
           .ft-presence { align-items: center; margin-bottom: 1.25rem; }
           .ft-presence-item { justify-content: center; text-align: center; }
