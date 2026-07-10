@@ -174,6 +174,7 @@ export default function Footer({ profile }: Props) {
           font-size: 0.95rem;
           line-height: 1.8;
           max-width: 320px;
+          text-align: center !important;
         }
         .ft-presence {
           display: flex;
@@ -236,7 +237,7 @@ export default function Footer({ profile }: Props) {
             margin: 0 auto 1.2rem;
             font-size: 0.94rem;
             line-height: 1.75;
-            text-align: center;
+            text-align: center !important;
           }
           .ft-presence { align-items: center; margin-bottom: 1.25rem; }
           .ft-presence-item { justify-content: center; text-align: center; }
