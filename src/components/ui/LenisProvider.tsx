@@ -6,10 +6,12 @@ import Lenis from 'lenis'
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
       allowNestedScroll: true,
       prevent: (node) => Boolean(node.closest('[data-lenis-prevent]')),
     })
@@ -31,8 +33,10 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
     const frameId = requestAnimationFrame(raf)
     syncScrollLock()
     window.addEventListener('portfolio:scroll-lock-change', syncScrollLock)
+    ;(window as any).lenis = lenis
 
     return () => {
+      delete (window as any).lenis
       window.removeEventListener('portfolio:scroll-lock-change', syncScrollLock)
       cancelAnimationFrame(frameId)
       lenis.destroy()

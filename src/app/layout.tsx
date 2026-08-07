@@ -213,7 +213,6 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      data-scroll-behavior="smooth"
       className={`${outfit.variable} ${jetbrainsMono.variable}`}
       style={{
         fontFamily:

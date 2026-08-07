@@ -18,7 +18,14 @@ interface Props { profile?: Profile | null }
 
 export default function Footer({ profile }: Props) {
   const currentYear = new Date().getUTCFullYear()
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  const scrollToTop = () => {
+    if ((window as any).lenis) {
+      ;(window as any).lenis.scrollTo(0, { duration: 0.9 })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
 
   const name = profile?.name || 'Vinit Soni'
   const firstName = name.split(' ')[0]
@@ -382,7 +389,14 @@ export default function Footer({ profile }: Props) {
                           href={link.href}
                           onClick={(e) => {
                             e.preventDefault()
-                            document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+                            const el = document.querySelector(link.href)
+                            if (el) {
+                              if ((window as any).lenis) {
+                                ;(window as any).lenis.scrollTo(el, { offset: -80, duration: 0.9 })
+                              } else {
+                                el.scrollIntoView({ behavior: 'smooth' })
+                              }
+                            }
                           }}
                           className="ft-link"
                         >

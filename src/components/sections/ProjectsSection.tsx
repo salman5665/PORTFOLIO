@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowLeft, ArrowRight, ArrowUpRight, Code2, ExternalLink, Layers, Monitor, Search, Smartphone, Star, X } from 'lucide-react'
 import { FaGithub } from 'react-icons/fa'
 import Image from 'next/image'
@@ -62,6 +62,35 @@ function ProjectCard({ project, i, onClick }: { project: Project; i: number; onC
   const meta = getCategoryMeta(project.category)
   const CategoryIcon = meta.icon
 
+  const cardRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useSpring(x, { stiffness: 180, damping: 18 })
+  const rotateY = useSpring(y, { stiffness: 180, damping: 18 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const width = rect.width
+    const height = rect.height
+
+    cardRef.current.style.setProperty('--mouse-x', `${mouseX}px`)
+    cardRef.current.style.setProperty('--mouse-y', `${mouseY}px`)
+
+    const rX = (mouseY / height - 0.5) * -10
+    const rY = (mouseX / width - 0.5) * 10
+
+    x.set(rX)
+    y.set(rY)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
   return (
     <motion.div 
       layout
@@ -70,10 +99,20 @@ function ProjectCard({ project, i, onClick }: { project: Project; i: number; onC
       whileInView={{ opacity: 1 }} 
       viewport={{ once: true, margin: "-50px" }} 
       transition={{ delay: i * 0.05, duration: 0.5 }}
+      style={{ perspective: 1000 }}
     >
-      <article
+      <motion.article
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d',
+        }}
         className="ps-card h-100 d-flex flex-column"
       >
+        <div className="ps-card-glow" />
         <div className="position-relative overflow-hidden ps-card-media">
           <ProjectVisual project={project} />
           <div className="ps-card-shade" />
@@ -132,7 +171,7 @@ function ProjectCard({ project, i, onClick }: { project: Project; i: number; onC
             </div>
           </div>
         </div>
-      </article>
+      </motion.article>
     </motion.div>
   )
 }
@@ -213,6 +252,19 @@ export default function ProjectsSection({ projects }: Props) {
           opacity: 0;
           transition: opacity 0.4s;
           pointer-events: none;
+        }
+        .ps-card-glow {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 1;
+          border-radius: inherit;
+          background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.18), transparent 75%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .ps-card:hover .ps-card-glow {
+          opacity: 1;
         }
         .ps-card:hover {
           transform: translateY(-4px);

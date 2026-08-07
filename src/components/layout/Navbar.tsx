@@ -56,17 +56,15 @@ export default function Navbar({ profile }: Props) {
     const element = document.querySelector(href)
 
     if (element) {
-      const navbarHeight = 80
-
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY
-
-      const offsetPosition = elementPosition - navbarHeight
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
+      if ((window as any).lenis) {
+        ;(window as any).lenis.scrollTo(element, { offset: -80, duration: 0.9 })
+      } else {
+        const navbarHeight = 80
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY
+        window.scrollTo({
+          top: elementPosition - navbarHeight,
+        })
+      }
     }
   }
 
