@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Save, User, Link as LinkIcon, Globe, Activity } from 'lucide-react'
+import { Save, User, Link as LinkIcon, Globe, Activity, Bot } from 'lucide-react'
 import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
@@ -16,7 +16,8 @@ export default function AdminSettingsPage() {
     name: 'Vinit Soni', email: 'vinitsonii@gmail.com', tagline: 'Full-Stack Developer - MCA Student',
     bio: '', location: 'India', github_url: 'https://github.com/vinitsonii',
     linkedin_url: 'https://linkedin.com/in/vinitsonii', twitter_url: '', leetcode_url: '',
-    is_available_for_work: true, meta_title: 'Vinit Soni | Full-Stack Developer', meta_description: '',
+    is_available_for_work: true, is_ai_enabled: true, ai_provider: 'groq', ai_model: 'qwen/qwen3.6-27b', ai_api_key: '',
+    meta_title: 'Vinit Soni | Full-Stack Developer', meta_description: '',
   })
   const [saving, setSaving] = useState(false)
   const [profileId, setProfileId] = useState<string | null>(null)
@@ -177,6 +178,98 @@ export default function AdminSettingsPage() {
                   aspectRatio="1200/630"
                 />
               </div>
+            </div>
+          </div>
+
+          {/* ── AI Assistant Settings ── */}
+          <div className="card shadow-sm" style={SECTION_STYLE}>
+            <div className="card-body p-4 p-md-5">
+              <div style={HEADER_STYLE}><Bot size={16} color="#67e8f9" /> Ask Vinit AI Assistant</div>
+              
+              <div className="d-flex align-items-center justify-content-between p-3 rounded-3 mb-4" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
+                <div>
+                  <div style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>Enable AI Chatbot</div>
+                  <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem' }}>Shows or hides the floating Ask Vinit AI widget on the portfolio</div>
+                </div>
+                <div className="form-check form-switch mb-0">
+                  <input className="form-check-input" type="checkbox" role="switch" id="settings-ai-toggle"
+                    checked={profile.is_ai_enabled !== false} onChange={e => set('is_ai_enabled', e.target.checked)}
+                    style={{ width: 44, height: 22, cursor: 'pointer' }} />
+                </div>
+              </div>
+
+              <div className="row g-3">
+                <div className="col-sm-6">
+                  <label className="form-label" htmlFor="settings-ai-provider">AI Provider</label>
+                  <select
+                    id="settings-ai-provider"
+                    className="form-select"
+                    value={profile.ai_provider || 'groq'}
+                    onChange={e => set('ai_provider', e.target.value)}
+                  >
+                    <option value="groq">Groq Cloud (Fast LLMs)</option>
+                    <option value="gemini">Google Gemini AI</option>
+                    <option value="openai">OpenAI / OpenRouter API</option>
+                    <option value="custom">Custom OpenAI-Compatible API</option>
+                  </select>
+                </div>
+
+                <div className="col-sm-6">
+                  <label className="form-label" htmlFor="settings-ai-model">Model Name / ID</label>
+                  <input
+                    id="settings-ai-model"
+                    type="text"
+                    className="form-control"
+                    value={profile.ai_model || ''}
+                    onChange={e => set('ai_model', e.target.value)}
+                    placeholder="e.g. qwen/qwen3.6-27b or gemini-2.0-flash"
+                  />
+                </div>
+
+                <div className="col-12">
+                  <div style={{ fontSize: '0.75rem', color: 'var(--admin-text-sub)', marginBottom: 6 }}>
+                    Quick Model Presets (click to apply):
+                  </div>
+                  <div className="d-flex flex-wrap gap-2">
+                    {[
+                      { provider: 'groq', model: 'qwen/qwen3.6-27b', label: 'Groq Qwen 3.6 27B' },
+                      { provider: 'groq', model: 'openai/gpt-oss-20b', label: 'Groq GPT-OSS 20B' },
+                      { provider: 'gemini', model: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash' },
+                      { provider: 'openai', model: 'gpt-4o-mini', label: 'OpenAI GPT-4o-mini' },
+                      { provider: 'openai', model: 'deepseek/deepseek-chat', label: 'OpenRouter DeepSeek' },
+                    ].map(preset => (
+                      <button
+                        key={preset.model}
+                        type="button"
+                        className="btn btn-sm btn-outline-secondary"
+                        onClick={() => {
+                          set('ai_provider', preset.provider)
+                          set('ai_model', preset.model)
+                        }}
+                        style={{ fontSize: '0.75rem', borderRadius: 8 }}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="col-12 mt-3">
+                  <label className="form-label" htmlFor="settings-ai-key">API Key Override (Optional)</label>
+                  <input
+                    id="settings-ai-key"
+                    type="password"
+                    className="form-control"
+                    value={profile.ai_api_key || ''}
+                    onChange={e => set('ai_api_key', e.target.value)}
+                    placeholder="Leave empty to use environment variables (.env.local)"
+                  />
+                  <div style={{ fontSize: '0.75rem', color: 'var(--admin-text-sub)', marginTop: 4 }}>
+                    If empty, backend uses <code>GROQ_API_KEY</code>, <code>GEMINI_API_KEY</code>, or <code>OPENAI_API_KEY</code> from server environment.
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 

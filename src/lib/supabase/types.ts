@@ -99,6 +99,10 @@ export interface Profile {
   favicon_url: string | null
   apple_icon_url: string | null
   theme_accent_color: string
+  ai_model?: string | null
+  ai_provider?: 'groq' | 'gemini' | 'openai' | 'custom' | string | null
+  ai_api_key?: string | null
+  is_ai_enabled?: boolean
   created_at: string
   updated_at: string
 }

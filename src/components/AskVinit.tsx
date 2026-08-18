@@ -47,6 +47,8 @@ function TypingIndicator() {
 // ─────────────────────────────────────────────
 // Main Component
 // ─────────────────────────────────────────────
+import { supabase } from '@/lib/supabase/client'
+
 export default function AskVinit() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([WELCOME])
@@ -59,9 +61,28 @@ export default function AskVinit() {
   const [userMsgCount, setUserMsgCount] = useState(0)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [enabled, setEnabled] = useState(true)
   const [dragConstraints, setDragConstraints] = useState({ left: 0, right: 0, top: 0, bottom: 0 })
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    async function checkEnabled() {
+      try {
+        const { data } = await supabase
+          .from('profiles')
+          .select('is_ai_enabled')
+          .order('updated_at', { ascending: false })
+          .limit(1)
+          .single()
+
+        if (data && (data as any).is_ai_enabled === false) {
+          setEnabled(false)
+        }
+      } catch {}
+    }
+    checkEnabled()
+  }, [])
 
 useEffect(() => {
   const updateConstraints = () => {
@@ -302,7 +323,7 @@ const res = await fetch('/api/ask', {
   const isLimited = userMsgCount >= MAX_USER_MESSAGES
   const remaining = MAX_USER_MESSAGES - userMsgCount
   const charsRemaining = MAX_USER_MESSAGE_CHARS - input.length
-if (!mounted) return null
+  if (!mounted || !enabled) return null
   return (
     <>
 
