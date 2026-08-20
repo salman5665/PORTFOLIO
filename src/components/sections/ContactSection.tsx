@@ -66,7 +66,7 @@ export default function ContactSection({ profile }: Props) {
   return (
     <section id="contact" className="section section-alt">
       <div className="container" style={{ maxWidth: 1000 }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
           <div className="section-tag gap-2 mb-3"><Mail size={13} /> Get In Touch</div>
           <h2 className="section-title">Let&apos;s Build Something Great</h2>
           <p className="section-subtitle">
@@ -79,7 +79,7 @@ export default function ContactSection({ profile }: Props) {
         <div className="row g-5 align-items-start">
           {/* Left — Info */}
           <motion.div className="col-lg-5"
-            initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: 0.05, duration: 0.35 }}>
+            initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.05, duration: 0.35 }}>
             <motion.div className="card shadow-vs mb-4" whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
               <div className="card-body p-4">
                 <div className="d-flex align-items-center gap-2 mb-4">
@@ -108,7 +108,7 @@ export default function ContactSection({ profile }: Props) {
 
             <div className="d-flex flex-column gap-3">
               {socialCards.map((link, i) => (
-                <motion.div key={link.label} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                <motion.div key={link.label} initial={{ opacity: 0, x: -16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: i * 0.04, duration: 0.3 }}>
                   <div className="card shadow-vs">
                     <div className="card-body p-3 d-flex align-items-center gap-3">
                       <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
@@ -132,7 +132,7 @@ export default function ContactSection({ profile }: Props) {
 
           {/* Right — Form */}
           <motion.div className="col-lg-7"
-            initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: 0.1, duration: 0.35 }}>
+            initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.08, duration: 0.35 }}>
             <div className="card shadow-vs">
               <div className="card-body p-4 p-md-5">
                 <form onSubmit={handleSubmit} id="contact-form">

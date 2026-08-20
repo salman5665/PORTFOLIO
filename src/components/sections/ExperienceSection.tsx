@@ -28,7 +28,7 @@ export default function ExperienceSection({ experiences }: Props) {
   return (
     <section id="experience" className="section section-alt">
       <div className="container" style={{ maxWidth: 800 }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
           <div className="section-tag"><Briefcase size={13} /> Experience</div>
           <h2 className="section-title">Work Experience</h2>
           <p className="section-subtitle">Professional roles and projects that have shaped my skills.</p>
@@ -37,7 +37,7 @@ export default function ExperienceSection({ experiences }: Props) {
         <div className="vs-timeline">
           {experiences.map((item, i) => (
             <motion.div key={item.id} className="vs-timeline-item"
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.05, duration: 0.35 }}>
+              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: i * 0.04, duration: 0.35 }}>
               <div className="vs-timeline-dot" />
               <motion.div className="card shadow-vs ms-2" whileHover={{ y: -2, boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }} transition={{ duration: 0.2 }}>
                 <div className="card-body p-4 p-md-5">

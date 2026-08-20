@@ -332,7 +332,7 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
   return (
     <section id="about" className="section section-alt">
       <div className="container" style={{ maxWidth: 1100 }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ duration: 0.35 }} className="mb-5">
           <div className="section-tag"><User size={13} /> About Me</div>
           <h2 className="section-title">Crafting Digital Experiences</h2>
           <p className="section-subtitle">Building scalable web, mobile, and AI-powered experiences with modern technologies.</p>
@@ -341,7 +341,7 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
         <div className="row g-5 align-items-start mb-5">
 
           <motion.div className="col-lg-6"
-            initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: 0.05, duration: 0.35 }}>
+            initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.05, duration: 0.35 }}>
             <div className="card shadow-vs mb-4">
               <div className="card-body p-4 p-md-5">
                 <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2 gap-md-3 mb-3 mb-md-4 pb-3 pb-md-4" style={{ borderBottom: '1px solid var(--color-border)' }}>
@@ -399,14 +399,14 @@ export default function AboutSection({ profile, projects = [], skills = [], cert
 
 
           <motion.div className="col-lg-6"
-            initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: 0.1, duration: 0.35 }}>
+            initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.08, duration: 0.35 }}>
             <h3 className="mb-4" style={{ fontWeight: 700, color: 'var(--color-text)', fontSize: '1.05rem' }}>
               <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-muted)', marginRight: 8 }}>{'// '}</span>My Journey
             </h3>
             <div className="vs-timeline">
               {finalJourney.map((item, i) => (
                 <motion.div key={item.id || `${item.year}-${i}`} className="vs-timeline-item"
-                  initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ delay: i * 0.05, duration: 0.3 }}>
+                  initial={{ opacity: 0, x: 16 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: i * 0.04, duration: 0.3 }}>
                   <div className="vs-timeline-dot" />
                   <div className="card shadow-vs ms-2">
                     <div className="card-body p-4">
