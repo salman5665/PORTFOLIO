@@ -41,9 +41,9 @@ export default function AdminTopBar({ title, subtitle, action }: TopBarProps) {
         </button>
 
         {/* Title + breadcrumb */}
-        <div className="flex-grow-1 min-w-0">
+        <div className="flex-grow-1" style={{ minWidth: 0 }}>
           {/* Breadcrumb */}
-          <nav aria-label="breadcrumb" className="d-none d-sm-block">
+          <nav aria-label="breadcrumb" className="d-none d-md-block">
             <ol className="breadcrumb mb-0" style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
               <li className="breadcrumb-item">
                 <Link href="/admin" style={{ color: 'var(--admin-text-sub)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 3 }}>
@@ -63,12 +63,12 @@ export default function AdminTopBar({ title, subtitle, action }: TopBarProps) {
               })}
             </ol>
           </nav>
-          <div className="d-flex align-items-baseline gap-2 flex-wrap">
-            <h1 style={{ fontWeight: 800, fontSize: 'clamp(1rem, 2.5vw, 1.3rem)', color: 'var(--admin-text)', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.2 }}>
+          <div className="d-flex align-items-center gap-2" style={{ minWidth: 0 }}>
+            <h1 className="text-truncate" style={{ fontWeight: 800, fontSize: 'clamp(0.95rem, 2.5vw, 1.25rem)', color: 'var(--admin-text)', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.2 }}>
               {title}
             </h1>
             {subtitle && (
-              <span style={{ color: 'var(--admin-text-sub)', fontSize: '0.78rem', fontFamily: 'var(--font-mono)', whiteSpace: 'nowrap' }}>
+              <span className="d-none d-sm-inline-block text-truncate" style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)', minWidth: 0 }}>
                 {subtitle}
               </span>
             )}
@@ -76,7 +76,7 @@ export default function AdminTopBar({ title, subtitle, action }: TopBarProps) {
         </div>
 
         {/* Action slot */}
-        {action && <div className="flex-shrink-0">{action}</div>}
+        {action && <div className="flex-shrink-0 ms-auto">{action}</div>}
       </div>
     </div>
   )

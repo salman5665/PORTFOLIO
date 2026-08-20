@@ -589,6 +589,7 @@ textarea:disabled {
 .admin-page-content {
   padding: 24px 20px;
   max-width: 1300px;
+  overflow-x: hidden;
 }
 
 /* Admin table override */
@@ -771,18 +772,14 @@ textarea:disabled {
 }
 
 .admin-settings-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: clamp(1rem, 2vw, 1.5rem);
   width: 100%;
 }
 
-.admin-settings-grid>.card:nth-child(1),
-.admin-settings-grid>.card:nth-child(2) {
-  grid-column: 1 / -1;
-}
-
-.admin-settings-grid .card {
+.admin-settings-grid > .card {
+  width: 100%;
   min-width: 0;
 }
 

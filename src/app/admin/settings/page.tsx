@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Save, User, Link as LinkIcon, Globe, Activity, Bot } from 'lucide-react'
+import { Save, User, Link as LinkIcon, Globe, Activity, Bot, Database, Download, GitBranch, Mail, ShieldCheck } from 'lucide-react'
 import { adminDb } from '@/lib/adminDb'
 import { toast } from 'sonner'
 import AdminTopBar from '@/components/admin/AdminTopBar'
@@ -21,29 +21,53 @@ export default function AdminSettingsPage() {
   })
   const [saving, setSaving] = useState(false)
   const [profileId, setProfileId] = useState<string | null>(null)
+  const [backingUp, setBackingUp] = useState<string | null>(null)
+
+  const handleDownloadBackup = (format: 'sql' | 'json') => {
+    window.open(`/api/admin/backup?action=download&format=${format}`, '_blank')
+  }
+
+  const handleSyncGithub = async () => {
+    setBackingUp('github')
+    try {
+      const res = await fetch('/api/admin/backup?action=github', { method: 'POST' })
+      const json = await res.json()
+      if (!res.ok || !json.success) {
+        throw new Error(json.github?.error || json.error || 'Sync failed')
+      }
+      toast.success('Database backup committed to GitHub!')
+    } catch (err: any) {
+      toast.error('GitHub sync failed: ' + err.message)
+    } finally {
+      setBackingUp(null)
+    }
+  }
 
   useEffect(() => {
-    adminDb.from('profiles').single({ order: 'updated_at', ascending: false, limit: 1 }).then(({ data }) => {
-      if (data) { const d = data as Profile; setProfile(d); setProfileId(d.id) }
+    adminDb.from<Profile>('profiles').select({ order: 'updated_at', ascending: false, limit: 1 }).then(({ data }) => {
+      if (data && data.length > 0) { const d = data[0]; setProfile(d); setProfileId(d.id) }
     })
   }, [])
 
   const handleSave = async () => {
     setSaving(true)
+    // Strip immutable/server-managed fields before sending to the API
+    const { id: _id, created_at: _ca, user_id: _uid, ...rest } = profile as Profile & { id?: string; created_at?: string; user_id?: string }
     const payload = {
-      ...profile,
+      ...rest,
       updated_at: new Date().toISOString(),
       theme_accent_color: profile.theme_accent_color || '#22d3ee',
     }
     if (profileId) {
       const { error } = await adminDb.from('profiles').update(payload, profileId)
-      if (error) { toast.error('Failed to save settings'); setSaving(false); return }
+      if (error) { toast.error('Failed to save: ' + error); setSaving(false); return }
     } else {
       const { data, error } = await adminDb.from('profiles').insert(payload)
-      if (error) { toast.error('Failed to save settings'); setSaving(false); return }
+      if (error) { toast.error('Failed to save: ' + error); setSaving(false); return }
       const created = Array.isArray(data) ? data[0] : data
       if (created && typeof created === 'object' && 'id' in created) setProfileId((created as Profile).id)
     }
+    window.dispatchEvent(new CustomEvent('admin-settings-updated', { detail: payload }))
     toast.success('Settings saved!'); setSaving(false)
   }
 
@@ -61,7 +85,7 @@ export default function AdminSettingsPage() {
         }
       />
 
-      <div className="admin-page-content admin-settings-content">
+      <form onSubmit={(e) => { e.preventDefault(); handleSave(); }} className="admin-page-content admin-settings-content">
         <div className="admin-settings-grid">
 
           {/* ── Profile Information ── */}
@@ -158,7 +182,7 @@ export default function AdminSettingsPage() {
 
           {/* ── SEO Metadata ── */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
-            <div className="card-body p-4 p-md-5">
+            <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Globe size={16} color="#67e8f9" /> SEO Metadata</div>
               <div className="mb-3">
                 <label className="form-label" htmlFor="settings-meta-title">Meta Title</label>
@@ -183,15 +207,15 @@ export default function AdminSettingsPage() {
 
           {/* ── AI Assistant Settings ── */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
-            <div className="card-body p-4 p-md-5">
+            <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Bot size={16} color="#67e8f9" /> Ask Vinit AI Assistant</div>
               
-              <div className="d-flex align-items-center justify-content-between p-3 rounded-3 mb-4" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
+              <div className="d-flex align-items-center justify-content-between p-3 rounded-3 mb-4 gap-3" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
                 <div>
                   <div style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>Enable AI Chatbot</div>
                   <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem' }}>Shows or hides the floating Ask Vinit AI widget on the portfolio</div>
                 </div>
-                <div className="form-check form-switch mb-0">
+                <div className="form-check form-switch mb-0 flex-shrink-0">
                   <input className="form-check-input" type="checkbox" role="switch" id="settings-ai-toggle"
                     checked={profile.is_ai_enabled !== false} onChange={e => set('is_ai_enabled', e.target.checked)}
                     style={{ width: 44, height: 22, cursor: 'pointer' }} />
@@ -199,7 +223,7 @@ export default function AdminSettingsPage() {
               </div>
 
               <div className="row g-3">
-                <div className="col-sm-6">
+                <div className="col-12 col-md-6">
                   <label className="form-label" htmlFor="settings-ai-provider">AI Provider</label>
                   <select
                     id="settings-ai-provider"
@@ -214,7 +238,7 @@ export default function AdminSettingsPage() {
                   </select>
                 </div>
 
-                <div className="col-sm-6">
+                <div className="col-12 col-md-6">
                   <label className="form-label" htmlFor="settings-ai-model">Model Name / ID</label>
                   <input
                     id="settings-ai-model"
@@ -259,6 +283,7 @@ export default function AdminSettingsPage() {
                   <input
                     id="settings-ai-key"
                     type="password"
+                    autoComplete="off"
                     className="form-control"
                     value={profile.ai_api_key || ''}
                     onChange={e => set('ai_api_key', e.target.value)}
@@ -273,9 +298,72 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
+          {/* ── Database Backups & Recovery ── */}
+          <div className="card shadow-sm" style={SECTION_STYLE}>
+            <div className="card-body p-3 p-sm-4 p-md-5">
+              <div style={HEADER_STYLE}><Database size={16} color="#67e8f9" /> Database Backups & Recovery</div>
+              
+              <div className="p-3 rounded-3 mb-4" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
+                <div className="d-flex align-items-center gap-2 mb-1" style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>
+                  <ShieldCheck size={16} color="#10b981" /> Automated Daily Backups Active
+                </div>
+                <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.78rem', lineHeight: 1.5 }}>
+                  Every day at 00:00 UTC, Vercel Cron automatically generates a database snapshot, commits a <code>.sql</code> backup to GitHub repository (<code>backups/</code> folder), and emails a copy to <code>vinitsoni5911@gmail.com</code>.
+                </div>
+              </div>
+
+              <div className="row g-3">
+                <div className="col-12 col-md-4">
+                  <button
+                    type="button"
+                    className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2"
+                    onClick={() => handleDownloadBackup('sql')}
+                    style={{ background: 'rgba(34, 211, 238, 0.12)', border: '1px solid rgba(34, 211, 238, 0.3)', color: '#67e8f9', fontSize: '0.82rem', fontWeight: 600 }}
+                  >
+                    <Download size={15} /> Download SQL Dump (.sql)
+                  </button>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--admin-text-sub)', marginTop: 4, textAlign: 'center' }}>
+                    Executable PostgreSQL queries for 1-click restore
+                  </div>
+                </div>
+
+                <div className="col-12 col-md-4">
+                  <button
+                    type="button"
+                    className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2"
+                    onClick={() => handleDownloadBackup('json')}
+                    style={{ background: 'rgba(139, 92, 246, 0.12)', border: '1px solid rgba(139, 92, 246, 0.3)', color: '#c4b5fd', fontSize: '0.82rem', fontWeight: 600 }}
+                  >
+                    <Download size={15} /> Download JSON Backup (.json)
+                  </button>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--admin-text-sub)', marginTop: 4, textAlign: 'center' }}>
+                    Raw JSON dump of all 12 database tables
+                  </div>
+                </div>
+
+                <div className="col-12 col-md-4">
+                  <button
+                    type="button"
+                    disabled={backingUp === 'github'}
+                    className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2"
+                    onClick={handleSyncGithub}
+                    style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#6ee7b7', fontSize: '0.82rem', fontWeight: 600 }}
+                  >
+                    {backingUp === 'github' ? <span className="spinner-border spinner-border-sm" role="status" /> : <GitBranch size={15} />}
+                    Sync to GitHub Now
+                  </button>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--admin-text-sub)', marginTop: 4, textAlign: 'center' }}>
+                    Commits backup to <code>vinitsonii/vinitsonii-portfolio</code>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           {/* ── System Info ── */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
-            <div className="card-body p-4 p-md-5">
+            <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Activity size={16} color="#67e8f9" /> System Info</div>
               <div className="row g-3">
                 {[
@@ -296,7 +384,7 @@ export default function AdminSettingsPage() {
           </div>
 
         </div>
-      </div>
+      </form>
     </>
   )
 }

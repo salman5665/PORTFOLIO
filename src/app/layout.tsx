@@ -85,16 +85,14 @@ export async function generateMetadata(): Promise<Metadata> {
     profile?.og_image_url?.trim() ||
     `${siteUrl}/og-image.png`
 
-  // Cache busting for updated icons
-  const faviconUrl =
-    profile?.favicon_url
-      ? `${profile.favicon_url}?v=${profile.updated_at}`
-      : '/favicon.ico'
+  // Google Favicon guidelines require clean URLs (no query params) & accurate MIME types
+  const rawFaviconUrl = profile?.favicon_url?.trim() || '/favicon.ico'
+  const rawAppleIconUrl = profile?.apple_icon_url?.trim() || '/apple-touch-icon.png'
 
-  const appleIconUrl =
-    profile?.apple_icon_url
-      ? `${profile.apple_icon_url}?v=${profile.updated_at}`
-      : '/apple-touch-icon.png'
+  let faviconType = 'image/x-icon'
+  if (rawFaviconUrl.endsWith('.png')) faviconType = 'image/png'
+  else if (rawFaviconUrl.endsWith('.svg')) faviconType = 'image/svg+xml'
+  else if (rawFaviconUrl.endsWith('.webp')) faviconType = 'image/webp'
 
   return {
     metadataBase: new URL(siteUrl),
@@ -182,16 +180,21 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: [
         {
-          url: faviconUrl,
+          url: rawFaviconUrl,
+          type: faviconType,
+        },
+        {
+          url: '/favicon.ico',
           type: 'image/x-icon',
+          sizes: 'any',
         },
       ],
 
-      shortcut: [faviconUrl],
+      shortcut: [rawFaviconUrl],
 
       apple: [
         {
-          url: appleIconUrl,
+          url: rawAppleIconUrl,
           sizes: '180x180',
           type: 'image/png',
         },
@@ -220,15 +223,7 @@ export default function RootLayout({
       }}
     >
       <head>
-        {/* Preload Lottie animation so it starts downloading immediately */}
-        <link
-          rel="preload"
-          href="/hero-animation.json"
-          as="fetch"
-          crossOrigin="anonymous"
-          // @ts-ignore — fetchPriority is a valid React JSX attribute
-          fetchPriority="high"
-        />
+
         <meta
           name="mobile-web-app-capable"
           content="yes"

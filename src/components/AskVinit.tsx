@@ -69,19 +69,32 @@ export default function AskVinit() {
   useEffect(() => {
     async function checkEnabled() {
       try {
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from('profiles')
           .select('is_ai_enabled')
           .order('updated_at', { ascending: false })
           .limit(1)
-          .single()
+          .maybeSingle()
 
-        if (data && (data as any).is_ai_enabled === false) {
-          setEnabled(false)
+        if (error) return // silently ignore RLS / connectivity errors
+        if (data) {
+          setEnabled((data as any).is_ai_enabled !== false)
         }
       } catch {}
     }
     checkEnabled()
+
+    const handleSettingsUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent
+      if (customEvent.detail && typeof customEvent.detail.is_ai_enabled === 'boolean') {
+        setEnabled(customEvent.detail.is_ai_enabled)
+      } else {
+        checkEnabled()
+      }
+    }
+
+    window.addEventListener('admin-settings-updated', handleSettingsUpdate)
+    return () => window.removeEventListener('admin-settings-updated', handleSettingsUpdate)
   }, [])
 
 useEffect(() => {
@@ -288,7 +301,7 @@ const res = await fetch('/api/ask', {
       setLoading(false)
       setStreaming(true)
 
-      // Add empty assistant message to start filling
+      // Add assistant message to start streaming into
       setMessages((prev) => [...prev, { role: 'assistant', content: '' }])
 
       let fullText = ''
@@ -302,14 +315,30 @@ const res = await fetch('/api/ask', {
         ])
       }
 
+      if (!fullText.trim()) {
+        setMessages((prev) => [
+          ...prev.slice(0, -1),
+          { role: 'assistant', content: "I couldn't generate a response. Feel free to ask about Vinit's skills, projects, or experience!" },
+        ])
+      }
+
       setStreaming(false)
     } catch {
       setLoading(false)
       setStreaming(false)
-      setMessages((prev) => [
-        ...prev,
-        { role: 'assistant', content: 'Something went wrong. Please try again!' },
-      ])
+      setMessages((prev) => {
+        const last = prev[prev.length - 1]
+        if (last && last.role === 'assistant' && !last.content) {
+          return [
+            ...prev.slice(0, -1),
+            { role: 'assistant', content: 'Something went wrong. Please try again!' },
+          ]
+        }
+        return [
+          ...prev,
+          { role: 'assistant', content: 'Something went wrong. Please try again!' },
+        ]
+      })
     }
   }, [input, loading, streaming, messages, userMsgCount])
 
