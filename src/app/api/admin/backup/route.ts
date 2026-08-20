@@ -203,8 +203,8 @@ async function handleBackupRequest(req: NextRequest) {
       }
     }
 
-    // 2. Action: GitHub Commit
-    if (action === 'github' || action === 'cron') {
+    // 2. Action: GitHub Commit & Email
+    if (action === 'github' || action === 'cron' || action === 'email') {
       // Optional security verification for Vercel Cron
       if (action === 'cron' && process.env.CRON_SECRET) {
         const authHeader = req.headers.get('authorization')
