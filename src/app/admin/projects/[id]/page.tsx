@@ -116,9 +116,25 @@ export default function AdminProjectFormPage() {
         subtitle={isNew ? 'Create a new portfolio project' : `Editing: ${form.title}`}
         action={
           <div className="d-flex align-items-center gap-2">
-            <Link href="/admin/projects" className="btn btn-sm d-flex align-items-center justify-content-center"
-              style={{ background: 'var(--admin-surface)', border: '1px solid var(--admin-border)', color: 'var(--admin-text)', borderRadius: 10, width: 36, height: 36 }}>
-              <ArrowLeft size={16} />
+            <Link
+              href="/admin/projects"
+              className="btn btn-sm d-flex align-items-center gap-2"
+              title="Back to Projects"
+              aria-label="Back to Projects"
+              style={{
+                background: 'rgba(15, 23, 42, 0.62)',
+                border: '1px solid var(--admin-border)',
+                color: '#67e8f9',
+                borderRadius: 10,
+                padding: '0 12px',
+                height: 36,
+                fontWeight: 600,
+                fontSize: '0.8rem',
+                textDecoration: 'none',
+              }}
+            >
+              <ArrowLeft size={16} color="#67e8f9" />
+              <span className="d-none d-sm-inline">Back</span>
             </Link>
             <button
               onClick={handleSave}
