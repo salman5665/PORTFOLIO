@@ -176,15 +176,15 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
   const featuredStack = techStack.slice(0, 4).map((skill) => skill.name).join(' / ') || 'Next.js / TypeScript / Supabase';
   const yearsCoding = Math.max(1, new Date().getFullYear() - 2022);
   const reveal = (delay: number) => ({
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
-    transition: { delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
   });
   // LCP-safe: animate only transform, never hide opacity so browser can measure paint immediately
   const revealLCP = (delay: number) => ({
-    initial: { y: 18 },
+    initial: { y: 12 },
     animate: { y: 0 },
-    transition: { delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { delay, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
   });
 
   return (
