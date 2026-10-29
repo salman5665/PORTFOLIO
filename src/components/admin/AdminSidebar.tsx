@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard, FolderOpen, Code2, Briefcase, GraduationCap,
   Award, MessageSquare, FileText, Quote, Settings, Image,
-  LogOut, ChevronRight, X, User, Activity, Milestone
+  LogOut, ChevronRight, X, User, Milestone
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase/client'
 import { useSidebar } from '@/lib/contexts/SidebarContext'
@@ -20,7 +20,6 @@ const NAV = [
     label: 'Overview',
     items: [
       { icon: LayoutDashboard, label: 'Dashboard', href: '/admin' },
-      { icon: Activity, label: 'Analytics', href: '/admin/analytics' },
       { icon: MessageSquare, label: 'Messages', href: '/admin/messages', badge: true },
     ],
   },

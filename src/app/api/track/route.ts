@@ -205,8 +205,8 @@ const sendNewVisitorNotifications = async (
 ) => {
   const meta = event.metadata as Record<string, any>
   const siteUrl = getRequestBaseUrl(req).replace(/\/$/, '')
-  const analyticsUrl = `${siteUrl}/admin/analytics`
-  const visitorUrl = `${analyticsUrl}?visitor=${encodeURIComponent(visitorId)}`
+  const analyticsUrl = `${siteUrl}/admin`
+  const visitorUrl = `${siteUrl}/admin`
   const logoUrl = `${siteUrl}/apple-touch-icon.png`
 
   const discordWebhookUrl = process.env.DISCORD_WEBHOOK_URL
