@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js'
 // Allowed tables for admin writes
 const ALLOWED_TABLES = [
   'profiles', 'skills', 'projects', 'experiences', 'education',
-  'certificates', 'testimonials', 'blog_posts', 'media', 'messages',
+  'certificates', 'testimonials', 'blog_posts', 'media', 'media_assets', 'messages',
   'analytics_events', 'ai_chat_logs', 'settings'
 ]
 

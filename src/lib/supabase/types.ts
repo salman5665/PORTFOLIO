@@ -58,6 +58,11 @@ export interface Database {
         Insert: Setting
         Update: Partial<Setting>
       }
+      media_assets: {
+        Row: MediaAsset
+        Insert: Omit<MediaAsset, 'id' | 'uploaded_at'>
+        Update: Partial<Omit<MediaAsset, 'id' | 'uploaded_at'>>
+      }
       analytics_events: {
         Row: AnalyticsEvent
         Insert: Omit<AnalyticsEvent, 'id' | 'created_at'>
@@ -260,4 +265,17 @@ export interface JourneyItem {
   year: string
   title: string
   desc: string
+}
+
+export interface MediaAsset {
+  id: string
+  filename: string
+  bucket: string
+  url: string
+  file_size: number
+  mime_type: string
+  width: number | null
+  height: number | null
+  hash: string | null
+  uploaded_at: string
 }

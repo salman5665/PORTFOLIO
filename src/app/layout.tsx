@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import AskSalmanWrapper from '@/components/AskSalmanWrapper'
 import { Toaster } from 'sonner'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
@@ -165,7 +164,6 @@ export default function RootLayout({
         className="antialiased bg-black text-white"
       >
         <VisitorTracker />
-        <AskSalmanWrapper />
 
         <LenisProvider>
           <PageTransition>
