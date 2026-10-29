@@ -210,7 +210,7 @@ function AvatarWithPopup({
                 marginBottom: 6,
               }}>
                 {name}
-              </div>
+              </div>            
               {tagline && (
                 <div style={{
                   color: 'rgba(255,255,255,0.55)',

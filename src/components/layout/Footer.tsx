@@ -1,5 +1,5 @@
-'use client'
 
+'use client'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Code2, ChevronUp, User, Cpu, Layers, Briefcase, GraduationCap, MapPin, FileText, BookOpen, ExternalLink } from 'lucide-react'
