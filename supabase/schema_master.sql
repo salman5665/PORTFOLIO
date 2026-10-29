@@ -408,7 +408,8 @@ create policy "Authenticated can manage settings" on public.settings for all usi
 drop policy if exists "Media assets viewable by all" on public.media_assets;
 create policy "Media assets viewable by all" on public.media_assets for select using (true);
 
-drop policy if exists "Authenticated can manage media assets" on public.media_assets for all using (auth.role() = 'authenticated');
+drop policy if exists "Authenticated can manage media assets" on public.media_assets;
+create policy "Authenticated can manage media assets" on public.media_assets for all using (auth.role() = 'authenticated');
 
 -- Analytics Events: Public can insert, only authenticated can read
 drop policy if exists "Anyone can log analytics" on public.analytics_events;
