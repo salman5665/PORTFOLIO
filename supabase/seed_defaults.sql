@@ -16,7 +16,7 @@ insert into public.profiles (
   theme_accent_color
 ) values (
   'Salman',
-  'contact@salman.dev',
+  'mspatel920@gmail.com',
   'Full-Stack Developer',
   'Welcome to my portfolio. I build clean, modern, and performant web applications.',
   'India',
@@ -35,3 +35,4 @@ values
   ('coding_profiles', '{"status":"published","github_url":"https://github.com/salman5665","leetcode_url":""}'::jsonb),
   ('journey', '[]'::jsonb)
 on conflict (key) do nothing;
+

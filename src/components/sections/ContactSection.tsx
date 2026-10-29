@@ -31,7 +31,7 @@ export default function ContactSection({ profile }: Props) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', body: '' })
   const [sending, setSending] = useState(false)
 
-  const email = profile?.email || 'contact@salman.dev'
+  const email = profile?.email || 'mspatel920@gmail.com'
   const location = profile?.location || 'India'
   const isAvailable = profile ? profile.is_available_for_work : true
 
@@ -77,7 +77,7 @@ export default function ContactSection({ profile }: Props) {
         </motion.div>
 
         <div className="row g-5 align-items-start">
-          {/* Left — Info */}
+          {/* Left â€” Info */}
           <motion.div className="col-lg-5"
             initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.05, duration: 0.35 }}>
             <motion.div className="card shadow-vs mb-4" whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
@@ -130,7 +130,7 @@ export default function ContactSection({ profile }: Props) {
             </div>
           </motion.div>
 
-          {/* Right — Form */}
+          {/* Right â€” Form */}
           <motion.div className="col-lg-7"
             initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: false, amount: 0.1 }} transition={{ delay: 0.08, duration: 0.35 }}>
             <div className="card shadow-vs">

@@ -13,7 +13,7 @@ const HEADER_STYLE = { fontWeight: 700, color: 'var(--admin-text)', fontSize: '0
 
 export default function AdminSettingsPage() {
   const [profile, setProfile] = useState<Partial<Profile>>({
-    name: 'Salman', email: 'contact@salman.dev', tagline: 'Full-Stack Developer - MCA Student',
+    name: 'Salman', email: 'mspatel920@gmail.com', tagline: 'Full-Stack Developer - MCA Student',
     bio: '', location: 'India', github_url: 'https://github.com/salman5665',
     linkedin_url: 'https://linkedin.com/in/salman', twitter_url: '', leetcode_url: '',
     is_available_for_work: true, is_ai_enabled: true, ai_provider: 'groq', ai_model: 'qwen/qwen3.6-27b', ai_api_key: '',
@@ -88,7 +88,7 @@ export default function AdminSettingsPage() {
       <form onSubmit={(e) => { e.preventDefault(); handleSave(); }} className="admin-page-content admin-settings-content">
         <div className="admin-settings-grid">
 
-          {/* ── Profile Information ── */}
+          {/* â”€â”€ Profile Information â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-4 p-md-5">
               <div style={HEADER_STYLE}>
@@ -101,7 +101,7 @@ export default function AdminSettingsPage() {
                 <div className="col-sm-6"><label className="form-label" htmlFor="settings-location">Location</label><input id="settings-location" className="form-control" value={profile.location || ''} onChange={e => set('location', e.target.value)} placeholder="City, Country" /></div>
                 <div className="col-12"><label className="form-label" htmlFor="settings-bio">Bio</label><textarea id="settings-bio" className="form-control" rows={4} value={profile.bio || ''} onChange={e => set('bio', e.target.value)} placeholder="Tell visitors about yourself..." style={{ resize: 'none' }} /></div>
 
-                {/* ── Profile Photo ── */}
+                {/* â”€â”€ Profile Photo â”€â”€ */}
                 <div className="col-12">
                   <ImageUploader
                     value={profile.avatar_url || ''}
@@ -127,7 +127,7 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-          {/* ── Social Links ── */}
+          {/* â”€â”€ Social Links â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-4 p-md-5">
               <div style={HEADER_STYLE}><LinkIcon size={16} color="#67e8f9" /> Social Links</div>
@@ -159,7 +159,7 @@ export default function AdminSettingsPage() {
                       value={profile.favicon_url || ''}
                       onChange={url => set('favicon_url', url)}
                       bucket="seo"
-                      label="Favicon (32×32px)"
+                      label="Favicon (32Ã—32px)"
                       aspectRatio="1/1"
                       maxSizeMb={0.5}
                       accept="image/png,image/x-icon,image/vnd.microsoft.icon,image/svg+xml"
@@ -170,7 +170,7 @@ export default function AdminSettingsPage() {
                       value={profile.apple_icon_url || ''}
                       onChange={url => set('apple_icon_url', url)}
                       bucket="seo"
-                      label="Apple Touch Icon (180×180px)"
+                      label="Apple Touch Icon (180Ã—180px)"
                       aspectRatio="1/1"
                       maxSizeMb={1}
                     />
@@ -180,7 +180,7 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-          {/* ── SEO Metadata ── */}
+          {/* â”€â”€ SEO Metadata â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Globe size={16} color="#67e8f9" /> SEO Metadata</div>
@@ -198,14 +198,14 @@ export default function AdminSettingsPage() {
                   value={(profile as any).og_image_url || ''}
                   onChange={url => set('og_image_url' as keyof Profile, url)}
                   bucket="seo"
-                  label="OG Image (1200 × 630px recommended)"
+                  label="OG Image (1200 Ã— 630px recommended)"
                   aspectRatio="1200/630"
                 />
               </div>
             </div>
           </div>
 
-          {/* ── Database Backups & Recovery ── */}
+          {/* â”€â”€ Database Backups & Recovery â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Database size={16} color="#67e8f9" /> Database Backups & Recovery</div>
@@ -268,7 +268,7 @@ export default function AdminSettingsPage() {
             </div>
           </div>
 
-          {/* ── System Info ── */}
+          {/* â”€â”€ System Info â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
               <div style={HEADER_STYLE}><Activity size={16} color="#67e8f9" /> System Info</div>

@@ -19,9 +19,9 @@ const TABLES = [
   'activity_logs',
 ]
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // SQL Formatting Helper
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function formatSqlValue(val: unknown): string {
   if (val === null || val === undefined) return 'NULL'
   if (typeof val === 'boolean') return val ? 'TRUE' : 'FALSE'
@@ -78,9 +78,9 @@ function generateSqlDump(dataMap: Record<string, any[]>): string {
   return sql
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // GitHub Commit Helper
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function commitToGitHub(filename: string, content: string, message: string) {
   const token = process.env.GITHUB_TOKEN
   const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'salman5665'
@@ -132,9 +132,9 @@ async function commitToGitHub(filename: string, content: string, message: string
   return await putRes.json()
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Fetch All Data Helper
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function fetchAllDatabaseTables() {
   const db = createServerClient()
   const dataMap: Record<string, any[]> = {}
@@ -155,9 +155,9 @@ async function fetchAllDatabaseTables() {
   return dataMap
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Handler (GET & POST)
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function GET(req: NextRequest) {
   return handleBackupRequest(req)
 }
@@ -230,21 +230,21 @@ async function handleBackupRequest(req: NextRequest) {
       // If triggered by email or cron, send email notification
       if (action === 'cron' || action === 'email') {
         const resendKey = process.env.RESEND_API_KEY
-        const recipient = process.env.CONTACT_EMAIL_TO || 'contact@salman.dev'
+        const recipient = process.env.CONTACT_EMAIL_TO || 'mspatel920@gmail.com'
         
         if (resendKey) {
           const resend = new Resend(resendKey)
           await resend.emails.send({
             from: 'Portfolio Backup <onboarding@resend.dev>',
             to: recipient,
-            subject: `📦 Daily Supabase Database Backup (${dateStr})`,
+            subject: `ðŸ“¦ Daily Supabase Database Backup (${dateStr})`,
             html: `
               <div style="font-family: system-ui, sans-serif; padding: 20px; color: #1e293b;">
-                <h2 style="color: #0ea5e9;">📦 Daily Portfolio Backup Complete</h2>
+                <h2 style="color: #0ea5e9;">ðŸ“¦ Daily Portfolio Backup Complete</h2>
                 <p>Your daily database backup for <strong>${dateStr}</strong> has been executed.</p>
                 <ul>
                   <li><strong>Status:</strong> Success</li>
-                  <li><strong>GitHub Sync:</strong> ${githubError ? `❌ ${githubError}` : '✅ Committed to backups/' + filename}</li>
+                  <li><strong>GitHub Sync:</strong> ${githubError ? `âŒ ${githubError}` : 'âœ… Committed to backups/' + filename}</li>
                   <li><strong>Tables backed up:</strong> ${Object.keys(dataMap).join(', ')}</li>
                 </ul>
                 <p style="color: #64748b; font-size: 12px; margin-top: 20px;">

@@ -1,6 +1,6 @@
 -- ============================================================
 -- MASTER SUPABASE DATABASE SCHEMA
--- Portfolio Application — Clean, Empty & Production-Ready
+-- Portfolio Application - Clean, Empty & Production-Ready
 -- ============================================================
 
 -- 1. Enable Required Extensions
@@ -14,7 +14,7 @@ create table if not exists public.profiles (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete cascade,
   name text not null default 'Salman',
-  email text not null default 'contact@salman.dev',
+  email text not null default 'mspatel920@gmail.com',
   tagline text default 'Full-Stack Developer',
   bio text default '',
   avatar_url text,
@@ -466,3 +466,4 @@ create policy "Authenticated Delete Storage Objects" on storage.objects
     bucket_id in ('avatars', 'projects', 'certificates', 'resumes', 'blog', 'seo')
     and (auth.role() = 'authenticated' or auth.role() = 'service_role')
   );
+

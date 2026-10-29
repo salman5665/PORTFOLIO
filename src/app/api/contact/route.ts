@@ -83,7 +83,7 @@ export async function POST(req: NextRequest) {
         await Promise.all([
           resend.emails.send({
             from: 'Salman <onboarding@resend.dev>',
-            to: process.env.CONTACT_EMAIL_TO || 'contact@salman.dev',
+            to: process.env.CONTACT_EMAIL_TO || 'mspatel920@gmail.com',
             replyTo: email,
             subject: `New portfolio message from ${name}: ${cleanSubject}`,
             text: emailContent.text,
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
           resend.emails.send({
             from: 'Salman <onboarding@resend.dev>',
             to: email,
-            replyTo: process.env.CONTACT_EMAIL_TO || 'contact@salman.dev',
+            replyTo: process.env.CONTACT_EMAIL_TO || 'mspatel920@gmail.com',
             subject: `Thanks for contacting me, ${name}`,
             text: confirmationContent.text,
             html: confirmationContent.html,
