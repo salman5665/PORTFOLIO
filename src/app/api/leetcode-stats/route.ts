@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { LeetCode } from 'leetcode-query'
 
-const LEETCODE_USERNAME = 'vinitsonii' // Replace with actual LeetCode username
+const LEETCODE_USERNAME = process.env.NEXT_PUBLIC_LEETCODE_USERNAME || 'salman5665' // Replace with actual LeetCode username
 
 function getLeetCodeUsername(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -29,3 +29,4 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Failed to fetch LeetCode data' }, { status: 500 })
   }
 }
+

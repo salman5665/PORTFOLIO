@@ -29,7 +29,7 @@ export async function GET() {
       status: 200,
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="Vinit-Soni-Resume.pdf"',
+        'Content-Disposition': 'attachment; filename="Salman-Resume.pdf"',
         'Cache-Control': 'no-cache',
       },
     })
@@ -37,3 +37,4 @@ export async function GET() {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
+

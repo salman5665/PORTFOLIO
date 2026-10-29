@@ -178,7 +178,7 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
           {!collapsed && (
             <>
               <div style={{ overflow: 'hidden', flex: 1 }}>
-                <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.95rem', lineHeight: 1.2, whiteSpace: 'nowrap' }}>Vinit Soni</div>
+                <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.95rem', lineHeight: 1.2, whiteSpace: 'nowrap' }}>Salman</div>
                 <div style={{ fontSize: '0.68rem', color: 'var(--admin-text-sub)', fontFamily: 'var(--font-mono)', whiteSpace: 'nowrap' }}>Content Management</div>
               </div>
               <button onClick={() => setCollapsed(true)} title="Collapse" aria-label="Collapse sidebar"
@@ -318,3 +318,4 @@ export default function AdminSidebar() {
     </>
   )
 }
+

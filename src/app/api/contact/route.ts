@@ -5,7 +5,7 @@ import { buildContactConfirmationEmail, buildContactEmail } from '@/lib/emailTem
 const getRequestBaseUrl = (req: NextRequest) => {
   const host = req.headers.get('x-forwarded-host') || req.headers.get('host')
   const protocol = req.headers.get('x-forwarded-proto') || (host?.includes('localhost') ? 'http' : 'https')
-  return host ? `${protocol}://${host}` : 'https://vinitsoni.vercel.app'
+  return host ? `${protocol}://${host}` : 'https://salman.dev'
 }
 
 export async function POST(req: NextRequest) {
@@ -82,17 +82,17 @@ export async function POST(req: NextRequest) {
 
         await Promise.all([
           resend.emails.send({
-            from: 'Vinit Soni <onboarding@resend.dev>',
-            to: process.env.CONTACT_EMAIL_TO || 'vinitsonii@gmail.com',
+            from: 'Salman <onboarding@resend.dev>',
+            to: process.env.CONTACT_EMAIL_TO || 'contact@salman.dev',
             replyTo: email,
             subject: `New portfolio message from ${name}: ${cleanSubject}`,
             text: emailContent.text,
             html: emailContent.html,
           }),
           resend.emails.send({
-            from: 'Vinit Soni <onboarding@resend.dev>',
+            from: 'Salman <onboarding@resend.dev>',
             to: email,
-            replyTo: process.env.CONTACT_EMAIL_TO || 'vinitsonii@gmail.com',
+            replyTo: process.env.CONTACT_EMAIL_TO || 'contact@salman.dev',
             subject: `Thanks for contacting me, ${name}`,
             text: confirmationContent.text,
             html: confirmationContent.html,
@@ -116,3 +116,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
+
+

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import * as cheerio from 'cheerio'
 
-const GITHUB_USERNAME = 'vinitsonii'
+const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'salman5665'
 
 function getGitHubUsername(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -101,3 +101,4 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Failed to fetch GitHub data' }, { status: 500 })
   }
 }
+

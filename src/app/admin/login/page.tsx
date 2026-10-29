@@ -178,7 +178,7 @@ export default function AdminLoginPage() {
                 <Code2 size={24} color="#020617" />
               </motion.div>
               <h1 style={{ fontWeight: 800, color: 'var(--admin-text)', fontSize: '1.35rem', letterSpacing: '-0.02em', marginBottom: 4 }}>
-                Vinit Studio
+                Salman Studio
               </h1>
               <p style={{ color: 'var(--admin-text-sub)', fontSize: '0.72rem', margin: 0, fontFamily: 'var(--font-mono)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Private Control Room
@@ -203,3 +203,4 @@ export default function AdminLoginPage() {
     </div>
   )
 }
+

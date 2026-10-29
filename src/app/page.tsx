@@ -13,7 +13,6 @@ import CertificatesSection from '@/components/sections/CertificatesSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import BlogSection from '@/components/sections/BlogSection'
 import ContactSection from '@/components/sections/ContactSection'
-import JsonLd from '@/components/seo/JsonLd'
 import ScrollAnimations from '@/components/ui/ScrollAnimations'
 import { createServerClient } from '@/lib/supabase/server'
 import type { Profile, Skill, Project, Experience, Education, Certificate, Testimonial, BlogPost, JourneyItem } from '@/lib/supabase/types'
@@ -66,7 +65,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <JsonLd profile={data.profile} />
       <ScrollAnimations />
       <Navbar profile={data.profile} />
       <main className="portfolio-main">

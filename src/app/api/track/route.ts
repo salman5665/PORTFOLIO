@@ -25,7 +25,7 @@ type TrackingPayload = {
 const getRequestBaseUrl = (req: NextRequest) => {
   const host = req.headers.get('x-forwarded-host') || req.headers.get('host')
   const protocol = req.headers.get('x-forwarded-proto') || (host?.includes('localhost') ? 'http' : 'https')
-  return host ? `${protocol}://${host}` : 'https://vinitsoni.vercel.app'
+  return host ? `${protocol}://${host}` : 'https://salman.dev'
 }
 
 const getIpAddress = (req: NextRequest) => {
@@ -251,7 +251,7 @@ const sendNewVisitorNotifications = async (
       event,
     })
     await resend.emails.send({
-      from: 'Vinit Soni <onboarding@resend.dev>',
+      from: 'Salman <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL_TO,
       subject: `📍 New Visitor Alert (${meta.city}, ${meta.country})`,
       text: emailContent.text,
@@ -312,3 +312,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
+

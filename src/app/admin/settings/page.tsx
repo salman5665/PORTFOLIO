@@ -13,11 +13,11 @@ const HEADER_STYLE = { fontWeight: 700, color: 'var(--admin-text)', fontSize: '0
 
 export default function AdminSettingsPage() {
   const [profile, setProfile] = useState<Partial<Profile>>({
-    name: 'Vinit Soni', email: 'vinitsonii@gmail.com', tagline: 'Full-Stack Developer - MCA Student',
-    bio: '', location: 'India', github_url: 'https://github.com/vinitsonii',
-    linkedin_url: 'https://linkedin.com/in/vinitsonii', twitter_url: '', leetcode_url: '',
+    name: 'Salman', email: 'contact@salman.dev', tagline: 'Full-Stack Developer - MCA Student',
+    bio: '', location: 'India', github_url: 'https://github.com/salman5665',
+    linkedin_url: 'https://linkedin.com/in/salman', twitter_url: '', leetcode_url: '',
     is_available_for_work: true, is_ai_enabled: true, ai_provider: 'groq', ai_model: 'qwen/qwen3.6-27b', ai_api_key: '',
-    meta_title: 'Vinit Soni | Full-Stack Developer', meta_description: '',
+    meta_title: 'Salman | Full-Stack Developer', meta_description: '',
   })
   const [saving, setSaving] = useState(false)
   const [profileId, setProfileId] = useState<string | null>(null)
@@ -208,12 +208,12 @@ export default function AdminSettingsPage() {
           {/* ── AI Assistant Settings ── */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
-              <div style={HEADER_STYLE}><Bot size={16} color="#67e8f9" /> Ask Vinit AI Assistant</div>
+              <div style={HEADER_STYLE}><Bot size={16} color="#67e8f9" /> Ask Salman AI Assistant</div>
               
               <div className="d-flex align-items-center justify-content-between p-3 rounded-3 mb-4 gap-3" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
                 <div>
                   <div style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>Enable AI Chatbot</div>
-                  <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem' }}>Shows or hides the floating Ask Vinit AI widget on the portfolio</div>
+                  <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem' }}>Shows or hides the floating Ask Salman AI widget on the portfolio</div>
                 </div>
                 <div className="form-check form-switch mb-0 flex-shrink-0">
                   <input className="form-check-input" type="checkbox" role="switch" id="settings-ai-toggle"
@@ -308,7 +308,7 @@ export default function AdminSettingsPage() {
                   <ShieldCheck size={16} color="#10b981" /> Automated Daily Backups Active
                 </div>
                 <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.78rem', lineHeight: 1.5 }}>
-                  Every day at 00:00 UTC, Vercel Cron automatically generates a database snapshot, commits a <code>.sql</code> backup to GitHub repository (<code>backups/</code> folder), and emails a copy to <code>vinitsoni5911@gmail.com</code>.
+                  Every day at 00:00 UTC, Vercel Cron automatically generates a database snapshot, commits a <code>.sql</code> backup to GitHub repository (<code>backups/</code> folder), and emails a copy to your configured contact email.
                 </div>
               </div>
 
@@ -353,7 +353,7 @@ export default function AdminSettingsPage() {
                     Sync to GitHub Now
                   </button>
                   <div style={{ fontSize: '0.7rem', color: 'var(--admin-text-sub)', marginTop: 4, textAlign: 'center' }}>
-                    Commits backup to <code>vinitsonii/vinitsonii-portfolio</code>
+                    Commits backup to <code>salman5665/PORTFOLIO</code>
                   </div>
                 </div>
               </div>
@@ -388,3 +388,4 @@ export default function AdminSettingsPage() {
     </>
   )
 }
+

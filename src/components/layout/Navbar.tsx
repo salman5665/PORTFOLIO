@@ -28,7 +28,7 @@ export default function Navbar({ profile }: Props) {
   const [activeSection, setActiveSection] = useState('')
   const pathname = usePathname()
 
-  const firstName = (profile?.name || 'Vinit').split(' ')[0]
+  const firstName = (profile?.name || 'Salman').split(' ')[0]
   const resumeUrl = '/resume'
   useBodyScrollLock(mobileOpen)
 

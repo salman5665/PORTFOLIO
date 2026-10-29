@@ -87,7 +87,7 @@ export default async function ResumePage() {
               backgroundClip: 'text',
             }}
           >
-            Vinit.dev
+            Salman.dev
           </span>
 
           <a
@@ -312,7 +312,7 @@ export default async function ResumePage() {
                 ))}
               </div>
               <span style={{ color: '#475569', fontSize: '0.78rem', marginLeft: 8 }}>
-                Vinit-Soni-Resume.pdf
+                Salman-Resume.pdf
               </span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -329,3 +329,4 @@ export default async function ResumePage() {
     </main>
   )
 }
+

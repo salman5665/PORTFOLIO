@@ -44,7 +44,7 @@ function generateSqlDump(dataMap: Record<string, any[]>): string {
   const now = new Date().toISOString()
   let sql = `-- ============================================================\n`
   sql += `-- Supabase Database Full Backup\n`
-  sql += `-- Project: Vinit Soni Portfolio\n`
+  sql += `-- Project: Salman Portfolio\n`
   sql += `-- Generated: ${now}\n`
   sql += `-- ============================================================\n\n`
 
@@ -83,8 +83,8 @@ function generateSqlDump(dataMap: Record<string, any[]>): string {
 // ─────────────────────────────────────────────
 async function commitToGitHub(filename: string, content: string, message: string) {
   const token = process.env.GITHUB_TOKEN
-  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'vinitsonii'
-  const repo = process.env.GITHUB_REPO || 'vinitsonii-portfolio'
+  const username = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'salman5665'
+  const repo = process.env.GITHUB_REPO || 'PORTFOLIO'
 
   if (!token) throw new Error('GITHUB_TOKEN is missing in environment variables')
 
@@ -98,7 +98,7 @@ async function commitToGitHub(filename: string, content: string, message: string
       headers: {
         Authorization: `Bearer ${token}`,
         Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'VinitSoni-Portfolio-Backup',
+        'User-Agent': 'Salman-Portfolio-Backup',
       },
     })
     if (checkRes.ok) {
@@ -115,7 +115,7 @@ async function commitToGitHub(filename: string, content: string, message: string
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
       Accept: 'application/vnd.github.v3+json',
-      'User-Agent': 'VinitSoni-Portfolio-Backup',
+      'User-Agent': 'Salman-Portfolio-Backup',
     },
     body: JSON.stringify({
       message: message || `chore(backup): automated database backup ${filename}`,
@@ -230,7 +230,7 @@ async function handleBackupRequest(req: NextRequest) {
       // If triggered by email or cron, send email notification
       if (action === 'cron' || action === 'email') {
         const resendKey = process.env.RESEND_API_KEY
-        const recipient = process.env.CONTACT_EMAIL_TO || 'vinitsoni5911@gmail.com'
+        const recipient = process.env.CONTACT_EMAIL_TO || 'contact@salman.dev'
         
         if (resendKey) {
           const resend = new Resend(resendKey)
@@ -248,7 +248,7 @@ async function handleBackupRequest(req: NextRequest) {
                   <li><strong>Tables backed up:</strong> ${Object.keys(dataMap).join(', ')}</li>
                 </ul>
                 <p style="color: #64748b; font-size: 12px; margin-top: 20px;">
-                  Sent automatically by Vinit Soni Portfolio Backup Service.
+                  Sent automatically by Salman Portfolio Backup Service.
                 </p>
               </div>
             `,
@@ -283,3 +283,5 @@ async function handleBackupRequest(req: NextRequest) {
     return NextResponse.json({ error: err.message || 'Backup failed' }, { status: 500 })
   }
 }
+
+

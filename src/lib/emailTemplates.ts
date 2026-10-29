@@ -31,7 +31,7 @@ const titleBlock = (options: {
           <p style="margin:10px 0 0;color:#d0d5dd;font-size:14px;line-height:1.65;max-width:54ch;">${escapeHtml(options.subtitle)}</p>
         </td>
         <td style="width:58px;vertical-align:top;text-align:right;">
-          <img src="${escapeAttr(options.logoUrl)}" width="46" height="46" alt="Vinit Soni" style="display:inline-block;width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,0.24);background:#ffffff;object-fit:cover;" />
+          <img src="${escapeAttr(options.logoUrl)}" width="46" height="46" alt="Salman" style="display:inline-block;width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,0.24);background:#ffffff;object-fit:cover;" />
         </td>
       </tr>
     </table>
@@ -384,7 +384,7 @@ export function buildContactConfirmationEmail(options: {
       </div>
     `)}
     ${footerBlock(`
-      <div>This is an automatic confirmation from Vinit Soni's portfolio.</div>
+      <div>This is an automatic confirmation from Salman's portfolio.</div>
       <div style="margin-top:4px;">You can reply to my follow-up directly when I reach out.</div>
     `)}
   `)
@@ -402,3 +402,4 @@ export function buildContactConfirmationEmail(options: {
 
   return { html, text }
 }
+

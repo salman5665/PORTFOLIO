@@ -19,7 +19,7 @@ interface Props {
   profileUrl?: string
 }
 
-const FALLBACK_USERNAME = 'vinitsonii'
+const FALLBACK_USERNAME = 'salman5665'
 
 export default function GithubContributionGraph({ username = FALLBACK_USERNAME, profileUrl }: Props) {
   const [stats, setStats] = useState<GithubStats | null>(null)

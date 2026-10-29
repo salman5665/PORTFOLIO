@@ -279,9 +279,9 @@ interface Props {
 
 export default function AboutSection({ profile, projects = [], skills = [], certificates = [], journey = [] }: Props) {
   const finalJourney = journey.length > 0 ? journey : DEFAULT_JOURNEY
-  const name = profile?.name || 'Vinit Soni'
+  const name = profile?.name || 'Salman'
 
-  const bio = profile?.bio || "I am Vinit Soni, a Full-Stack Developer and MCA student. I love building web apps that combine strong engineering with clean design. I specialize in the modern JavaScript ecosystem including React, Next.js, and Node.js. My work covers everything from database design to polished frontends."
+  const bio = profile?.bio || "I am Salman, a Full-Stack Developer. I love building web apps that combine strong engineering with clean design. I specialize in the modern JavaScript ecosystem including React, Next.js, and Node.js. My work covers everything from database design to polished frontends."
   const location = profile?.location || 'India'
   const github = profile?.github_url || 'https://github.com'
   const linkedin = profile?.linkedin_url || 'https://linkedin.com'

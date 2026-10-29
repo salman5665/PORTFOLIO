@@ -16,13 +16,13 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   const iconUrl = profile?.apple_icon_url || profile?.favicon_url || defaultIcon
 
   return {
-    name: `${profile?.name || 'Vinit Soni'} Portfolio`,
-    short_name: 'Vinit.dev',
-    description: `Premium portfolio of ${profile?.name || 'Vinit Soni'} — Full-Stack Developer & MCA Student`,
+    name: `${profile?.name || 'Salman'} Portfolio`,
+    short_name: 'Salman.dev',
+    description: `Premium portfolio of ${profile?.name || 'Salman'} — Full-Stack Developer`,
     start_url: '/',
     display: 'standalone',
-    background_color: '#020817',
-    theme_color: '#00f5ff',
+    background_color: '#000000',
+    theme_color: '#000000',
     orientation: 'portrait-primary',
     categories: ['portfolio', 'developer', 'technology'],
     icons: [
@@ -38,13 +38,6 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
         type: 'image/png',
         purpose: 'any',
       },
-      {
-        src: iconUrl,
-        sizes: '180x180',
-        type: 'image/png',
-        purpose: 'any',
-      }
     ],
-    lang: 'en'
   }
 }

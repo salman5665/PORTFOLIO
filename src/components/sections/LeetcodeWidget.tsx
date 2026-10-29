@@ -26,7 +26,7 @@ interface Props {
   profileUrl?: string
 }
 
-const FALLBACK_USERNAME = 'vinitsonii'
+const FALLBACK_USERNAME = 'salman5665'
 
 const DIFFICULTIES = [
   { key: 'Easy', color: '#22c55e' },

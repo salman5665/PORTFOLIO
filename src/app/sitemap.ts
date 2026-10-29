@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL ||
-    'https://vinitsoni.vercel.app'
+    'https://salman.dev'
 
   /* -------------------------------- */
   /* FETCH PUBLISHED BLOG POSTS */

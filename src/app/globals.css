@@ -1,5 +1,5 @@
 /* ============================================================
-   Vinit Soni Portfolio â€” Global CSS
+   Salman Portfolio — Global CSS
    Bootstrap 5 + Custom Design System (Professional Theme)
    ============================================================ */
 
@@ -14,22 +14,45 @@
   --font-sans: 'Outfit', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Light mode â€” public site */
-  --color-bg: #f8f9fa;
-  --color-bg-card: #ffffff;
-  --color-text: #18181b;
-  --color-text-sub: #52525b;
-  --color-text-muted: #9ca3af;
-  --color-border: #e4e4e7;
-  --color-accent: #2563eb;
+  /* Black theme default — public site */
+  --color-bg: #000000;
+  --color-bg-card: #09090b;
+  --color-text: #ffffff;
+  --color-text-sub: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-border: #18181b;
+  --color-accent: #3b82f6;
 
   /* Sync with Bootstrap */
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-text);
   --bs-border-color: var(--color-border);
+  --bs-card-bg: #09090b;
+  --bs-card-border-color: #18181b;
+  --bs-input-bg: #09090b;
+  --bs-input-border-color: #27272a;
+  --bs-input-color: #ffffff;
+  --bs-btn-bg: #09090b;
+  --bs-table-bg: #09090b;
+  --bs-table-striped-bg: #121216;
+  --bs-table-border-color: #27272a;
+  --bs-nav-pills-link-active-bg: #27272a;
+  --bs-dropdown-bg: #09090b;
+  --bs-dropdown-border-color: #27272a;
+  --bs-dropdown-color: #a1a1aa;
+  --bs-dropdown-link-color: #a1a1aa;
+  --bs-dropdown-link-hover-bg: #27272a;
+  --bs-modal-bg: #09090b;
+  --bs-modal-header-border-color: #27272a;
+  --bs-modal-footer-border-color: #27272a;
+  --bs-list-group-bg: #09090b;
+  --bs-list-group-border-color: #27272a;
+  --bs-list-group-color: #a1a1aa;
+  --bs-list-group-hover-bg: #27272a;
+  --bs-list-group-action-color: #a1a1aa;
 
   /* refined professional blue */
-  --color-accent-soft: rgba(37, 99, 235, 0.10);
+  --color-accent-soft: rgba(59, 130, 246, 0.16);
 
   /* Admin surface (now driven by variables, not hardcoded) */
   --admin-sidebar-bg: #030a16;
@@ -60,8 +83,8 @@
 /* â”€â”€ Dark mode via media query â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #09090b;
-    --color-bg-card: #18181b;
+    --color-bg: #000000;
+    --color-bg-card: #09090b;
     --color-text: #fafafa;
     --color-text-sub: #a1a1aa;
     --color-text-muted: #52525b;

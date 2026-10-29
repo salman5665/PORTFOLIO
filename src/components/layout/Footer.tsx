@@ -27,9 +27,9 @@ export default function Footer({ profile }: Props) {
     }
   }
 
-  const name = profile?.name || 'Vinit Soni'
+  const name = profile?.name || 'Salman'
   const firstName = name.split(' ')[0]
-  const tagline = profile?.tagline || 'Vinit Soni - Full-Stack Developer & MCA Student building premium web experiences.'
+  const tagline = profile?.tagline || 'Salman - Full-Stack Developer building premium web experiences.'
   const email = profile?.email || ''
 
   const socialLinks = [

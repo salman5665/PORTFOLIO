@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
 </div>
 
-<h1 align="center">Vinit Soni - Premium Developer Portfolio</h1>
+<h1 align="center">Salman - Premium Developer Portfolio</h1>
 
 <p align="center">
   A highly dynamic, full-stack developer portfolio built to showcase projects, skills, certifications, and experience. Engineered with Next.js App Router, fully managed by a secure Supabase backend, and styled with Tailwind CSS & Framer Motion for a premium, glassmorphic dark-mode aesthetic.
@@ -46,7 +46,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed, as well as a [Supab
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/vinit-soni/portfolio-app.git
+   git clone https://github.com/salman5665/PORTFOLIO.git
    cd portfolio-app
    ```
 
@@ -91,9 +91,10 @@ Simply import your GitHub repository into Vercel and map your Supabase environme
 
 ## 👨‍💻 Author
 
-**Vinit Soni**  
+**Salman**  
 *Full-Stack Developer & MCA Student*  
-[LinkedIn](https://linkedin.com/in/vinitsonii) • [GitHub](https://github.com/vinitsonii)
+[LinkedIn](https://linkedin.com/in/salman5665) • [GitHub](https://github.com/salman5665)
 
 ---
 *Built with passion and modern web technologies.*
+

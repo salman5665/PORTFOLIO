@@ -31,7 +31,7 @@ export default function ContactSection({ profile }: Props) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', body: '' })
   const [sending, setSending] = useState(false)
 
-  const email = profile?.email || 'vinitsonii@gmail.com'
+  const email = profile?.email || 'contact@salman.dev'
   const location = profile?.location || 'India'
   const isAvailable = profile ? profile.is_available_for_work : true
 
@@ -39,13 +39,13 @@ export default function ContactSection({ profile }: Props) {
     profile?.github_url && { label: 'GitHub', href: profile.github_url, icon: FaGithub, display: '@' + (profile.github_url.replace('https://github.com/', '')) },
     profile?.linkedin_url && { label: 'LinkedIn', href: profile.linkedin_url, icon: FaLinkedinIn, display: profile.linkedin_url.split('/in/')[1] || 'LinkedIn' },
     { label: 'Email', href: `mailto:${email}`, icon: Mail, display: email },
-    (profile?.instagram_url || 'https://instagram.com/vinitsonii') && {
+    (profile?.instagram_url || 'https://instagram.com/salman5665') && {
       label: 'Instagram',
-      href: profile?.instagram_url || 'https://instagram.com/vinitsonii',
+      href: profile?.instagram_url || 'https://instagram.com/salman5665',
       icon: FaInstagram,
       display:
         '@' +
-        (profile?.instagram_url || 'vinitsonii')
+        (profile?.instagram_url || 'salman5665')
           .replace(/^(https?:\/\/)?(www\.)?instagram\.com\//, '')
           .replace(/^@/, '')
           .replace(/\/$/, '')

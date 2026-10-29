@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
             'Content-Type': 'application/pdf',
             'Content-Disposition': isPreview
               ? 'inline'
-              : 'attachment; filename="Vinit-Soni-Resume.pdf"',
+              : 'attachment; filename="Salman-Resume.pdf"',
             'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
           },
         })
@@ -82,3 +82,4 @@ export async function GET(req: NextRequest) {
 export async function POST() {
   return NextResponse.json({ error: 'Use GET to download resume' }, { status: 405 })
 }
+

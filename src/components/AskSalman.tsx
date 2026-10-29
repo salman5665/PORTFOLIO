@@ -11,16 +11,16 @@ interface Message {
 
 const MAX_USER_MESSAGES = 10
 const MAX_USER_MESSAGE_CHARS = 300
-const STORAGE_KEY = 'ask-vinit-chat'
-const STORAGE_COUNT_KEY = 'ask-vinit-count'
+const STORAGE_KEY = 'ask-salman-chat'
+const STORAGE_COUNT_KEY = 'ask-salman-count'
 
 const WELCOME: Message = {
   role: 'assistant',
-  content: "Hey! 👋 I'm Vinit's AI assistant. Ask me anything about his skills, projects, experience, or availability.",
+  content: "Hey! 👋 I'm Salman's AI assistant. Ask me anything about his skills, projects, experience, or availability.",
 }
 
 const SUGGESTIONS = [
-  'Is Vinit available for hire?',
+  'Is Salman available for hire?',
   'What tech stack does he use?',
   'Tell me about his projects',
   'What is his education?',
@@ -49,7 +49,7 @@ function TypingIndicator() {
 // ─────────────────────────────────────────────
 import { supabase } from '@/lib/supabase/client'
 
-export default function AskVinit() {
+export default function AskSalman() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([WELCOME])
   const [input, setInput] = useState('')
@@ -115,7 +115,7 @@ useEffect(() => {
   setMounted(true)
 
   // Inject styles client-side only to avoid SSR hydration mismatch
-  const styleId = 'ask-vinit-styles'
+  const styleId = 'ask-salman-styles'
   if (!document.getElementById(styleId)) {
     const style = document.createElement('style')
     style.id = styleId
@@ -269,7 +269,7 @@ useEffect(() => {
       
 let sessionId =
   localStorage.getItem(
-    'ask-vinit-session'
+    'ask-salman-session'
   )
 
 if (!sessionId) {
@@ -279,7 +279,7 @@ if (!sessionId) {
       .slice(2)
 
   localStorage.setItem(
-    'ask-vinit-session',
+    'ask-salman-session',
     sessionId
   )
 }
@@ -318,7 +318,7 @@ const res = await fetch('/api/ask', {
       if (!fullText.trim()) {
         setMessages((prev) => [
           ...prev.slice(0, -1),
-          { role: 'assistant', content: "I couldn't generate a response. Feel free to ask about Vinit's skills, projects, or experience!" },
+          { role: 'assistant', content: "I couldn't generate a response. Feel free to ask about Salman's skills, projects, or experience!" },
         ])
       }
 
@@ -414,7 +414,7 @@ const res = await fetch('/api/ask', {
 
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ color: '#f1f5f9', fontWeight: 700, fontSize: 14 }}>
-                    Ask Vinit AI
+                    Ask Salman AI
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 2 }}>
                     <div style={{
@@ -602,7 +602,7 @@ const res = await fetch('/api/ask', {
                   onChange={(e) => setInput(e.target.value.slice(0, MAX_USER_MESSAGE_CHARS))}
                   onKeyDown={handleKey}
                   maxLength={MAX_USER_MESSAGE_CHARS}
-                  placeholder={isLimited ? 'Message limit reached…' : 'Ask anything about Vinit…'}
+                  placeholder={isLimited ? 'Message limit reached…' : 'Ask anything about Salman…'}
                   disabled={loading || streaming || isLimited}
                   style={{
                     flex: 1,
