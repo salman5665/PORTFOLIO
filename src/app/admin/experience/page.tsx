@@ -33,7 +33,7 @@ export default function AdminExperiencePage() {
     setTechInput(''); setShowForm(true)
   }
 
-  const save = async () => {
+  const save = asyncxxx () => {
     if (!form.company || !form.role) { toast.error('Company and role are required'); return }
     const payload = { ...form, end_date: form.is_current ? null : form.end_date || null }
     let result
