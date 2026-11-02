@@ -89,12 +89,12 @@ export default function AdminExperiencePage() {
               <motion.div key={item.id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
                 className="card shadow-sm" style={{ borderRadius: 12, border: '1px solid var(--admin-border)' }}>
                 <div className="card-body p-4 d-flex align-items-center gap-3">
-                  <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style={{ width: 44, height: 44, background: 'rgba(34,211,238,0.12)', border: '1px solid rgba(34,211,238,0.28)' }}>
-                    <Briefcase size={18} color="#67e8f9" />
+                  <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" style={{ width: 44, height: 44, background: 'rgba(212, 175, 55,0.12)', border: '1px solid rgba(212, 175, 55,0.28)' }}>
+                    <Briefcase size={18} color="#F5D77F" />
                   </div>
                   <div className="flex-grow-1 overflow-hidden">
                     <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.9rem' }}>{item.role}</div>
-                    <div style={{ color: '#67e8f9', fontSize: '0.875rem', fontWeight: 600 }}>{item.company}</div>
+                    <div style={{ color: '#F5D77F', fontSize: '0.875rem', fontWeight: 600 }}>{item.company}</div>
                     <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>{item.start_date} - {item.is_current ? 'Present' : item.end_date}</div>
                   </div>
                   <span className="badge bg-secondary text-capitalize me-2" style={{ fontSize: '0.75rem', padding: '0.4em 0.8em' }}>{item.type}</span>

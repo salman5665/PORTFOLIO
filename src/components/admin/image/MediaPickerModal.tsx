@@ -102,8 +102,8 @@ export default function MediaPickerModal({
     maxWidth: 860,
     width: '100%',
     borderRadius: 18,
-    border: '1px solid rgba(125, 211, 252, 0.18)',
-    background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.97), rgba(2, 6, 23, 0.92))',
+    border: '1px solid rgba(243, 229, 171, 0.18)',
+    background: 'linear-gradient(145deg, rgba(20, 16, 5, 0.97), rgba(10, 8, 0, 0.92))',
     backdropFilter: 'blur(20px)',
     boxShadow: '0 32px 80px rgba(0, 0, 0, 0.7)',
     display: 'flex',
@@ -145,7 +145,7 @@ export default function MediaPickerModal({
             <div
               style={{
                 padding: '1.25rem 1.5rem',
-                borderBottom: '1px solid rgba(125, 211, 252, 0.14)',
+                borderBottom: '1px solid rgba(243, 229, 171, 0.14)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -158,21 +158,21 @@ export default function MediaPickerModal({
                     width: 34,
                     height: 34,
                     borderRadius: 9,
-                    background: 'rgba(34, 211, 238, 0.12)',
-                    border: '1px solid rgba(34, 211, 238, 0.22)',
+                    background: 'rgba(212, 175, 55, 0.12)',
+                    border: '1px solid rgba(212, 175, 55, 0.22)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <ImageIcon size={16} color="#67e8f9" />
+                  <ImageIcon size={16} color="#F5D77F" />
                 </div>
                 <div>
                   <h3 style={{ color: '#f8fafc', fontWeight: 700, fontSize: '1rem', margin: 0 }}>
                     Choose from Media Library
                   </h3>
                   <p style={{ color: '#94a3b8', fontSize: '0.72rem', margin: 0, fontFamily: 'var(--font-mono)' }}>
-                    {files.length} image{files.length !== 1 ? 's' : ''} in <strong style={{ color: '#67e8f9' }}>{activeBucket}</strong>
+                    {files.length} image{files.length !== 1 ? 's' : ''} in <strong style={{ color: '#F5D77F' }}>{activeBucket}</strong>
                   </p>
                 </div>
               </div>
@@ -184,8 +184,8 @@ export default function MediaPickerModal({
                   width: 32,
                   height: 32,
                   borderRadius: 8,
-                  border: '1px solid rgba(125, 211, 252, 0.18)',
-                  background: 'rgba(15, 23, 42, 0.5)',
+                  border: '1px solid rgba(243, 229, 171, 0.18)',
+                  background: 'rgba(20, 16, 5, 0.5)',
                   color: '#94a3b8',
                   cursor: 'pointer',
                   display: 'flex',
@@ -202,7 +202,7 @@ export default function MediaPickerModal({
             <div
               style={{
                 padding: '1rem 1.5rem',
-                borderBottom: '1px solid rgba(125, 211, 252, 0.1)',
+                borderBottom: '1px solid rgba(243, 229, 171, 0.1)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 12,
@@ -224,12 +224,12 @@ export default function MediaPickerModal({
                       fontWeight: 700,
                       fontFamily: 'var(--font-mono)',
                       border: activeBucket === b
-                        ? '1px solid rgba(34, 211, 238, 0.4)'
-                        : '1px solid rgba(125, 211, 252, 0.14)',
+                        ? '1px solid rgba(212, 175, 55, 0.4)'
+                        : '1px solid rgba(243, 229, 171, 0.14)',
                       background: activeBucket === b
-                        ? 'rgba(34, 211, 238, 0.14)'
-                        : 'rgba(15, 23, 42, 0.4)',
-                      color: activeBucket === b ? '#67e8f9' : '#94a3b8',
+                        ? 'rgba(212, 175, 55, 0.14)'
+                        : 'rgba(20, 16, 5, 0.4)',
+                      color: activeBucket === b ? '#F5D77F' : '#94a3b8',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
                       textTransform: 'capitalize',
@@ -265,8 +265,8 @@ export default function MediaPickerModal({
                     paddingTop: 7,
                     paddingBottom: 7,
                     borderRadius: 8,
-                    border: '1px solid rgba(125, 211, 252, 0.16)',
-                    background: 'rgba(15, 23, 42, 0.5)',
+                    border: '1px solid rgba(243, 229, 171, 0.16)',
+                    background: 'rgba(20, 16, 5, 0.5)',
                     color: '#f8fafc',
                     fontSize: '0.82rem',
                     outline: 'none',
@@ -284,8 +284,8 @@ export default function MediaPickerModal({
                   width: 32,
                   height: 32,
                   borderRadius: 8,
-                  border: '1px solid rgba(125, 211, 252, 0.16)',
-                  background: 'rgba(15, 23, 42, 0.4)',
+                  border: '1px solid rgba(243, 229, 171, 0.16)',
+                  background: 'rgba(20, 16, 5, 0.4)',
                   color: '#94a3b8',
                   cursor: 'pointer',
                   display: 'flex',
@@ -319,7 +319,7 @@ export default function MediaPickerModal({
                       style={{
                         aspectRatio: '1/1',
                         borderRadius: 10,
-                        background: 'rgba(125, 211, 252, 0.07)',
+                        background: 'rgba(243, 229, 171, 0.07)',
                         animation: 'pulse 1.5s ease-in-out infinite',
                       }}
                     />
@@ -369,12 +369,12 @@ export default function MediaPickerModal({
                           overflow: 'hidden',
                           cursor: 'pointer',
                           border: isSelected
-                            ? '2px solid #22d3ee'
-                            : '2px solid rgba(125, 211, 252, 0.12)',
-                          background: 'rgba(15, 23, 42, 0.5)',
+                            ? '2px solid #D4AF37'
+                            : '2px solid rgba(243, 229, 171, 0.12)',
+                          background: 'rgba(20, 16, 5, 0.5)',
                           transition: 'all 0.18s ease',
                           transform: isSelected ? 'scale(0.97)' : 'scale(1)',
-                          boxShadow: isSelected ? '0 0 0 3px rgba(34,211,238,0.18)' : 'none',
+                          boxShadow: isSelected ? '0 0 0 3px rgba(212, 175, 55,0.18)' : 'none',
                         }}
                       >
                         <img
@@ -398,8 +398,8 @@ export default function MediaPickerModal({
                             position: 'absolute',
                             inset: 0,
                             background: isSelected
-                              ? 'rgba(34, 211, 238, 0.18)'
-                              : 'rgba(2, 6, 23, 0)',
+                              ? 'rgba(212, 175, 55, 0.18)'
+                              : 'rgba(10, 8, 0, 0)',
                             transition: 'background 0.2s ease',
                             display: 'flex',
                             alignItems: 'flex-end',
@@ -433,8 +433,8 @@ export default function MediaPickerModal({
                               position: 'absolute',
                               top: 6,
                               right: 6,
-                              color: '#22d3ee',
-                              background: 'rgba(2, 6, 23, 0.85)',
+                              color: '#D4AF37',
+                              background: 'rgba(10, 8, 0, 0.85)',
                               borderRadius: '50%',
                               display: 'flex',
                             }}
@@ -453,7 +453,7 @@ export default function MediaPickerModal({
             <div
               style={{
                 padding: '1rem 1.5rem',
-                borderTop: '1px solid rgba(125, 211, 252, 0.12)',
+                borderTop: '1px solid rgba(243, 229, 171, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
@@ -472,7 +472,7 @@ export default function MediaPickerModal({
                   style={{
                     padding: '8px 18px',
                     borderRadius: 9,
-                    border: '1px solid rgba(125, 211, 252, 0.18)',
+                    border: '1px solid rgba(243, 229, 171, 0.18)',
                     background: 'transparent',
                     color: '#94a3b8',
                     fontSize: '0.85rem',
@@ -492,9 +492,9 @@ export default function MediaPickerModal({
                     borderRadius: 9,
                     border: 'none',
                     background: selected
-                      ? 'linear-gradient(135deg, #22d3ee, #14b8a6)'
-                      : 'rgba(125, 211, 252, 0.08)',
-                    color: selected ? '#020617' : '#475569',
+                      ? 'linear-gradient(135deg, #D4AF37, #AA7A1E)'
+                      : 'rgba(243, 229, 171, 0.08)',
+                    color: selected ? '#0A0800' : '#475569',
                     fontSize: '0.85rem',
                     fontWeight: 700,
                     cursor: selected ? 'pointer' : 'not-allowed',

@@ -135,7 +135,7 @@ export default function ImageUploader({
                 height: 60,
                 borderRadius: 8,
                 objectFit: 'cover',
-                border: '1px solid rgba(125,211,252,0.2)',
+                border: '1px solid rgba(243, 229, 171,0.2)',
               }}
             />
             <div style={{ flex: 1 }}>
@@ -143,7 +143,7 @@ export default function ImageUploader({
                 Image Already Exists
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--admin-text-sub)', marginTop: 2, lineHeight: 1.4 }}>
-                This file is already in the <strong style={{ color: '#22d3ee' }}>{duplicateAsset.asset.bucket}</strong> folder.
+                This file is already in the <strong style={{ color: '#D4AF37' }}>{duplicateAsset.asset.bucket}</strong> folder.
               </div>
             </div>
           </div>
@@ -161,8 +161,8 @@ export default function ImageUploader({
                 padding: '6px 10px',
                 borderRadius: 8,
                 border: 'none',
-                background: 'linear-gradient(135deg, #22d3ee, #14b8a6)',
-                color: '#020617',
+                background: 'linear-gradient(135deg, #D4AF37, #AA7A1E)',
+                color: '#0A0800',
                 fontSize: '0.72rem',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -189,8 +189,8 @@ export default function ImageUploader({
                 flex: 1,
                 padding: '6px 10px',
                 borderRadius: 8,
-                border: '1px solid rgba(125, 211, 252, 0.2)',
-                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(243, 229, 171, 0.2)',
+                background: 'rgba(20, 16, 5, 0.6)',
                 color: '#e2e8f0',
                 fontSize: '0.72rem',
                 fontWeight: 600,
@@ -217,8 +217,8 @@ export default function ImageUploader({
                 flex: 1,
                 padding: '6px 10px',
                 borderRadius: 8,
-                border: '1px solid rgba(125, 211, 252, 0.2)',
-                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(243, 229, 171, 0.2)',
+                background: 'rgba(20, 16, 5, 0.6)',
                 color: '#e2e8f0',
                 fontSize: '0.72rem',
                 fontWeight: 600,
@@ -288,8 +288,8 @@ export default function ImageUploader({
         <div
           style={{
             borderRadius: 12,
-            border: '1px solid rgba(34, 211, 238, 0.22)',
-            background: 'rgba(15, 23, 42, 0.6)',
+            border: '1px solid rgba(212, 175, 55, 0.22)',
+            background: 'rgba(20, 16, 5, 0.6)',
             padding: '1.5rem',
             display: 'flex',
             flexDirection: 'column',
@@ -307,15 +307,15 @@ export default function ImageUploader({
               width: 48,
               height: 48,
               borderRadius: '50%',
-              background: 'rgba(34, 211, 238, 0.1)',
-              border: '1px solid rgba(34, 211, 238, 0.22)',
+              background: 'rgba(212, 175, 55, 0.1)',
+              border: '1px solid rgba(212, 175, 55, 0.22)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               animation: 'pulse 1.5s ease-in-out infinite',
             }}
           >
-            <UploadCloud size={22} color="#67e8f9" />
+            <UploadCloud size={22} color="#F5D77F" />
           </div>
           <div style={{ width: '100%', maxWidth: 260 }}>
             <UploadProgress progress={progress} />
@@ -340,12 +340,12 @@ export default function ImageUploader({
           marginBottom: 6,
         }}
       >
-        <Zap size={11} color={compress ? '#22d3ee' : '#475569'} />
+        <Zap size={11} color={compress ? '#D4AF37' : '#475569'} />
         <label
           htmlFor={`compress-${label}`}
           style={{
             fontSize: '0.68rem',
-            color: compress ? '#67e8f9' : '#475569',
+            color: compress ? '#F5D77F' : '#475569',
             fontFamily: 'var(--font-mono)',
             cursor: 'pointer',
             userSelect: 'none',
@@ -367,7 +367,7 @@ export default function ImageUploader({
             role="switch"
             checked={compress}
             onChange={e => setCompress(e.target.checked)}
-            style={{ width: 30, height: 16, cursor: 'pointer', accentColor: '#22d3ee' }}
+            style={{ width: 30, height: 16, cursor: 'pointer', accentColor: '#D4AF37' }}
           />
         </div>
       </div>
@@ -385,11 +385,11 @@ export default function ImageUploader({
         style={{
           borderRadius: 12,
           border: dragging
-            ? '2px solid rgba(34, 211, 238, 0.7)'
-            : '2px dashed rgba(125, 211, 252, 0.22)',
+            ? '2px solid rgba(212, 175, 55, 0.7)'
+            : '2px dashed rgba(243, 229, 171, 0.22)',
           background: dragging
-            ? 'rgba(34, 211, 238, 0.06)'
-            : 'rgba(15, 23, 42, 0.38)',
+            ? 'rgba(212, 175, 55, 0.06)'
+            : 'rgba(20, 16, 5, 0.38)',
           cursor: 'pointer',
           display: 'flex',
           flexDirection: 'column',
@@ -401,7 +401,7 @@ export default function ImageUploader({
           maxHeight: 220,
           width: aspectRatio === '1/1' ? '220px' : '100%',
           transition: 'all 0.2s ease',
-          boxShadow: dragging ? '0 0 0 4px rgba(34,211,238,0.1)' : 'none',
+          boxShadow: dragging ? '0 0 0 4px rgba(212, 175, 55,0.1)' : 'none',
         }}
       >
         {/* Upload icon */}
@@ -411,9 +411,9 @@ export default function ImageUploader({
             height: 50,
             borderRadius: '50%',
             background: dragging
-              ? 'rgba(34, 211, 238, 0.15)'
-              : 'rgba(125, 211, 252, 0.08)',
-            border: `1px solid ${dragging ? 'rgba(34,211,238,0.4)' : 'rgba(125,211,252,0.18)'}`,
+              ? 'rgba(212, 175, 55, 0.15)'
+              : 'rgba(243, 229, 171, 0.08)',
+            border: `1px solid ${dragging ? 'rgba(212, 175, 55,0.4)' : 'rgba(243, 229, 171,0.18)'}`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -423,7 +423,7 @@ export default function ImageUploader({
         >
           <UploadCloud
             size={22}
-            color={dragging ? '#22d3ee' : '#475569'}
+            color={dragging ? '#D4AF37' : '#475569'}
             style={{ transition: 'color 0.2s ease' }}
           />
         </div>
@@ -431,7 +431,7 @@ export default function ImageUploader({
         <div style={{ textAlign: 'center', pointerEvents: 'none' }}>
           <p
             style={{
-              color: dragging ? '#67e8f9' : '#94a3b8',
+              color: dragging ? '#F5D77F' : '#94a3b8',
               fontSize: '0.82rem',
               fontWeight: 600,
               margin: '0 0 2px',
@@ -473,8 +473,8 @@ export default function ImageUploader({
           width: '100%',
           padding: '8px 0',
           borderRadius: 9,
-          border: '1px solid rgba(125, 211, 252, 0.16)',
-          background: 'rgba(15, 23, 42, 0.4)',
+          border: '1px solid rgba(243, 229, 171, 0.16)',
+          background: 'rgba(20, 16, 5, 0.4)',
           color: '#94a3b8',
           fontSize: '0.78rem',
           fontWeight: 600,
@@ -486,14 +486,14 @@ export default function ImageUploader({
           transition: 'all 0.18s ease',
         }}
         onMouseEnter={e => {
-          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(34,211,238,0.32)'
-          ;(e.currentTarget as HTMLButtonElement).style.color = '#67e8f9'
-          ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(34,211,238,0.06)'
+          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(212, 175, 55,0.32)'
+          ;(e.currentTarget as HTMLButtonElement).style.color = '#F5D77F'
+          ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(212, 175, 55,0.06)'
         }}
         onMouseLeave={e => {
-          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(125,211,252,0.16)'
+          ;(e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(243, 229, 171,0.16)'
           ;(e.currentTarget as HTMLButtonElement).style.color = '#94a3b8'
-          ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(15,23,42,0.4)'
+          ;(e.currentTarget as HTMLButtonElement).style.background = 'rgba(20, 16, 5,0.4)'
         }}
       >
         <Images size={14} />

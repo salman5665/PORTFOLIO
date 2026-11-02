@@ -143,7 +143,7 @@ export default function AdminSkillsPage() {
           <div className="card-body p-4 p-md-5">
             <div className="d-flex flex-column flex-lg-row align-items-lg-start justify-content-between gap-4 mb-4">
               <div>
-                <div className="d-flex align-items-center gap-2 mb-2" style={{ color: '#67e8f9', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                <div className="d-flex align-items-center gap-2 mb-2" style={{ color: '#F5D77F', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                   <Code2 size={14} /> Coding Profiles
                 </div>
                 <h2 style={{ color: 'var(--admin-text)', fontSize: '1.2rem', fontWeight: 800, marginBottom: 6 }}>
@@ -215,7 +215,7 @@ export default function AdminSkillsPage() {
                 onClick={() => saveCodingProfiles('published')}
                 disabled={savingCodingProfiles || (!codingProfiles.github_url.trim() && !codingProfiles.leetcode_url.trim())}
                 className="btn d-inline-flex align-items-center justify-content-center gap-2"
-                style={{ background: 'linear-gradient(135deg, #67e8f9, #38bdf8 52%, #8b5cf6)', color: '#020617', border: 0, borderRadius: 10, fontWeight: 800 }}
+                style={{ background: 'linear-gradient(135deg, #F5D77F, #D4AF37 52%, #B8860B)', color: '#0A0800', border: 0, borderRadius: 10, fontWeight: 800 }}
               >
                 {savingCodingProfiles && codingProfiles.status === 'published' ? <span className="spinner-border spinner-border-sm" role="status" /> : <Code2 size={15} />}
                 Publish to Portfolio
@@ -264,7 +264,7 @@ export default function AdminSkillsPage() {
                       <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: 'var(--admin-text-sub)' }}>{skill.proficiency}%</span>
                     </div>
                     <div style={{ height: 4, background: 'var(--admin-border-soft)', borderRadius: 4, overflow: 'hidden', marginBottom: 10 }}>
-                      <div style={{ height: '100%', width: `${skill.proficiency}%`, background: 'linear-gradient(90deg, #22d3ee, #14b8a6, #8b5cf6)', borderRadius: 4, transition: 'width 0.8s ease' }} />
+                      <div style={{ height: '100%', width: `${skill.proficiency}%`, background: 'linear-gradient(90deg, #D4AF37, #AA7A1E, #B8860B)', borderRadius: 4, transition: 'width 0.8s ease' }} />
                     </div>
                     <div className="d-flex gap-2 justify-content-end">
                       <button onClick={() => startEdit(skill)} aria-label={`Edit ${skill.name}`} className="btn btn-sm d-flex align-items-center justify-content-center"
@@ -322,9 +322,9 @@ export default function AdminSkillsPage() {
                   <label className="form-label" htmlFor="skill-proficiency">Proficiency: <strong>{form.proficiency}%</strong></label>
                   <input id="skill-proficiency" type="range" min={10} max={100} step={5} value={form.proficiency}
                     onChange={e => setForm(f => ({ ...f, proficiency: parseInt(e.target.value) }))}
-                    className="form-range" style={{ accentColor: '#22d3ee' }} />
+                    className="form-range" style={{ accentColor: '#D4AF37' }} />
                   <div style={{ height: 4, background: 'var(--admin-border-soft)', borderRadius: 4, overflow: 'hidden', marginTop: 4 }}>
-                    <div style={{ height: '100%', width: `${form.proficiency}%`, background: 'linear-gradient(90deg, #22d3ee, #14b8a6, #8b5cf6)', borderRadius: 4, transition: 'width 0.3s ease' }} />
+                    <div style={{ height: '100%', width: `${form.proficiency}%`, background: 'linear-gradient(90deg, #D4AF37, #AA7A1E, #B8860B)', borderRadius: 4, transition: 'width 0.3s ease' }} />
                   </div>
                 </div>
                 <div className="d-flex gap-3">

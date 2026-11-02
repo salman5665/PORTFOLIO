@@ -60,8 +60,8 @@ export default function CodingProfilesSection({ config }: Props) {
             min-height: 40px;
             padding: 0 0.9rem;
             border-radius: 12px;
-            border: 1px solid rgba(125, 211, 252, 0.18);
-            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(243, 229, 171, 0.18);
+            background: rgba(20, 16, 5, 0.55);
             color: var(--color-text-sub);
             text-decoration: none;
             display: inline-flex;
@@ -73,9 +73,9 @@ export default function CodingProfilesSection({ config }: Props) {
           }
 
           .coding-link:hover {
-            color: #67e8f9;
-            border-color: rgba(34, 211, 238, 0.38);
-            background: rgba(34, 211, 238, 0.1);
+            color: #F5D77F;
+            border-color: rgba(212, 175, 55, 0.38);
+            background: rgba(212, 175, 55, 0.1);
             transform: translateY(-1px);
           }
 

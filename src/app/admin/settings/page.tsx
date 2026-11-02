@@ -56,7 +56,7 @@ export default function AdminSettingsPage() {
     const payload = {
       ...rest,
       updated_at: new Date().toISOString(),
-      theme_accent_color: profile.theme_accent_color || '#22d3ee',
+      theme_accent_color: profile.theme_accent_color || '#D4AF37',
     }
     if (profileId) {
       const { error } = await adminDb.from('profiles').update(payload, profileId)
@@ -92,7 +92,7 @@ export default function AdminSettingsPage() {
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-4 p-md-5">
               <div style={HEADER_STYLE}>
-                <User size={16} color="#67e8f9" /> Profile Information
+                <User size={16} color="#F5D77F" /> Profile Information
               </div>
               <div className="row g-3 mb-3">
                 <div className="col-sm-6"><label className="form-label" htmlFor="settings-name">Full Name</label><input id="settings-name" className="form-control" value={profile.name || ''} onChange={e => set('name', e.target.value)} placeholder="Your full name" /></div>
@@ -130,7 +130,7 @@ export default function AdminSettingsPage() {
           {/* â”€â”€ Social Links â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-4 p-md-5">
-              <div style={HEADER_STYLE}><LinkIcon size={16} color="#67e8f9" /> Social Links</div>
+              <div style={HEADER_STYLE}><LinkIcon size={16} color="#F5D77F" /> Social Links</div>
               <div className="row g-3">
                 {([
                   { key: 'github_url',      label: 'GitHub URL',      ph: 'https://github.com/...' },
@@ -183,7 +183,7 @@ export default function AdminSettingsPage() {
           {/* â”€â”€ SEO Metadata â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
-              <div style={HEADER_STYLE}><Globe size={16} color="#67e8f9" /> SEO Metadata</div>
+              <div style={HEADER_STYLE}><Globe size={16} color="#F5D77F" /> SEO Metadata</div>
               <div className="mb-3">
                 <label className="form-label" htmlFor="settings-meta-title">Meta Title</label>
                 <input id="settings-meta-title" className="form-control" value={profile.meta_title || ''} onChange={e => set('meta_title', e.target.value)} placeholder="Page title for search engines" />
@@ -208,7 +208,7 @@ export default function AdminSettingsPage() {
           {/* â”€â”€ Database Backups & Recovery â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
-              <div style={HEADER_STYLE}><Database size={16} color="#67e8f9" /> Database Backups & Recovery</div>
+              <div style={HEADER_STYLE}><Database size={16} color="#F5D77F" /> Database Backups & Recovery</div>
               
               <div className="p-3 rounded-3 mb-4" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)' }}>
                 <div className="d-flex align-items-center gap-2 mb-1" style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>
@@ -225,7 +225,7 @@ export default function AdminSettingsPage() {
                     type="button"
                     className="btn w-100 d-flex align-items-center justify-content-center gap-2 py-2"
                     onClick={() => handleDownloadBackup('sql')}
-                    style={{ background: 'rgba(34, 211, 238, 0.12)', border: '1px solid rgba(34, 211, 238, 0.3)', color: '#67e8f9', fontSize: '0.82rem', fontWeight: 600 }}
+                    style={{ background: 'rgba(212, 175, 55, 0.12)', border: '1px solid rgba(212, 175, 55, 0.3)', color: '#F5D77F', fontSize: '0.82rem', fontWeight: 600 }}
                   >
                     <Download size={15} /> Download SQL Dump (.sql)
                   </button>
@@ -271,7 +271,7 @@ export default function AdminSettingsPage() {
           {/* â”€â”€ System Info â”€â”€ */}
           <div className="card shadow-sm" style={SECTION_STYLE}>
             <div className="card-body p-3 p-sm-4 p-md-5">
-              <div style={HEADER_STYLE}><Activity size={16} color="#67e8f9" /> System Info</div>
+              <div style={HEADER_STYLE}><Activity size={16} color="#F5D77F" /> System Info</div>
               <div className="row g-3">
                 {[
                   { label: 'Framework', value: 'Next.js 16 (App Router)' },

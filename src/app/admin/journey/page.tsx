@@ -193,13 +193,13 @@ export default function AdminJourneyPage() {
       <style>{`
         .timeline-card {
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          background: rgba(15, 23, 42, 0.45) !important;
+          background: rgba(20, 16, 5, 0.45) !important;
           backdrop-filter: blur(12px);
-          border: 1px solid rgba(125, 211, 252, 0.12) !important;
+          border: 1px solid rgba(243, 229, 171, 0.12) !important;
         }
         .timeline-card:hover {
-          border-color: rgba(34, 211, 238, 0.35) !important;
-          box-shadow: 0 8px 30px rgba(34, 211, 238, 0.08) !important;
+          border-color: rgba(212, 175, 55, 0.35) !important;
+          box-shadow: 0 8px 30px rgba(212, 175, 55, 0.08) !important;
           transform: translateY(-2px);
         }
         .action-icon-btn {
@@ -209,7 +209,7 @@ export default function AdminJourneyPage() {
         .action-icon-btn:hover:not(:disabled) {
           color: var(--admin-accent) !important;
           border-color: var(--admin-accent) !important;
-          background: rgba(34, 211, 238, 0.08) !important;
+          background: rgba(212, 175, 55, 0.08) !important;
           transform: translateY(-1px);
         }
         .delete-icon-btn {
@@ -224,29 +224,29 @@ export default function AdminJourneyPage() {
           transform: translateY(-1px);
         }
         .timeline-dot-glow {
-          box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+          box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
           animation: dot-pulse 2s infinite alternate;
         }
         @keyframes dot-pulse {
           0% {
-            box-shadow: 0 0 8px rgba(34, 211, 238, 0.3);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
             transform: scale(1);
           }
           100% {
-            box-shadow: 0 0 16px rgba(34, 211, 238, 0.65);
+            box-shadow: 0 0 16px rgba(212, 175, 55, 0.65);
             transform: scale(1.08);
           }
         }
         .admin-input-premium {
-          background: rgba(15, 23, 42, 0.5) !important;
-          border: 1px solid rgba(125, 211, 252, 0.15) !important;
+          background: rgba(20, 16, 5, 0.5) !important;
+          border: 1px solid rgba(243, 229, 171, 0.15) !important;
           color: var(--admin-text) !important;
           transition: all 0.25s ease !important;
         }
         .admin-input-premium:focus {
           border-color: var(--admin-accent) !important;
-          box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15) !important;
-          background: rgba(15, 23, 42, 0.8) !important;
+          box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15) !important;
+          background: rgba(20, 16, 5, 0.8) !important;
         }
       `}</style>
 
@@ -269,10 +269,10 @@ export default function AdminJourneyPage() {
 
       <div className="admin-page-content">
         {/* Info card */}
-        <div className="card shadow-sm mb-5" style={{ borderRadius: 16, border: '1px solid rgba(34, 211, 238, 0.18)', background: 'rgba(15, 23, 42, 0.5)', backdropFilter: 'blur(12px)' }}>
+        <div className="card shadow-sm mb-5" style={{ borderRadius: 16, border: '1px solid rgba(212, 175, 55, 0.18)', background: 'rgba(20, 16, 5, 0.5)', backdropFilter: 'blur(12px)' }}>
           <div className="card-body p-4">
             <div className="d-flex align-items-start gap-3">
-              <div className="d-flex align-items-center justify-content-center rounded-3 p-2" style={{ background: 'rgba(34, 211, 238, 0.1)', border: '1px solid rgba(34, 211, 238, 0.2)' }}>
+              <div className="d-flex align-items-center justify-content-center rounded-3 p-2" style={{ background: 'rgba(212, 175, 55, 0.1)', border: '1px solid rgba(212, 175, 55, 0.2)' }}>
                 <Compass size={22} color="var(--admin-accent)" style={{ flexShrink: 0 }} />
               </div>
               <div>
@@ -301,7 +301,7 @@ export default function AdminJourneyPage() {
               top: '20px',
               bottom: '20px',
               width: '2px',
-              background: 'linear-gradient(to bottom, var(--admin-accent), rgba(34, 211, 238, 0.15) 75%, transparent)',
+              background: 'linear-gradient(to bottom, var(--admin-accent), rgba(212, 175, 55, 0.15) 75%, transparent)',
               zIndex: 1
             }} />
           )}
@@ -343,7 +343,7 @@ export default function AdminJourneyPage() {
                       <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
                         <div className="flex-grow-1 min-w-0">
                           <div className="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                            <span className="font-mono" style={{ background: 'rgba(34, 211, 238, 0.1)', border: '1px solid rgba(34, 211, 238, 0.25)', borderRadius: 6, padding: '3px 10px', fontSize: '0.72rem', fontWeight: 800, color: 'var(--admin-accent)' }}>
+                            <span className="font-mono" style={{ background: 'rgba(212, 175, 55, 0.1)', border: '1px solid rgba(212, 175, 55, 0.25)', borderRadius: 6, padding: '3px 10px', fontSize: '0.72rem', fontWeight: 800, color: 'var(--admin-accent)' }}>
                               {item.year}
                             </span>
                             <h4 style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '1rem', margin: 0 }}>{item.title}</h4>
@@ -408,8 +408,8 @@ export default function AdminJourneyPage() {
                 maxWidth: 480, 
                 width: '100%', 
                 borderRadius: 16, 
-                border: '1px solid rgba(34, 211, 238, 0.22)', 
-                background: 'rgba(15, 23, 42, 0.92)', 
+                border: '1px solid rgba(212, 175, 55, 0.22)', 
+                background: 'rgba(20, 16, 5, 0.92)', 
                 backdropFilter: 'blur(16px)',
                 maxHeight: '90vh', 
                 overflowY: 'auto',

@@ -37,7 +37,7 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
     return (
       <div className="d-flex align-items-center justify-content-center admin-login-screen" style={{ minHeight: '100vh' }}>
         <div className="text-center">
-          <div className="spinner-border mb-3" role="status" style={{ color: '#22d3ee', width: 36, height: 36 }}>
+          <div className="spinner-border mb-3" role="status" style={{ color: '#D4AF37', width: 36, height: 36 }}>
             <span className="visually-hidden">Checking auth...</span>
           </div>
           <p style={{ color: 'var(--admin-text-sub)', fontSize: '0.875rem', fontFamily: 'var(--font-mono)' }}>Verifying session...</p>

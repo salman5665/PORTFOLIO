@@ -35,7 +35,7 @@ function CountUp({ value, loading }: { value: number; loading: boolean }) {
 }
 
 const STAT_CONFIGS = [
-  { key: 'projects',     label: 'Projects',     icon: FolderOpen,    color: '#67e8f9', bg: 'rgba(34,211,238,0.12)',  href: '/admin/projects',    desc: 'Total projects' },
+  { key: 'projects',     label: 'Projects',     icon: FolderOpen,    color: '#F5D77F', bg: 'rgba(212, 175, 55,0.12)',  href: '/admin/projects',    desc: 'Total projects' },
   { key: 'messages',     label: 'Messages',     icon: MessageSquare, color: '#f0abfc', bg: 'rgba(217,70,239,0.12)',  href: '/admin/messages',    desc: 'Inbox messages' },
   { key: 'skills',       label: 'Skills',       icon: Code2,         color: '#c4b5fd', bg: 'rgba(139,92,246,0.14)',  href: '/admin/skills',      desc: 'Across categories' },
   { key: 'certificates', label: 'Certificates', icon: Award,         color: '#5eead4', bg: 'rgba(20,184,166,0.14)',  href: '/admin/certificates',desc: 'Credentials' },
@@ -129,7 +129,7 @@ export default function AdminDashboardPage() {
             </button>
             <div className="d-flex align-items-center gap-2 px-3 py-2 rounded-3"
               style={{ background: 'rgba(20,184,166,0.12)', border: '1px solid rgba(45,212,191,0.28)', fontSize: '0.78rem', color: '#5eead4', fontWeight: 600 }}>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#14b8a6', display: 'inline-block' }} />
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#AA7A1E', display: 'inline-block' }} />
               <span className="d-none d-sm-inline">All systems live</span>
               <span className="d-sm-none">Live</span>
             </div>
@@ -184,7 +184,7 @@ export default function AdminDashboardPage() {
                       <Link href={action.href}
                         className="d-flex align-items-center gap-3 p-3 rounded-3 text-decoration-none"
                         style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)', transition: 'all 0.15s ease' }}
-                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(34,211,238,0.08)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,211,238,0.28)' }}
+                        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(212, 175, 55,0.08)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(212, 175, 55,0.28)' }}
                         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--admin-main-bg)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--admin-border)' }}>
                         <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
                           style={{ width: 36, height: 36, background: 'var(--admin-surface)', border: '1px solid var(--admin-border)' }}>
@@ -194,7 +194,7 @@ export default function AdminDashboardPage() {
                           <div style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.875rem' }}>{action.label}</div>
                           <div style={{ color: 'var(--admin-text-sub)', fontSize: '0.75rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{action.desc}</div>
                         </div>
-                        <ArrowRight size={15} color="#67e8f9" style={{ flexShrink: 0 }} />
+                        <ArrowRight size={15} color="#F5D77F" style={{ flexShrink: 0 }} />
                       </Link>
                     </motion.div>
                   ))}
@@ -210,9 +210,9 @@ export default function AdminDashboardPage() {
                 <h2 style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.95rem', marginBottom: '1rem' }}>Content Status</h2>
                 <div className="d-flex flex-column gap-3 flex-grow-1">
                   {[
-                    { label: 'Projects', value: stats.projects, max: 20, color: '#22d3ee' },
-                    { label: 'Skills',   value: stats.skills,   max: 40, color: '#8b5cf6' },
-                    { label: 'Certs',    value: stats.certificates, max: 15, color: '#14b8a6' },
+                    { label: 'Projects', value: stats.projects, max: 20, color: '#D4AF37' },
+                    { label: 'Skills',   value: stats.skills,   max: 40, color: '#B8860B' },
+                    { label: 'Certs',    value: stats.certificates, max: 15, color: '#AA7A1E' },
                   ].map(row => (
                     <div key={row.label}>
                       <div className="d-flex justify-content-between align-items-center mb-1">
@@ -248,12 +248,12 @@ export default function AdminDashboardPage() {
         {/* Live preview banner */}
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
           className="card shadow-sm"
-          style={{ borderRadius: 14, border: '1px solid rgba(125,211,252,0.18)', background: 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(2,6,23,0.78) 100%)' }}>
+          style={{ borderRadius: 14, border: '1px solid rgba(243, 229, 171,0.18)', background: 'linear-gradient(135deg, rgba(20, 16, 5,0.9) 0%, rgba(10, 8, 0,0.78) 100%)' }}>
           <div className="card-body p-3 p-sm-4 d-flex align-items-center justify-content-between flex-wrap gap-3">
             <div className="d-flex align-items-center gap-3">
               <div className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-                style={{ width: 44, height: 44, background: 'rgba(34,211,238,0.12)', border: '1px solid rgba(34,211,238,0.28)' }}>
-                <Globe size={20} color="#67e8f9" />
+                style={{ width: 44, height: 44, background: 'rgba(212, 175, 55,0.12)', border: '1px solid rgba(212, 175, 55,0.28)' }}>
+                <Globe size={20} color="#F5D77F" />
               </div>
               <div>
                 <div style={{ fontWeight: 700, color: 'var(--admin-text)', fontSize: '0.925rem' }}>Your portfolio is live</div>
@@ -269,7 +269,7 @@ export default function AdminDashboardPage() {
               </Link>
               <a href="/" target="_blank" rel="noopener noreferrer"
                 className="btn btn-sm d-flex align-items-center gap-2"
-                style={{ background: 'linear-gradient(135deg, #67e8f9, #38bdf8 52%, #8b5cf6)', color: '#020617', borderRadius: 10, fontSize: '0.8rem', border: 0 }}
+                style={{ background: 'linear-gradient(135deg, #F5D77F, #D4AF37 52%, #B8860B)', color: '#0A0800', borderRadius: 10, fontSize: '0.8rem', border: 0 }}
                 id="admin-view-portfolio">
                 <Eye size={13} /> Preview <ExternalLink size={11} />
               </a>

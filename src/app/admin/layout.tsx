@@ -29,9 +29,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         toastOptions={{
           style: {
             fontFamily: 'var(--font-outfit, system-ui)',
-            background: 'var(--admin-surface)',
+            background: '#0E0B02',
             border: '1px solid var(--admin-border)',
-            color: 'var(--admin-text)',
+            color: '#fdf8ec',
             borderRadius: '12px',
             boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
           },

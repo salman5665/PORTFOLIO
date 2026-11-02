@@ -74,8 +74,8 @@ export default function CertificatesSection({ certificates }: Props) {
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            border: 1px solid rgba(125, 211, 252, 0.2);
-            background: rgba(15, 23, 42, 0.62);
+            border: 1px solid rgba(243, 229, 171, 0.2);
+            background: rgba(20, 16, 5, 0.62);
             color: var(--color-text);
             display: inline-flex;
             align-items: center;
@@ -84,8 +84,8 @@ export default function CertificatesSection({ certificates }: Props) {
           }
 
           .cert-nav-btn:hover {
-            border-color: rgba(34, 211, 238, 0.46);
-            background: rgba(34, 211, 238, 0.11);
+            border-color: rgba(212, 175, 55, 0.46);
+            background: rgba(212, 175, 55, 0.11);
             transform: translateY(-1px);
           }
 
@@ -113,20 +113,20 @@ export default function CertificatesSection({ certificates }: Props) {
             min-height: 390px;
             border-radius: 18px;
             overflow: hidden;
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.76));
-            border: 1px solid rgba(125, 211, 252, 0.16);
-            box-shadow: 0 22px 58px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255,255,255,0.045);
+            background: linear-gradient(145deg, rgba(20, 16, 5, 0.88), rgba(10, 8, 0, 0.76));
+            border: 1px solid rgba(243, 229, 171, 0.16);
+            box-shadow: 0 22px 58px rgba(10, 8, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.045);
             backdrop-filter: blur(18px);
             transition: border-color 0.24s var(--ease), box-shadow 0.24s var(--ease), transform 0.24s var(--ease);
           }
 
           .cert-card:hover {
-            border-color: rgba(34, 211, 238, 0.38);
-            box-shadow: 0 28px 76px rgba(2, 6, 23, 0.5), 0 0 0 1px rgba(34, 211, 238, 0.1);
+            border-color: rgba(212, 175, 55, 0.38);
+            box-shadow: 0 28px 76px rgba(10, 8, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.1);
           }
 
           .cert-card.is-featured {
-            border-color: rgba(34, 211, 238, 0.42);
+            border-color: rgba(212, 175, 55, 0.42);
           }
 
           .cert-media {
@@ -134,9 +134,9 @@ export default function CertificatesSection({ certificates }: Props) {
             height: 170px;
             overflow: hidden;
             background:
-              linear-gradient(rgba(125, 211, 252, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(125, 211, 252, 0.04) 1px, transparent 1px),
-              linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(139, 92, 246, 0.12));
+              linear-gradient(rgba(243, 229, 171, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(243, 229, 171, 0.04) 1px, transparent 1px),
+              linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(139, 92, 246, 0.12));
             background-size: 28px 28px, 28px 28px, 100% 100%;
           }
 
@@ -157,7 +157,7 @@ export default function CertificatesSection({ certificates }: Props) {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #67e8f9;
+            color: #F5D77F;
           }
 
           .cert-badge-row {
@@ -175,8 +175,8 @@ export default function CertificatesSection({ certificates }: Props) {
             gap: 0.35rem;
             padding: 0.35rem 0.55rem;
             border-radius: 999px;
-            background: rgba(2, 6, 23, 0.72);
-            border: 1px solid rgba(125, 211, 252, 0.2);
+            background: rgba(10, 8, 0, 0.72);
+            border: 1px solid rgba(243, 229, 171, 0.2);
             color: #e2e8f0;
             font-size: 0.68rem;
             font-weight: 700;
@@ -184,8 +184,8 @@ export default function CertificatesSection({ certificates }: Props) {
           }
 
           .cert-pill.verified {
-            color: #67e8f9;
-            border-color: rgba(34, 211, 238, 0.32);
+            color: #F5D77F;
+            border-color: rgba(212, 175, 55, 0.32);
           }
 
           .cert-body {
@@ -213,8 +213,8 @@ export default function CertificatesSection({ certificates }: Props) {
           .cert-meta-chip {
             padding: 0.38rem 0.55rem;
             border-radius: 10px;
-            background: rgba(2, 6, 23, 0.42);
-            border: 1px solid rgba(125, 211, 252, 0.13);
+            background: rgba(10, 8, 0, 0.42);
+            border: 1px solid rgba(243, 229, 171, 0.13);
             color: var(--color-text-sub);
             font-size: 0.74rem;
             font-weight: 650;
@@ -238,7 +238,7 @@ export default function CertificatesSection({ certificates }: Props) {
           .cert-progress {
             height: 4px;
             border-radius: 999px;
-            background: rgba(125, 211, 252, 0.12);
+            background: rgba(243, 229, 171, 0.12);
             overflow: hidden;
           }
 
@@ -246,7 +246,7 @@ export default function CertificatesSection({ certificates }: Props) {
             height: 100%;
             min-width: 16%;
             border-radius: inherit;
-            background: linear-gradient(90deg, #22d3ee, #14b8a6, #8b5cf6);
+            background: linear-gradient(90deg, #D4AF37, #AA7A1E, #B8860B);
             transition: width 0.28s ease;
           }
 
@@ -273,8 +273,8 @@ export default function CertificatesSection({ certificates }: Props) {
               margin-bottom: 0.85rem;
               padding: 0.42rem 0.65rem;
               border-radius: 999px;
-              border: 1px solid rgba(125, 211, 252, 0.16);
-              background: rgba(15, 23, 42, 0.5);
+              border: 1px solid rgba(243, 229, 171, 0.16);
+              background: rgba(20, 16, 5, 0.5);
               color: var(--color-text-sub);
               font-size: 0.74rem;
               font-weight: 700;

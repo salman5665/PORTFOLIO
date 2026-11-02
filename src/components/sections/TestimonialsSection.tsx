@@ -47,19 +47,19 @@ function TestimonialCard({ item, large }: { item: Testimonial; large?: boolean }
         
         <div className="d-flex align-items-center gap-3 pt-4" style={{ borderTop: '1px solid rgba(250,244,237,0.08)' }}>
           {item.avatar_url ? (
-            <div className="rounded-circle position-relative flex-shrink-0" style={{ width: 50, height: 50, border: '2px solid rgba(34, 211, 238, 0.28)', overflow: 'hidden' }}>
+            <div className="rounded-circle position-relative flex-shrink-0" style={{ width: 50, height: 50, border: '2px solid rgba(212, 175, 55, 0.28)', overflow: 'hidden' }}>
               <Image src={item.avatar_url} alt={item.name} fill style={{ objectFit: 'cover' }} sizes="50px" />
             </div>
           ) : (
             <div className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
-              style={{ width: 50, height: 50, background: 'linear-gradient(135deg, #0891b2 0%, #4f46e5 100%)', border: '2px solid rgba(34, 211, 238, 0.28)', fontWeight: 800, color: '#fff', fontSize: '1.2rem' }}>
+              style={{ width: 50, height: 50, background: 'linear-gradient(135deg, #0891b2 0%, #4f46e5 100%)', border: '2px solid rgba(212, 175, 55, 0.28)', fontWeight: 800, color: '#fff', fontSize: '1.2rem' }}>
               {item.name.charAt(0)}
             </div>
           )}
           <div>
             <div style={{ fontWeight: 700, color: '#fff', fontSize: '0.95rem', letterSpacing: '0.02em' }}>{item.name}</div>
             <div style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem', marginTop: '2px' }}>
-              <span style={{ color: '#67e8f9' }}>{item.role}</span>
+              <span style={{ color: '#F5D77F' }}>{item.role}</span>
               {item.company && <span> · {item.company}</span>}
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function TestimonialsSection({ testimonials }: Props) {
 
   return (
     <section id="testimonials" className="section position-relative">
-      <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.045), transparent 46%)', pointerEvents: 'none' }} />
+      <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.045), transparent 46%)', pointerEvents: 'none' }} />
       
       <div className="container position-relative z-1" style={{ maxWidth: 1100 }}>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.6 }} className="mb-5 text-center">
@@ -134,7 +134,7 @@ export default function TestimonialsSection({ testimonials }: Props) {
                       borderRadius: 4, 
                       border: 'none', 
                       padding: 0, 
-                      background: i === current ? '#22d3ee' : 'rgba(125,211,252,0.16)', 
+                      background: i === current ? '#D4AF37' : 'rgba(125,211,252,0.16)', 
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', 
                       cursor: 'pointer' 
                     }} />

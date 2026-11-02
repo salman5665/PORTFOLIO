@@ -29,7 +29,7 @@ export default function UploadProgress({ progress, label = 'Uploading...' }: Upl
           width: '100%',
           height: 5,
           borderRadius: 999,
-          background: 'rgba(125, 211, 252, 0.12)',
+          background: 'rgba(243, 229, 171, 0.12)',
           overflow: 'hidden',
         }}
       >
@@ -39,9 +39,9 @@ export default function UploadProgress({ progress, label = 'Uploading...' }: Upl
             height: '100%',
             width: `${progress}%`,
             borderRadius: 999,
-            background: 'linear-gradient(90deg, #22d3ee, #14b8a6, #8b5cf6)',
+            background: 'linear-gradient(90deg, #D4AF37, #AA7A1E, #B8860B)',
             transition: 'width 0.18s ease',
-            boxShadow: '0 0 8px rgba(34,211,238,0.5)',
+            boxShadow: '0 0 8px rgba(212, 175, 55,0.5)',
           }}
         />
       </div>

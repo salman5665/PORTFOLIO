@@ -11,7 +11,7 @@ import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock'
 interface Props { projects: Project[] }
 
 const categoryMeta: Record<string, { label: string; icon: typeof Layers; tone: string }> = {
-  web: { label: 'Web', icon: Monitor, tone: '#67e8f9' },
+  web: { label: 'Web', icon: Monitor, tone: '#F5D77F' },
   mobile: { label: 'Mobile', icon: Smartphone, tone: '#5eead4' },
   api: { label: 'API', icon: Code2, tone: '#c4b5fd' },
   ai: { label: 'AI', icon: Star, tone: '#f0abfc' },
@@ -236,8 +236,8 @@ export default function ProjectsSection({ projects }: Props) {
     <>
       <style>{`
         .ps-card {
-          background: rgba(15, 23, 42, 0.72);
-          border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.72);
+          border: 1px solid rgba(243, 229, 171, 0.14);
           border-radius: 14px;
           overflow: hidden;
           transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background-color 0.24s ease;
@@ -248,7 +248,7 @@ export default function ProjectsSection({ projects }: Props) {
           position: absolute;
           inset: 0;
           border-radius: 14px;
-          border: 1px solid rgba(34, 211, 238, 0.14);
+          border: 1px solid rgba(212, 175, 55, 0.14);
           opacity: 0;
           transition: opacity 0.4s;
           pointer-events: none;
@@ -259,7 +259,7 @@ export default function ProjectsSection({ projects }: Props) {
           pointer-events: none;
           z-index: 1;
           border-radius: inherit;
-          background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.18), transparent 75%);
+          background: radial-gradient(320px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 55, 0.18), transparent 75%);
           opacity: 0;
           transition: opacity 0.3s ease;
         }
@@ -268,8 +268,8 @@ export default function ProjectsSection({ projects }: Props) {
         }
         .ps-card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 18px 46px rgba(2, 6, 23, 0.38);
-          background: rgba(15, 23, 42, 0.84);
+          box-shadow: 0 18px 46px rgba(10, 8, 0, 0.38);
+          background: rgba(20, 16, 5, 0.84);
         }
         .ps-card:hover::after {
           opacity: 1;
@@ -312,14 +312,14 @@ export default function ProjectsSection({ projects }: Props) {
           height: 4px;
           overflow: hidden;
           border-radius: 999px;
-          background: rgba(125, 211, 252, 0.12);
+          background: rgba(243, 229, 171, 0.12);
         }
         .ps-rail-progress span {
           position: absolute;
           inset: 0 auto 0 0;
           width: var(--ps-progress);
           border-radius: inherit;
-          background: linear-gradient(90deg, #67e8f9, #14b8a6, #a78bfa);
+          background: linear-gradient(90deg, #F5D77F, #AA7A1E, #AA7A1E);
           transition: width 0.22s ease;
         }
         .ps-rail-buttons {
@@ -334,14 +334,14 @@ export default function ProjectsSection({ projects }: Props) {
           justify-content: center;
           border-radius: 12px;
           color: #e2e8f0;
-          border: 1px solid rgba(125, 211, 252, 0.16);
-          background: rgba(2, 6, 23, 0.52);
+          border: 1px solid rgba(243, 229, 171, 0.16);
+          background: rgba(10, 8, 0, 0.52);
           transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
         .ps-rail-btn:hover {
           transform: translateY(-1px);
-          border-color: rgba(34, 211, 238, 0.34);
-          background: rgba(34, 211, 238, 0.12);
+          border-color: rgba(212, 175, 55, 0.34);
+          background: rgba(212, 175, 55, 0.12);
         }
         .ps-mobile-hint {
           display: none;
@@ -352,15 +352,15 @@ export default function ProjectsSection({ projects }: Props) {
           height: 100%;
           overflow: hidden;
           background:
-            radial-gradient(circle at 28% 26%, rgba(34, 211, 238, 0.14), transparent 34%),
-            linear-gradient(135deg, rgba(2, 6, 23, 0.96), rgba(15, 23, 42, 0.9));
+            radial-gradient(circle at 28% 26%, rgba(212, 175, 55, 0.14), transparent 34%),
+            linear-gradient(135deg, rgba(10, 8, 0, 0.96), rgba(20, 16, 5, 0.9));
         }
         .ps-visual-grid {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(rgba(125, 211, 252, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(125, 211, 252, 0.06) 1px, transparent 1px);
+            linear-gradient(rgba(243, 229, 171, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(243, 229, 171, 0.06) 1px, transparent 1px);
           background-size: 28px 28px;
           mask-image: linear-gradient(to bottom, black, transparent 88%);
         }
@@ -374,8 +374,8 @@ export default function ProjectsSection({ projects }: Props) {
           transform: translate(-50%, -50%);
           padding: 0.78rem 0.9rem;
           border-radius: 14px;
-          background: rgba(2, 6, 23, 0.58);
-          border: 1px solid rgba(125, 211, 252, 0.16);
+          background: rgba(10, 8, 0, 0.58);
+          border: 1px solid rgba(243, 229, 171, 0.16);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
         .ps-visual-mark span {
@@ -391,7 +391,7 @@ export default function ProjectsSection({ projects }: Props) {
           position: absolute;
           inset: 0;
           pointer-events: none;
-          background: linear-gradient(to bottom, transparent 48%, rgba(2, 6, 23, 0.5));
+          background: linear-gradient(to bottom, transparent 48%, rgba(10, 8, 0, 0.5));
         }
         .ps-featured-badge,
         .ps-category-badge {
@@ -404,8 +404,8 @@ export default function ProjectsSection({ projects }: Props) {
           min-height: 25px;
           padding: 0 0.58rem;
           border-radius: 999px;
-          background: rgba(2, 6, 23, 0.72);
-          border: 1px solid rgba(125, 211, 252, 0.18);
+          background: rgba(10, 8, 0, 0.72);
+          border: 1px solid rgba(243, 229, 171, 0.18);
           backdrop-filter: blur(10px);
           font-size: 0.64rem;
           font-weight: 700;
@@ -448,7 +448,7 @@ export default function ProjectsSection({ projects }: Props) {
           gap: 0.6rem;
           margin-top: 0.95rem;
           padding-top: 0.9rem;
-          border-top: 1px solid rgba(125, 211, 252, 0.11);
+          border-top: 1px solid rgba(243, 229, 171, 0.11);
         }
         .ps-card-link {
           display: inline-flex;
@@ -462,19 +462,19 @@ export default function ProjectsSection({ projects }: Props) {
           text-decoration: none;
           font-size: 0.76rem;
           font-weight: 750;
-          background: rgba(15, 23, 42, 0.64);
-          border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.64);
+          border: 1px solid rgba(243, 229, 171, 0.14);
           transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
         .ps-card-link-details {
-          color: #020617;
-          background: linear-gradient(135deg, #67e8f9, #38bdf8 56%, #a78bfa);
+          color: #0A0800;
+          background: linear-gradient(135deg, #F5D77F, #D4AF37 56%, #AA7A1E);
           border: 0;
           min-width: 104px;
         }
         .ps-card-link-details:hover {
-          color: #020617;
-          background: linear-gradient(135deg, #cffafe, #7dd3fc 56%, #c4b5fd);
+          color: #0A0800;
+          background: linear-gradient(135deg, #cffafe, #F3E5AB 56%, #c4b5fd);
         }
         .ps-card-icon-actions {
           display: inline-flex;
@@ -488,14 +488,14 @@ export default function ProjectsSection({ projects }: Props) {
           justify-content: center;
           border-radius: 9px;
           color: #cbd5e1;
-          background: rgba(2, 6, 23, 0.3);
-          border: 1px solid rgba(125, 211, 252, 0.13);
+          background: rgba(10, 8, 0, 0.3);
+          border: 1px solid rgba(243, 229, 171, 0.13);
           transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
         .ps-icon-link:hover {
-          color: #67e8f9;
-          border-color: rgba(34, 211, 238, 0.28);
-          background: rgba(34, 211, 238, 0.1);
+          color: #F5D77F;
+          border-color: rgba(212, 175, 55, 0.28);
+          background: rgba(212, 175, 55, 0.1);
         }
         .ps-showcase-stats {
           display: grid;
@@ -507,8 +507,8 @@ export default function ProjectsSection({ projects }: Props) {
           min-height: 76px;
           padding: 0.82rem;
           border-radius: 14px;
-          background: rgba(2, 6, 23, 0.44);
-          border: 1px solid rgba(125, 211, 252, 0.13);
+          background: rgba(10, 8, 0, 0.44);
+          border: 1px solid rgba(243, 229, 171, 0.13);
         }
         .ps-stat strong {
           display: block;
@@ -531,29 +531,29 @@ export default function ProjectsSection({ projects }: Props) {
           font-size: 0.84rem;
           font-weight: 700;
           transition: all 0.3s ease;
-          background: rgba(2, 6, 23, 0.36);
-          border: 1px solid rgba(125, 211, 252, 0.16);
+          background: rgba(10, 8, 0, 0.36);
+          border: 1px solid rgba(243, 229, 171, 0.16);
           color: var(--color-text-sub);
           text-transform: capitalize;
         }
         .ps-category-pill.active {
-          background: rgba(34, 211, 238, 0.14);
+          background: rgba(212, 175, 55, 0.14);
           color: var(--color-text);
-          border-color: rgba(34, 211, 238, 0.36);
+          border-color: rgba(212, 175, 55, 0.36);
           box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 12px 26px rgba(2,6,23,0.24);
         }
         .ps-category-pill:hover:not(.active) {
-          background: rgba(125, 211, 252, 0.08);
+          background: rgba(243, 229, 171, 0.08);
         }
         .ps-tech-badge {
           padding: 4px 9px;
           border-radius: 8px;
-          background: rgba(34, 211, 238, 0.1);
-          color: #67e8f9;
+          background: rgba(212, 175, 55, 0.1);
+          color: #F5D77F;
           font-size: 0.68rem;
           font-family: 'JetBrains Mono', monospace;
           font-weight: 500;
-          border: 1px solid rgba(34, 211, 238, 0.22);
+          border: 1px solid rgba(212, 175, 55, 0.22);
         }
         .ps-tech-more {
           color: var(--color-text-sub);
@@ -563,12 +563,12 @@ export default function ProjectsSection({ projects }: Props) {
         .ps-modal-glass {
           position: relative;
           background: linear-gradient(145deg, rgba(10, 17, 30, 0.98), rgba(3, 8, 18, 0.98));
-          border: 1px solid rgba(125, 211, 252, 0.18);
+          border: 1px solid rgba(243, 229, 171, 0.18);
           border-radius: 18px;
           box-shadow: 0 34px 90px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.04);
         }
         .ps-modal-backdrop {
-          background: rgba(2, 6, 23, 0.78);
+          background: rgba(10, 8, 0, 0.78);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
         }
@@ -581,13 +581,13 @@ export default function ProjectsSection({ projects }: Props) {
           position: relative;
           overflow: hidden;
           min-height: 520px;
-          background: rgba(2, 6, 23, 0.44);
+          background: rgba(10, 8, 0, 0.44);
         }
         .ps-modal-visual::after {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(2, 6, 23, 0.92), transparent 58%);
+          background: linear-gradient(to top, rgba(10, 8, 0, 0.92), transparent 58%);
           pointer-events: none;
         }
         .ps-modal-kicker {
@@ -605,8 +605,8 @@ export default function ProjectsSection({ projects }: Props) {
           padding: 0 0.58rem;
           border-radius: 999px;
           color: #cbd5e1;
-          background: rgba(15, 23, 42, 0.74);
-          border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.74);
+          border: 1px solid rgba(243, 229, 171, 0.14);
           font-size: 0.66rem;
           font-weight: 750;
         }
@@ -630,12 +630,12 @@ export default function ProjectsSection({ projects }: Props) {
           justify-content: center;
           border-radius: 11px;
           color: #e2e8f0;
-          background: rgba(15, 23, 42, 0.7);
-          border: 1px solid rgba(125, 211, 252, 0.16);
+          background: rgba(20, 16, 5, 0.7);
+          border: 1px solid rgba(243, 229, 171, 0.16);
         }
         .ps-modal-close:hover {
-          background: rgba(34, 211, 238, 0.1);
-          border-color: rgba(34, 211, 238, 0.26);
+          background: rgba(212, 175, 55, 0.1);
+          border-color: rgba(212, 175, 55, 0.26);
         }
         .ps-modal-visual-caption {
           position: absolute;
@@ -666,8 +666,8 @@ export default function ProjectsSection({ projects }: Props) {
           margin-top: 1.35rem;
           padding: 1rem;
           border-radius: 14px;
-          background: rgba(15, 23, 42, 0.5);
-          border: 1px solid rgba(125, 211, 252, 0.12);
+          background: rgba(20, 16, 5, 0.5);
+          border: 1px solid rgba(243, 229, 171, 0.12);
         }
         .ps-modal-label {
           color: var(--color-text-muted);
@@ -684,33 +684,33 @@ export default function ProjectsSection({ projects }: Props) {
           gap: 0.7rem;
           margin-top: 1.35rem;
           padding-top: 1.2rem;
-          border-top: 1px solid rgba(125, 211, 252, 0.12);
+          border-top: 1px solid rgba(243, 229, 171, 0.12);
         }
         .ps-modal-actions .btn {
           flex: 1 1 170px;
           min-height: 44px;
         }
         .ps-search-input {
-          background: rgba(2, 6, 23, 0.54) !important;
-          border: 1px solid rgba(125, 211, 252, 0.18) !important;
+          background: rgba(10, 8, 0, 0.54) !important;
+          border: 1px solid rgba(243, 229, 171, 0.18) !important;
           color: var(--color-text) !important;
           border-radius: 30px !important;
           transition: all 0.3s ease;
         }
         .ps-search-input:focus {
-          background: rgba(2, 6, 23, 0.68) !important;
-          border-color: rgba(34, 211, 238, 0.42) !important;
-          box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.1) !important;
+          background: rgba(10, 8, 0, 0.68) !important;
+          border-color: rgba(212, 175, 55, 0.42) !important;
+          box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1) !important;
         }
         .ps-btn-primary {
-          background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 52%, #a78bfa 100%);
-          color: #020617;
+          background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 52%, #AA7A1E 100%);
+          color: #0A0800;
           border: none;
           font-weight: 600;
         }
         .ps-btn-primary:hover {
-          background: linear-gradient(135deg, #cffafe 0%, #7dd3fc 52%, #c4b5fd 100%);
-          color: #020617;
+          background: linear-gradient(135deg, #cffafe 0%, #F3E5AB 52%, #c4b5fd 100%);
+          color: #0A0800;
         }
         @media (max-width: 767.98px) {
           .ps-rail {
@@ -725,8 +725,8 @@ export default function ProjectsSection({ projects }: Props) {
             margin-bottom: 0.85rem;
             padding: 0.42rem 0.65rem;
             border-radius: 999px;
-            border: 1px solid rgba(125, 211, 252, 0.16);
-            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(243, 229, 171, 0.16);
+            background: rgba(20, 16, 5, 0.5);
             color: var(--color-text-sub);
             font-size: 0.74rem;
             font-weight: 700;

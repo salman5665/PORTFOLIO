@@ -98,14 +98,14 @@ export default function AdminMessagesPage() {
                     onClick={async () => { setSelected(msg); if (!msg.is_read) await markRead(msg.id) }}
                     className="w-100 text-start p-3 border-0"
                     style={{
-                      background: selected?.id === msg.id ? 'rgba(34,211,238,0.08)' : 'var(--admin-surface)',
+                      background: selected?.id === msg.id ? 'rgba(212, 175, 55,0.08)' : 'var(--admin-surface)',
                       borderBottom: '1px solid var(--admin-border-soft)',
                       cursor: 'pointer',
                       transition: 'background 0.15s ease',
-                      borderLeft: selected?.id === msg.id ? '3px solid #22d3ee' : '3px solid transparent',
+                      borderLeft: selected?.id === msg.id ? '3px solid #D4AF37' : '3px solid transparent',
                     }}>
                     <div className="d-flex align-items-center gap-2 mb-1">
-                      {!msg.is_read && <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22d3ee', flexShrink: 0 }} />}
+                      {!msg.is_read && <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#D4AF37', flexShrink: 0 }} />}
                       <span style={{ fontWeight: msg.is_read ? 500 : 700, color: 'var(--admin-text)', fontSize: '0.875rem', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{msg.name}</span>
                       <span style={{ color: 'var(--admin-text-sub)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)', flexShrink: 0 }}>
                         {formatDistanceToNow(new Date(msg.created_at), { addSuffix: true })}
@@ -130,7 +130,7 @@ export default function AdminMessagesPage() {
                       <div>
                         <h2 style={{ fontWeight: 800, color: 'var(--admin-text)', fontSize: '1.125rem', marginBottom: 6 }}>{selected.subject || 'No subject'}</h2>
                         <div className="d-flex align-items-center flex-wrap gap-2">
-                          <span style={{ fontWeight: 600, color: '#67e8f9', fontSize: '0.875rem' }}>{selected.name}</span>
+                          <span style={{ fontWeight: 600, color: '#F5D77F', fontSize: '0.875rem' }}>{selected.name}</span>
                           <span style={{ color: 'var(--admin-text-sub)' }}>-</span>
                           <span style={{ color: 'var(--admin-text-sub)', fontSize: '0.875rem' }}>{selected.email}</span>
                         </div>

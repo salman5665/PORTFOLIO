@@ -81,15 +81,15 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
     minHeight: 440,
     borderRadius: 18,
     overflow: 'hidden',
-    background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.76))',
-    border: '1px solid rgba(125, 211, 252, 0.16)',
-    boxShadow: '0 22px 58px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255,255,255,0.045)',
+    background: 'linear-gradient(145deg, rgba(20, 16, 5, 0.88), rgba(10, 8, 0, 0.76))',
+    border: '1px solid rgba(243, 229, 171, 0.16)',
+    boxShadow: '0 22px 58px rgba(10, 8, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.045)',
   }
 
   const gridStyle: React.CSSProperties = {
     minHeight: 440,
     background:
-      'linear-gradient(rgba(125, 211, 252, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 211, 252, 0.03) 1px, transparent 1px)',
+      'linear-gradient(rgba(243, 229, 171, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 229, 171, 0.03) 1px, transparent 1px)',
     backgroundSize: '30px 30px',
   }
 
@@ -108,7 +108,7 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
     return (
       <div className="card h-100" style={shellStyle}>
         <div className="card-body p-4 d-flex align-items-center justify-content-center" style={gridStyle}>
-          <div className="spinner-border" role="status" style={{ color: '#67e8f9' }}>
+          <div className="spinner-border" role="status" style={{ color: '#F5D77F' }}>
             <span className="visually-hidden">Loading...</span>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
       <div className="card h-100" style={shellStyle}>
         <div className="card-body p-4 d-flex flex-column align-items-center justify-content-center text-center"
           style={{ ...gridStyle, color: 'var(--color-text-muted)' }}>
-          <AlertCircle size={40} className="mb-3" style={{ color: '#67e8f9', opacity: 0.72 }} />
+          <AlertCircle size={40} className="mb-3" style={{ color: '#F5D77F', opacity: 0.72 }} />
           <p className="mb-1" style={{ fontSize: '0.875rem' }}>{error || 'Unable to load LeetCode stats'}</p>
           <p className="mb-0" style={{ fontSize: '0.72rem', fontFamily: 'var(--font-mono)' }}>
             Add a LeetCode URL in admin settings when you are ready.
@@ -157,7 +157,7 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
 
         <div className="row g-3 mb-4">
           <div className="col-6">
-            <div className="rounded-3 px-3 py-2" style={{ background: 'rgba(2, 6, 23, 0.42)', border: '1px solid rgba(125, 211, 252, 0.13)' }}>
+            <div className="rounded-3 px-3 py-2" style={{ background: 'rgba(10, 8, 0, 0.42)', border: '1px solid rgba(243, 229, 171, 0.13)' }}>
               <div className="d-flex align-items-center gap-1 mb-1" style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-muted)' }}>
                 <Trophy size={11} /> Ranking
               </div>
@@ -167,7 +167,7 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
             </div>
           </div>
           <div className="col-6">
-            <div className="rounded-3 px-3 py-2" style={{ background: 'rgba(2, 6, 23, 0.42)', border: '1px solid rgba(125, 211, 252, 0.13)' }}>
+            <div className="rounded-3 px-3 py-2" style={{ background: 'rgba(10, 8, 0, 0.42)', border: '1px solid rgba(243, 229, 171, 0.13)' }}>
               <div className="d-flex align-items-center gap-1 mb-1" style={{ fontSize: '0.65rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-muted)' }}>
                 <Target size={11} /> Solved
               </div>
@@ -185,7 +185,7 @@ export default function LeetcodeWidget({ username = FALLBACK_USERNAME, profileUr
                   <span style={{ color, fontFamily: 'var(--font-mono)', fontWeight: 700 }}>{key}</span>
                   <span style={{ color: 'var(--color-text-sub)' }}>{count}</span>
                 </div>
-                <div className="rounded-pill overflow-hidden" style={{ height: 7, background: 'rgba(2, 6, 23, 0.46)', border: '1px solid rgba(125, 211, 252, 0.12)' }}>
+                <div className="rounded-pill overflow-hidden" style={{ height: 7, background: 'rgba(10, 8, 0, 0.46)', border: '1px solid rgba(243, 229, 171, 0.12)' }}>
                   <div className="rounded-pill" style={{ height: '100%', width: `${(count / Math.max(counts.total, 1)) * 100}%`, background: color }} />
                 </div>
               </div>

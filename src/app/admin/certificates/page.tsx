@@ -86,7 +86,7 @@ export default function AdminCertificatesPage() {
                   <div className="card-body p-3">
                     <h3 style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--admin-text)', marginBottom: '0.5rem' }}>{item.title}</h3>
                     <div className="d-flex justify-content-between align-items-center mb-2">
-                      <span style={{ color: '#67e8f9', fontSize: '0.8rem', fontWeight: 600 }}>{item.issuer}</span>
+                      <span style={{ color: '#F5D77F', fontSize: '0.8rem', fontWeight: 600 }}>{item.issuer}</span>
                       <span style={{ color: 'var(--admin-text-sub)', fontSize: '0.7rem', fontFamily: 'var(--font-mono)' }}>{item.issue_date}</span>
                     </div>
                     {item.credential_url && (

@@ -68,15 +68,15 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
     minHeight: 440,
     borderRadius: 18,
     overflow: 'hidden',
-    background: 'linear-gradient(145deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.76))',
-    border: '1px solid rgba(125, 211, 252, 0.16)',
-    boxShadow: '0 22px 58px rgba(2, 6, 23, 0.38), inset 0 1px 0 rgba(255,255,255,0.045)',
+    background: 'linear-gradient(145deg, rgba(20, 16, 5, 0.88), rgba(10, 8, 0, 0.76))',
+    border: '1px solid rgba(243, 229, 171, 0.16)',
+    boxShadow: '0 22px 58px rgba(10, 8, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.045)',
   }
 
   const gridStyle: React.CSSProperties = {
     minHeight: 440,
     background:
-      'linear-gradient(rgba(125, 211, 252, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 211, 252, 0.03) 1px, transparent 1px)',
+      'linear-gradient(rgba(243, 229, 171, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 229, 171, 0.03) 1px, transparent 1px)',
     backgroundSize: '30px 30px',
   }
 
@@ -84,7 +84,7 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
     return (
       <div className="card h-100" style={shellStyle}>
         <div className="card-body p-4 p-md-5 d-flex flex-column align-items-center justify-content-center" style={{ ...gridStyle, gap: 16 }}>
-          <div className="spinner-border" role="status" style={{ color: '#67e8f9' }}>
+          <div className="spinner-border" role="status" style={{ color: '#F5D77F' }}>
             <span className="visually-hidden">Loading...</span>
           </div>
           <div style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
@@ -99,7 +99,7 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
     return (
       <div className="card h-100" style={shellStyle}>
         <div className="card-body p-4 p-md-5 d-flex flex-column align-items-center justify-content-center text-center" style={{ ...gridStyle, color: 'var(--color-text-muted)' }}>
-          <FaGithub size={44} className="mb-3" style={{ color: '#67e8f9', opacity: 0.72 }} />
+          <FaGithub size={44} className="mb-3" style={{ color: '#F5D77F', opacity: 0.72 }} />
           <p className="mb-1">{error || 'No GitHub contribution data available.'}</p>
           <p className="mb-0" style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>
             Add and publish a GitHub URL from Admin Skills when you are ready.
@@ -121,7 +121,7 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
         <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4 mb-4">
           <div className="d-flex align-items-center gap-3">
             <div className="d-flex align-items-center justify-content-center rounded-3"
-              style={{ width: 48, height: 48, background: 'rgba(34, 211, 238, 0.1)', border: '1px solid rgba(34, 211, 238, 0.22)', color: '#67e8f9' }}>
+              style={{ width: 48, height: 48, background: 'rgba(212, 175, 55, 0.1)', border: '1px solid rgba(212, 175, 55, 0.22)', color: '#F5D77F' }}>
               <FaGithub size={22} />
             </div>
             <div>
@@ -137,8 +137,8 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
           <div className="d-flex flex-wrap gap-2">
             {statItems.map(({ icon: Icon, label, value }) => (
               <div key={label} className="d-flex align-items-center gap-2 rounded-3 px-3 py-2"
-                style={{ background: 'rgba(2, 6, 23, 0.42)', border: '1px solid rgba(125, 211, 252, 0.13)' }}>
-                <Icon size={15} style={{ color: '#67e8f9' }} />
+                style={{ background: 'rgba(10, 8, 0, 0.42)', border: '1px solid rgba(243, 229, 171, 0.13)' }}>
+                <Icon size={15} style={{ color: '#F5D77F' }} />
                 <div>
                   <div style={{ fontSize: '0.6rem', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-text-muted)' }}>
                     {label}
@@ -157,8 +157,8 @@ export default function GithubContributionGraph({ username = FALLBACK_USERNAME, 
             <ActivityCalendar
               data={stats.contributions}
               theme={{
-                light: ['rgba(148, 163, 184, 0.16)', '#164e63', '#0891b2', '#22d3ee', '#a78bfa'],
-                dark: ['rgba(148, 163, 184, 0.16)', '#164e63', '#0891b2', '#22d3ee', '#a78bfa'],
+                light: ['rgba(148, 163, 184, 0.16)', '#164e63', '#0891b2', '#D4AF37', '#AA7A1E'],
+                dark: ['rgba(148, 163, 184, 0.16)', '#164e63', '#0891b2', '#D4AF37', '#AA7A1E'],
               }}
               colorScheme="dark"
               labels={{ totalCount: '{{count}} contributions in the last year' }}

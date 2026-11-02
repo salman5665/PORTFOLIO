@@ -122,9 +122,9 @@ export default function AdminProjectFormPage() {
               title="Back to Projects"
               aria-label="Back to Projects"
               style={{
-                background: 'rgba(15, 23, 42, 0.62)',
+                background: 'rgba(20, 16, 5, 0.62)',
                 border: '1px solid var(--admin-border)',
-                color: '#67e8f9',
+                color: '#F5D77F',
                 borderRadius: 10,
                 padding: '0 12px',
                 height: 36,
@@ -133,7 +133,7 @@ export default function AdminProjectFormPage() {
                 textDecoration: 'none',
               }}
             >
-              <ArrowLeft size={16} color="#67e8f9" />
+              <ArrowLeft size={16} color="#F5D77F" />
               <span className="d-none d-sm-inline">Back</span>
             </Link>
             <button
@@ -200,7 +200,7 @@ export default function AdminProjectFormPage() {
                       <input type="text" value={techInput} onChange={e => setTechInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && (e.preventDefault(), addTech())} placeholder="Add technology..."
                         className="form-control" style={{ background: 'var(--admin-main-bg)', border: '1px solid var(--admin-border)', color: 'var(--admin-text)', borderRadius: 8, padding: '0.6rem 1rem' }} />
                       <button onClick={addTech} className="btn d-flex align-items-center justify-content-center flex-shrink-0"
-                        style={{ background: 'rgba(14, 165, 233, 0.1)', color: '#0ea5e9', border: '1px solid rgba(14, 165, 233, 0.2)', borderRadius: 8, width: 42, height: 42 }}>
+                        style={{ background: 'rgba(212, 175, 55, 0.1)', color: '#0ea5e9', border: '1px solid rgba(212, 175, 55, 0.2)', borderRadius: 8, width: 42, height: 42 }}>
                         <Plus size={18} />
                       </button>
                     </div>

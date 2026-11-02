@@ -51,38 +51,38 @@ export default function Footer({ profile }: Props) {
     <>
       <style>{`
         .ft-container {
-          background: linear-gradient(180deg, #020617 0%, #030a16 100%);
+          background: linear-gradient(180deg, #0A0800 0%, #0E0B02 100%);
           position: relative;
           overflow: hidden;
-          border-top: 1px solid rgba(125, 211, 252, 0.12);
+          border-top: 1px solid rgba(243, 229, 171, 0.12);
         }
         .ft-glow {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(rgba(125, 211, 252, 0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(125, 211, 252, 0.026) 1px, transparent 1px);
+            linear-gradient(rgba(243, 229, 171, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(243, 229, 171, 0.026) 1px, transparent 1px);
           background-size: 58px 58px;
           opacity: 0.7;
           pointer-events: none;
         }
         .ft-brand-icon {
-          background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 54%, #a78bfa 100%);
+          background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 54%, #AA7A1E 100%);
           width: 44px;
           height: 44px;
           border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #020617;
-          box-shadow: 0 12px 28px rgba(14, 165, 233, 0.24);
+          color: #0A0800;
+          box-shadow: 0 12px 28px rgba(212, 175, 55, 0.24);
         }
         .ft-social-btn {
           width: 42px;
           height: 42px;
           border-radius: 12px;
-          background: rgba(15, 23, 42, 0.62);
-          border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.62);
+          border: 1px solid rgba(243, 229, 171, 0.14);
           color: var(--color-text-sub);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
@@ -91,9 +91,9 @@ export default function Footer({ profile }: Props) {
           text-decoration: none;
         }
         .ft-social-btn:hover {
-          background: rgba(34, 211, 238, 0.1);
-          color: #67e8f9;
-          border-color: rgba(34, 211, 238, 0.34);
+          background: rgba(212, 175, 55, 0.1);
+          color: #F5D77F;
+          border-color: rgba(212, 175, 55, 0.34);
           transform: translateY(-4px);
           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
@@ -120,11 +120,11 @@ export default function Footer({ profile }: Props) {
           justify-content: center;
         }
         .ft-link:hover {
-          color: #67e8f9;
+          color: #F5D77F;
           transform: translateX(4px);
         }
         .ft-bottom-bar {
-          border-top: 1px solid rgba(125, 211, 252, 0.12);
+          border-top: 1px solid rgba(243, 229, 171, 0.12);
           padding-top: 2rem;
           margin-top: 4rem;
         }
@@ -132,8 +132,8 @@ export default function Footer({ profile }: Props) {
           width: 44px;
           height: 44px;
           border-radius: 14px;
-          background: rgba(15, 23, 42, 0.62);
-          border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.62);
+          border: 1px solid rgba(243, 229, 171, 0.14);
           color: var(--color-text-sub);
           display: flex;
           align-items: center;
@@ -142,17 +142,17 @@ export default function Footer({ profile }: Props) {
         }
         .ft-scroll-top svg { display: block; }
         .ft-scroll-top:hover {
-          background: rgba(34, 211, 238, 0.1);
+          background: rgba(212, 175, 55, 0.1);
           color: #fff;
-          border-color: rgba(34, 211, 238, 0.34);
+          border-color: rgba(212, 175, 55, 0.34);
           transform: translateY(-2px);
         }
         .ft-status-dot {
           width: 8px;
           height: 8px;
           border-radius: 50%;
-          background: #22d3ee;
-          box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+          background: #D4AF37;
+          box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
           position: relative;
         }
         .ft-status-dot::after {
@@ -160,7 +160,7 @@ export default function Footer({ profile }: Props) {
           position: absolute;
           inset: -4px;
           border-radius: 50%;
-          border: 1px solid rgba(34, 211, 238, 0.4);
+          border: 1px solid rgba(212, 175, 55, 0.4);
           animation: pulse 2s infinite;
         }
         .ft-brand-row {
@@ -175,7 +175,7 @@ export default function Footer({ profile }: Props) {
           color: #fff;
           letter-spacing: 0;
         }
-        .ft-brand-accent { color: #67e8f9; }
+        .ft-brand-accent { color: #F5D77F; }
         .ft-tagline {
           color: var(--color-text-sub);
           font-size: 0.95rem;
@@ -197,7 +197,7 @@ export default function Footer({ profile }: Props) {
           font-size: 0.9rem;
         }
         .ft-presence-item.available {
-          color: #67e8f9;
+          color: #F5D77F;
           font-weight: 500;
         }
         .ft-social-row { display: flex; gap: 0.75rem; }
@@ -205,7 +205,7 @@ export default function Footer({ profile }: Props) {
           font-size: 0.75rem;
           text-transform: uppercase;
           letter-spacing: 0.15em;
-          color: #67e8f9;
+          color: #F5D77F;
           font-weight: 700;
           margin-bottom: 1.5rem;
         }
@@ -223,7 +223,7 @@ export default function Footer({ profile }: Props) {
         }
 
         @media (max-width: 767.98px) {
-          .ft-container { border-top-color: rgba(34, 211, 238, 0.18); }
+          .ft-container { border-top-color: rgba(212, 175, 55, 0.18); }
           .ft-container .container {
             padding-top: 3.5rem !important;
             padding-bottom: 2.5rem !important;
@@ -232,9 +232,9 @@ export default function Footer({ profile }: Props) {
             text-align: center;
             padding: 1.35rem;
             border-radius: 22px;
-            border: 1px solid rgba(125, 211, 252, 0.16);
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.72), rgba(2, 6, 23, 0.58));
-            box-shadow: 0 20px 54px rgba(2, 6, 23, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(243, 229, 171, 0.16);
+            background: linear-gradient(145deg, rgba(20, 16, 5, 0.72), rgba(10, 8, 0, 0.58));
+            box-shadow: 0 20px 54px rgba(10, 8, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.045);
           }
           .ft-brand-row { justify-content: center; margin-bottom: 1rem; }
           .ft-brand-icon { width: 48px; height: 48px; border-radius: 15px; }
@@ -252,15 +252,15 @@ export default function Footer({ profile }: Props) {
           .ft-social-btn {
             width: 46px; height: 46px;
             border-radius: 14px;
-            background: rgba(2, 6, 23, 0.54);
+            background: rgba(10, 8, 0, 0.54);
           }
           .ft-column {
             height: 100%;
             padding: 1.15rem;
             border-radius: 20px;
-            border: 1px solid rgba(125, 211, 252, 0.14);
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.66), rgba(2, 6, 23, 0.46));
-            box-shadow: 0 16px 44px rgba(2, 6, 23, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.035);
+            border: 1px solid rgba(243, 229, 171, 0.14);
+            background: linear-gradient(145deg, rgba(20, 16, 5, 0.66), rgba(10, 8, 0, 0.46));
+            box-shadow: 0 16px 44px rgba(10, 8, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.035);
           }
           .ft-mobile-col { flex: 0 0 100%; width: 100%; max-width: 100%; }
           .ft-column-title { margin-bottom: 1rem; text-align: center; letter-spacing: 0.12em; }
@@ -278,8 +278,8 @@ export default function Footer({ profile }: Props) {
             gap: 0.55rem;
             padding: 0.62rem 0.72rem;
             border-radius: 13px;
-            background: rgba(2, 6, 23, 0.34);
-            border: 1px solid rgba(125, 211, 252, 0.1);
+            background: rgba(10, 8, 0, 0.34);
+            border: 1px solid rgba(243, 229, 171, 0.1);
             font-size: 0.88rem;
             white-space: nowrap;
           }
@@ -300,9 +300,9 @@ export default function Footer({ profile }: Props) {
           .ft-bottom-bar {
             margin-top: 1.6rem;
             padding: 1.15rem 1rem;
-            border: 1px solid rgba(125, 211, 252, 0.14);
+            border: 1px solid rgba(243, 229, 171, 0.14);
             border-radius: 18px;
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.58), rgba(2, 6, 23, 0.42));
+            background: linear-gradient(145deg, rgba(20, 16, 5, 0.58), rgba(10, 8, 0, 0.42));
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
           }
           .ft-bottom-bar p {
@@ -313,7 +313,7 @@ export default function Footer({ profile }: Props) {
           .ft-scroll-top {
             width: 44px; height: 44px;
             border-radius: 14px;
-            background: rgba(2, 6, 23, 0.48);
+            background: rgba(10, 8, 0, 0.48);
           }
         }
 

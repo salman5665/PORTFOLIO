@@ -66,8 +66,8 @@ function LoginForm() {
     height: 44,
   }
   const focusIn = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.style.borderColor = '#22d3ee'
-    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(34,211,238,0.14)'
+    e.currentTarget.style.borderColor = '#D4AF37'
+    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212, 175, 55,0.14)'
     e.currentTarget.style.background = 'var(--admin-surface)'
   }
   const focusOut = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -135,7 +135,7 @@ function LoginForm() {
         className="btn w-100 d-flex align-items-center justify-content-center gap-2"
         id="admin-login-submit"
         style={{
-          background: 'linear-gradient(135deg, #67e8f9, #38bdf8 52%, #8b5cf6)', color: '#020617', borderRadius: 12,
+          background: 'linear-gradient(135deg, #F5D77F, #D4AF37 52%, #B8860B)', color: '#0A0800', borderRadius: 12,
           height: 46, fontWeight: 700, fontSize: '0.92rem', border: 'none',
           transition: 'background 0.2s ease',
         }}
@@ -157,7 +157,7 @@ function LoginForm() {
 export default function AdminLoginPage() {
   return (
     <div className="admin-login-screen min-vh-100 w-100 d-flex align-items-center justify-content-center p-3"
-      style={{ background: 'linear-gradient(135deg, #020617 0%, #07111f 52%, #020617 100%)' }}>
+      style={{ background: 'linear-gradient(135deg, #0A0800 0%, #120E04 52%, #0A0800 100%)' }}>
       <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         style={{ width: '100%', maxWidth: 380 }}>
@@ -165,7 +165,7 @@ export default function AdminLoginPage() {
         {/* Card */}
         <div className="admin-login-card card shadow-sm" style={{ borderRadius: 18, border: '1px solid var(--admin-border)', overflow: 'hidden' }}>
           {/* Top accent bar */}
-          <div style={{ height: 4, background: 'linear-gradient(90deg, #67e8f9, #38bdf8, #8b5cf6)' }} />
+          <div style={{ height: 4, background: 'linear-gradient(90deg, #F5D77F, #D4AF37, #B8860B)' }} />
 
           <div className="card-body p-4">
             {/* Logo */}
@@ -174,8 +174,8 @@ export default function AdminLoginPage() {
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="d-inline-flex align-items-center justify-content-center mb-3"
-                style={{ width: 52, height: 52, background: 'linear-gradient(135deg, #67e8f9, #38bdf8 52%, #8b5cf6)', borderRadius: 14, boxShadow: '0 12px 34px rgba(14,165,233,0.24)' }}>
-                <Code2 size={24} color="#020617" />
+                style={{ width: 52, height: 52, background: 'linear-gradient(135deg, #F5D77F, #D4AF37 52%, #B8860B)', borderRadius: 14, boxShadow: '0 12px 34px rgba(212, 175, 55,0.24)' }}>
+                <Code2 size={24} color="#0A0800" />
               </motion.div>
               <h1 style={{ fontWeight: 800, color: 'var(--admin-text)', fontSize: '1.35rem', letterSpacing: '-0.02em', marginBottom: 4 }}>
                 Salman Studio

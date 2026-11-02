@@ -199,7 +199,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           align-items: center;
           overflow: hidden;
           background:
-            linear-gradient(135deg, rgba(12, 22, 36, 0.96) 0%, rgba(2, 6, 23, 1) 44%, rgba(4, 12, 22, 1) 100%);
+            linear-gradient(135deg, rgba(15, 12, 3, 0.96) 0%, rgba(10, 8, 0, 1) 44%, rgba(4, 12, 22, 1) 100%);
           isolation: isolate;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -208,9 +208,9 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           position: absolute; inset: 0; z-index: 1;
           pointer-events: none;
           background:
-            linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(56, 189, 248, 0.055) 1px, transparent 1px),
-            linear-gradient(115deg, transparent 0%, rgba(14, 165, 233, 0.16) 48%, transparent 78%);
+            linear-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(212, 175, 55, 0.055) 1px, transparent 1px),
+            linear-gradient(115deg, transparent 0%, rgba(212, 175, 55, 0.16) 48%, transparent 78%);
           background-size: 72px 72px, 72px 72px, 100% 100%;
           mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 92%);
         }
@@ -257,15 +257,15 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         .hs-badge {
           display: inline-flex; align-items: center; gap: 10px;
           padding: 8px 18px 8px 12px; border-radius: 100px;
-          background: rgba(20, 184, 166, 0.1); border: 1px solid rgba(45, 212, 191, 0.24);
-          color: #99f6e4; font-size: 0.68rem; font-weight: 700;
+          background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.24);
+          color: #F3E5AB; font-size: 0.68rem; font-weight: 700;
           letter-spacing: 0.16em; text-transform: uppercase;
           margin-bottom: 1.2rem; backdrop-filter: blur(12px);
         }
         .hs-badge-dot {
           width: 6px; height: 6px; border-radius: 50%;
-          background: #2dd4bf;
-          box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.2), 0 0 12px rgba(45, 212, 191, 0.5);
+          background: #D4AF37;
+          box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2), 0 0 12px rgba(212, 175, 55, 0.5);
           animation: breathe 3s ease-in-out infinite;
         }
         @keyframes breathe {
@@ -275,7 +275,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
         .hs-kicker {
           margin: 0 0 1.15rem;
-          color: rgba(125, 211, 252, 0.82);
+          color: rgba(243, 229, 171, 0.82);
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.78rem;
           font-weight: 600;
@@ -297,7 +297,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         }
         .hs-name-accent {
           display: block;
-          background: linear-gradient(135deg, #f8fafc 0%, #7dd3fc 44%, #a78bfa 100%);
+          background: linear-gradient(135deg, #f8fafc 0%, #F3E5AB 44%, #AA7A1E 100%);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent;
           background-clip: text; background-size: 200% 200%;
           animation: gradientShift 8s ease infinite;
@@ -309,7 +309,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
 
         .hs-headline {
           font-size: 1.18rem; font-weight: 600;
-          color: #bae6fd; letter-spacing: 0; margin-bottom: 1.15rem; line-height: 1.4;
+          color: #F5E6BE; letter-spacing: 0; margin-bottom: 1.15rem; line-height: 1.4;
         }
         .hs-desc {
           font-size: 1.02rem; font-weight: 400;
@@ -324,58 +324,58 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         }
         .hs-deco-progress {
           position: absolute; inset: 0;
-          background: linear-gradient(90deg, #22d3ee, #8b5cf6, #14b8a6); transform-origin: left;
+          background: linear-gradient(90deg, #D4AF37, #B8860B, #AA7A1E); transform-origin: left;
         }
 
         .hs-tech { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 2.0rem; max-width: 840px; justify-content: center; }
         .hs-tech-chip {
           padding: 7px 15px; border-radius: 999px;
-          background: rgba(15, 23, 42, 0.64); border: 1px solid rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.64); border: 1px solid rgba(243, 229, 171, 0.14);
           color: rgba(203, 213, 225, 0.78); font-size: 0.76rem; font-weight: 600;
           font-family: 'JetBrains Mono', monospace; letter-spacing: 0;
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); cursor: default;
         }
         .hs-tech-chip:hover {
-          background: rgba(14, 165, 233, 0.12); border-color: rgba(56, 189, 248, 0.36);
+          background: rgba(212, 175, 55, 0.12); border-color: rgba(212, 175, 55, 0.36);
           color: rgba(240, 249, 255, 0.95); transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(14, 165, 233, 0.14);
+          box-shadow: 0 12px 32px rgba(212, 175, 55, 0.14);
         }
 
         .hs-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: 100%; }
 
         .hs-btn-p {
           align-items: center; gap: 10px; padding: 14px 32px; border-radius: 12px;
-          font-size: 0.9rem; font-weight: 700; color: #020617;
-          background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 48%, #a78bfa 100%);
+          font-size: 0.9rem; font-weight: 700; color: #0A0800;
+          background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 48%, #AA7A1E 100%);
           border: none; text-decoration: none; position: relative; overflow: hidden;
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; letter-spacing: 0;
         }
         .hs-btn-p::before {
           content: ''; position: absolute; inset: 0;
-          background: linear-gradient(135deg, #cffafe 0%, #7dd3fc 55%, #c4b5fd 100%);
+          background: linear-gradient(135deg, #cffafe 0%, #F3E5AB 55%, #c4b5fd 100%);
           opacity: 0; transition: opacity 0.35s;
         }
         .hs-btn-p:hover::before { opacity: 1; }
         .hs-btn-p span { position: relative; z-index: 1; }
-        .hs-btn-p:hover { transform: translateY(-2px); box-shadow: 0 16px 46px rgba(14, 165, 233, 0.28); }
+        .hs-btn-p:hover { transform: translateY(-2px); box-shadow: 0 16px 46px rgba(212, 175, 55, 0.28); }
 
         .hs-btn-s {
           align-items: center; gap: 10px; padding: 14px 28px; border-radius: 12px;
           font-size: 0.9rem; font-weight: 600; color: rgba(226, 232, 240, 0.78);
-          background: rgba(15, 23, 42, 0.56); border: 1px solid rgba(125, 211, 252, 0.18);
+          background: rgba(20, 16, 5, 0.56); border: 1px solid rgba(243, 229, 171, 0.18);
           text-decoration: none; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer; letter-spacing: 0;
         }
         .hs-btn-s:hover {
-          color: rgba(248, 250, 252, 0.96); background: rgba(14, 165, 233, 0.1);
-          border-color: rgba(56, 189, 248, 0.42); transform: translateY(-2px);
+          color: rgba(248, 250, 252, 0.96); background: rgba(212, 175, 55, 0.1);
+          border-color: rgba(212, 175, 55, 0.42); transform: translateY(-2px);
         }
 
         .hs-stats {
           display: flex; gap: 0; margin-top: 3.25rem; padding: 1rem;
-          border: 1px solid rgba(125, 211, 252, 0.12);
+          border: 1px solid rgba(243, 229, 171, 0.12);
           border-radius: 18px;
-          background: linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.42));
+          background: linear-gradient(135deg, rgba(20, 16, 5, 0.76), rgba(10, 8, 0, 0.42));
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
           width: 100%; justify-content: center;
         }
@@ -383,7 +383,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           min-width: 140px;
           padding: 0.85rem 1.35rem;
           text-align: center;
-          border-right: 1px solid rgba(125, 211, 252, 0.1);
+          border-right: 1px solid rgba(243, 229, 171, 0.1);
         }
         .hs-stat:last-child { border-right: 0; }
         .hs-stat-value {
@@ -394,7 +394,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         }
         .hs-stat-suffix {
           font-size: 1.4rem; font-weight: 500;
-          background: linear-gradient(135deg, #67e8f9, #a78bfa);
+          background: linear-gradient(135deg, #F5D77F, #AA7A1E);
           -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .hs-stat-label {
@@ -417,14 +417,14 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           width: min(100%, 560px);
           margin-inline: auto;
           min-height: 460px;
-          border: 1px solid rgba(125, 211, 252, 0.16);
+          border: 1px solid rgba(243, 229, 171, 0.16);
           border-radius: 28px;
           background:
-            linear-gradient(rgba(125, 211, 252, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(125, 211, 252, 0.045) 1px, transparent 1px),
-            linear-gradient(145deg, rgba(15, 23, 42, 0.76), rgba(2, 6, 23, 0.44));
+            linear-gradient(rgba(243, 229, 171, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(243, 229, 171, 0.045) 1px, transparent 1px),
+            linear-gradient(145deg, rgba(20, 16, 5, 0.76), rgba(10, 8, 0, 0.44));
           background-size: 38px 38px, 38px 38px, 100% 100%;
-          box-shadow: 0 28px 90px rgba(2, 6, 23, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+          box-shadow: 0 28px 90px rgba(10, 8, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
           overflow: hidden;
         }
 
@@ -438,8 +438,8 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           align-items: center;
           gap: 8px;
           padding: 0 18px;
-          border-bottom: 1px solid rgba(125, 211, 252, 0.1);
-          background: rgba(2, 6, 23, 0.36);
+          border-bottom: 1px solid rgba(243, 229, 171, 0.1);
+          background: rgba(10, 8, 0, 0.36);
           z-index: 2;
         }
         .hs-panel-bar span {
@@ -448,9 +448,9 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           border-radius: 50%;
           background: rgba(148, 163, 184, 0.55);
         }
-        .hs-panel-bar span:nth-child(1) { background: #38bdf8; }
-        .hs-panel-bar span:nth-child(2) { background: #14b8a6; }
-        .hs-panel-bar span:nth-child(3) { background: #8b5cf6; }
+        .hs-panel-bar span:nth-child(1) { background: #D4AF37; }
+        .hs-panel-bar span:nth-child(2) { background: #AA7A1E; }
+        .hs-panel-bar span:nth-child(3) { background: #B8860B; }
 
         /* Lottie */
         .hs-lottie-inner {
@@ -525,15 +525,15 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
           align-items: center;
           gap: 10px;
           padding: 10px 12px;
-          border: 1px solid rgba(125, 211, 252, 0.18);
+          border: 1px solid rgba(243, 229, 171, 0.18);
           border-radius: 14px;
-          background: rgba(2, 6, 23, 0.68);
+          background: rgba(10, 8, 0, 0.68);
           backdrop-filter: blur(14px);
-          box-shadow: 0 16px 38px rgba(2, 6, 23, 0.34);
+          box-shadow: 0 16px 38px rgba(10, 8, 0, 0.34);
           color: #e2e8f0;
         }
         .hs-scene-card span {
-          color: #67e8f9;
+          color: #F5D77F;
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.68rem;
           font-weight: 700;
@@ -558,12 +558,12 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         }
         .hs-scroll-line {
           width: 1px; height: 48px;
-          background: linear-gradient(to bottom, rgba(125, 211, 252, 0.34), transparent);
+          background: linear-gradient(to bottom, rgba(243, 229, 171, 0.34), transparent);
           position: relative; overflow: hidden;
         }
         .hs-scroll-line::after {
           content: ''; position: absolute; top: 0; left: 0; right: 0; height: 16px;
-          background: linear-gradient(to bottom, #67e8f9, #a78bfa);
+          background: linear-gradient(to bottom, #F5D77F, #AA7A1E);
           animation: scrollDrop 2.5s ease-in-out infinite;
         }
         @keyframes scrollDrop {
@@ -578,7 +578,7 @@ export default function HeroSection({ profile, projects = [], skills = [], certi
         }
         .hs-fade {
           position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
-          background: linear-gradient(to top, #020617, transparent);
+          background: linear-gradient(to top, #0A0800, transparent);
           pointer-events: none; z-index: 5;
         }
 

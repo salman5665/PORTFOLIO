@@ -63,12 +63,12 @@ function NavItem({ item, collapsed, active, unreadMessages, onClick }: {
       style={{
         padding: collapsed ? '10px 0' : '9px 14px',
         justifyContent: collapsed ? 'center' : 'flex-start',
-        background: active ? 'rgba(34,211,238,0.12)' : 'transparent',
-        color: active ? '#67e8f9' : 'var(--admin-text-sub)',
+        background: active ? 'rgba(212, 175, 55,0.12)' : 'transparent',
+        color: active ? '#F5D77F' : 'var(--admin-text-sub)',
         fontWeight: active ? 600 : 500,
         fontSize: '0.875rem',
         transition: 'all 0.15s ease',
-        borderLeft: active ? '3px solid #22d3ee' : '3px solid transparent',
+        borderLeft: active ? '3px solid #D4AF37' : '3px solid transparent',
       }}
       onMouseEnter={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)'; (e.currentTarget as HTMLElement).style.color = 'var(--admin-border)' } }}
       onMouseLeave={e => { if (!active) { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = 'var(--admin-text-sub)' } }}
@@ -108,7 +108,7 @@ function NavItem({ item, collapsed, active, unreadMessages, onClick }: {
             height: 8,
             borderRadius: '50%',
             background: '#ef4444',
-            border: '2px solid #030a16',
+            border: '2px solid #0E0B02',
           }}
         />
       )}
@@ -168,10 +168,10 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
   return (
     <div className="d-flex flex-column h-100" style={{ minHeight: 0 }}>
       {/* Brand */}
-      <div className="admin-sidebar-brand" style={{ padding: '20px 16px 16px', borderBottom: '1px solid rgba(125,211,252,0.14)', flexShrink: 0 }}>
+      <div className="admin-sidebar-brand" style={{ padding: '20px 16px 16px', borderBottom: '1px solid rgba(243, 229, 171,0.14)', flexShrink: 0 }}>
         <div className="d-flex align-items-center gap-3">
           <div className="admin-brand-mark d-flex align-items-center justify-content-center flex-shrink-0"
-            style={{ width: 36, height: 36, background: 'linear-gradient(135deg, #67e8f9, #38bdf8 52%, #8b5cf6)', borderRadius: 10 }}>
+            style={{ width: 36, height: 36, background: 'linear-gradient(135deg, #F5D77F, #D4AF37 52%, #B8860B)', borderRadius: 10 }}>
             <Code2 size={18} color="var(--admin-surface)" />
           </div>
           {!collapsed && (
@@ -182,7 +182,7 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
               </div>
               <button onClick={() => setCollapsed(true)} title="Collapse" aria-label="Collapse sidebar"
                 className="d-none d-lg-flex align-items-center justify-content-center flex-shrink-0"
-                style={{ width: 26, height: 26, borderRadius: 6, border: '1px solid rgba(125,211,252,0.18)', background: 'transparent', color: 'var(--admin-text-sub)', cursor: 'pointer' }}>
+                style={{ width: 26, height: 26, borderRadius: 6, border: '1px solid rgba(243, 229, 171,0.18)', background: 'transparent', color: 'var(--admin-text-sub)', cursor: 'pointer' }}>
                 <ChevronRight size={13} style={{ transform: 'rotate(180deg)' }} />
               </button>
             </>
@@ -190,7 +190,7 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
           {collapsed && (
             <button onClick={() => setCollapsed(false)} title="Expand" aria-label="Expand sidebar"
               className="d-none d-lg-flex align-items-center justify-content-center"
-              style={{ width: 26, height: 26, borderRadius: 6, border: '1px solid rgba(125,211,252,0.18)', background: 'transparent', color: 'var(--admin-text-sub)', cursor: 'pointer', marginLeft: 'auto' }}>
+              style={{ width: 26, height: 26, borderRadius: 6, border: '1px solid rgba(243, 229, 171,0.18)', background: 'transparent', color: 'var(--admin-text-sub)', cursor: 'pointer', marginLeft: 'auto' }}>
               <ChevronRight size={13} />
             </button>
           )}
@@ -210,7 +210,7 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
                 {section.label}
               </div>
             ) : si > 0 ? (
-              <div style={{ height: 1, background: 'rgba(125,211,252,0.14)', margin: '8px 10px' }} />
+              <div style={{ height: 1, background: 'rgba(243, 229, 171,0.14)', margin: '8px 10px' }} />
             ) : null}
             {section.items.map(item => (
               <NavItem
@@ -227,14 +227,14 @@ function SidebarInner({ collapsed, setCollapsed, onNavClick }: {
       </nav>
 
       {/* User + Logout */}
-      <div className="admin-sidebar-footer" style={{ borderTop: '1px solid rgba(125,211,252,0.14)', padding: '12px 10px 10px', flexShrink: 0 }}>
+      <div className="admin-sidebar-footer" style={{ borderTop: '1px solid rgba(243, 229, 171,0.14)', padding: '12px 10px 10px', flexShrink: 0 }}>
         {!collapsed && (
           <div className="d-flex align-items-center gap-2 rounded-3 mb-2 px-2 py-2"
-            style={{ background: 'rgba(15,23,42,0.58)', border: '1px solid rgba(125,211,252,0.14)' }}>
+            style={{ background: 'rgba(20, 16, 5,0.58)', border: '1px solid rgba(243, 229, 171,0.14)' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle flex-shrink-0 position-relative"
-              style={{ width: 32, height: 32, background: 'rgba(34,211,238,0.12)', border: '1px solid rgba(34,211,238,0.3)' }}>
-              <User size={15} color="#67e8f9" />
-              <span style={{ position: 'absolute', bottom: -1, right: -1, width: 9, height: 9, borderRadius: '50%', background: '#14b8a6', border: '2px solid #020617' }} />
+              style={{ width: 32, height: 32, background: 'rgba(212, 175, 55,0.12)', border: '1px solid rgba(212, 175, 55,0.3)' }}>
+              <User size={15} color="#F5D77F" />
+              <span style={{ position: 'absolute', bottom: -1, right: -1, width: 9, height: 9, borderRadius: '50%', background: '#AA7A1E', border: '2px solid #0A0800' }} />
             </div>
             <div className="overflow-hidden flex-grow-1">
               <div style={{ fontWeight: 600, color: 'var(--admin-text)', fontSize: '0.82rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Admin</div>

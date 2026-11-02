@@ -97,7 +97,7 @@ export default function AdminTestimonialsPage() {
                       {item.avatar_url ? (
                         <img src={item.avatar_url} alt={item.name} className="rounded-circle" style={{ width: 36, height: 36, objectFit: 'cover', border: '2px solid var(--admin-border)' }} />
                       ) : (
-                        <div className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style={{ width: 36, height: 36, background: 'rgba(34,211,238,0.12)', border: '1px solid rgba(34,211,238,0.28)', fontWeight: 700, color: '#67e8f9', fontSize: '0.8rem' }}>
+                        <div className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style={{ width: 36, height: 36, background: 'rgba(212, 175, 55,0.12)', border: '1px solid rgba(212, 175, 55,0.28)', fontWeight: 700, color: '#F5D77F', fontSize: '0.8rem' }}>
                           {item.name.charAt(0)}
                         </div>
                       )}

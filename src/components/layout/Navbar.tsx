@@ -97,8 +97,8 @@ export default function Navbar({ profile }: Props) {
         }
 
         .portfolio-brand:hover {
-          background: rgba(15, 23, 42, 0.48);
-          border-color: rgba(125, 211, 252, 0.14);
+          background: rgba(20, 16, 5, 0.48);
+          border-color: rgba(243, 229, 171, 0.14);
           transform: translateY(-1px);
         }
 
@@ -110,9 +110,9 @@ export default function Navbar({ profile }: Props) {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          color: #020617;
-          background: linear-gradient(135deg, #67e8f9 0%, #38bdf8 48%, #8b5cf6 100%);
-          box-shadow: 0 14px 34px rgba(14, 165, 233, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.36);
+          color: #0A0800;
+          background: linear-gradient(135deg, #F5D77F 0%, #D4AF37 48%, #B8860B 100%);
+          box-shadow: 0 14px 34px rgba(212, 175, 55, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.36);
           overflow: hidden;
           flex-shrink: 0;
         }
@@ -149,7 +149,7 @@ export default function Navbar({ profile }: Props) {
         }
 
         .portfolio-brand-suffix {
-          background: linear-gradient(90deg, #67e8f9, #a78bfa);
+          background: linear-gradient(90deg, #F5D77F, #AA7A1E);
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -202,11 +202,11 @@ export default function Navbar({ profile }: Props) {
         }
 
         .nav-mobile-social-btn:hover {
-          background: rgba(34, 211, 238, 0.1);
-          color: #67e8f9;
-          border-color: rgba(34, 211, 238, 0.34);
+          background: rgba(212, 175, 55, 0.1);
+          color: #F5D77F;
+          border-color: rgba(212, 175, 55, 0.34);
           transform: translateY(-2px);
-          box-shadow: 0 8px 16px rgba(34, 211, 238, 0.16);
+          box-shadow: 0 8px 16px rgba(212, 175, 55, 0.16);
         }
 
         .nav-mobile-social-btn.instagram:hover {
